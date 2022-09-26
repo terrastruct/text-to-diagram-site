@@ -2,6 +2,7 @@ import * as React from "react";
 
 import * as vscOniguruma from "vscode-oniguruma";
 import * as vscTextMate from "vscode-textmate";
+// @ts-ignore
 import onigWasm from "vscode-oniguruma/release/onig.wasm";
 
 import d2Grammar from "@/d2-vscode/syntaxes/d2.tmLanguage.json";
@@ -18,7 +19,7 @@ let tmRegistry: any;
 export default function D2CodeBlock(props: any) {
   const scope = "source.d2";
 
-  let [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
+  const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
 
   React.useEffect(() => {
     if (tmGrammar) {
@@ -36,7 +37,7 @@ export default function D2CodeBlock(props: any) {
   }, []);
 
   let theme: any;
-  let preStyle: any = {
+  const preStyle: any = {
     lineHeight: "25px",
   };
   const colorMode = "light";
@@ -128,6 +129,7 @@ async function newTextMateRegistry() {
   await vscOniguruma.loadWASM(resp);
 
   return new vscTextMate.Registry({
+    // @ts-ignore
     onigLib: vscOniguruma,
     loadGrammar: async (scope) => {
       switch (scope) {
@@ -172,7 +174,7 @@ function highlightLine(tmGrammar: any, line: any) {
   const res = tmGrammar.tokenizeLine2(line, tmRegistry.ruleStack);
 
   for (let j = 0; j < res.tokens.length; j += 2) {
-    let style: any = {};
+    const style: any = {};
     const tokenStart = res.tokens[j];
     const tokenMeta = res.tokens[j + 1];
 

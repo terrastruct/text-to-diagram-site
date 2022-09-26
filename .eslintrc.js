@@ -15,6 +15,8 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'no-console': 'warn',
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-function": "off",
     '@typescript-eslint/explicit-module-boundary-types': 'off',
 
     'react/display-name': 'off',

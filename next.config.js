@@ -40,6 +40,7 @@ module.exports = {
 
     config.experiments = {
       asyncWebAssembly: true,
+      layers: true,
     };
 
     return config;
