@@ -1,0 +1,3 @@
+[submodule "d2-vscode"]
+	path = d2-vscode
+	url = git@github.com:terrastruct/d2-vscode.git
