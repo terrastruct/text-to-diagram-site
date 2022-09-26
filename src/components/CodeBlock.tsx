@@ -5,19 +5,25 @@ import * as vscTextMate from "vscode-textmate";
 // @ts-ignore
 import onigWasm from "vscode-oniguruma/release/onig.wasm";
 
-import d2Grammar from "@/d2-vscode/syntaxes/d2.tmLanguage.json";
-import markdownGrammar from "@/d2-vscode/syntaxes/markdown.tmLanguage.json";
-import lightTheme from "@/d2-vscode/themes/light-color-theme.json";
+import d2Grammar from "@/extensions/d2-vscode/syntaxes/d2.tmLanguage.json";
+import plantumlGrammar from "@/extensions/vscode-plantuml/syntaxes/plantuml.tmLanguage.json";
+
+import markdownGrammar from "@/extensions/d2-vscode/syntaxes/markdown.tmLanguage.json";
+import lightTheme from "@/extensions/d2-vscode/themes/light-color-theme.json";
 // import darkTheme from "@/d2-vscode/themes/dark-color-theme.json";
 
 import metadataConsts from "./metadata-consts";
 
-const tmGrammars = new Map();
-let tmRegistry: any;
+import tm from "@/lib/tm";
+
 
 // TODO: clipboard copy button
 export default function D2CodeBlock(props: any) {
-  const scope = "source.d2";
+  let source = props.source;
+  if (source === "plantuml") {
+    source = "wsd";
+  }
+  let scope = "source." + source;
 
   const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
 
@@ -57,8 +63,8 @@ export default function D2CodeBlock(props: any) {
   if (tmGrammar) {
     // vscode-textmate expects "tokenColors" as "settings".
     theme.settings = theme.tokenColors;
-    tmRegistry.setTheme(theme);
-    tmRegistry.ruleStack = vscTextMate.INITIAL;
+    tm.tmRegistry.setTheme(theme);
+    tm.tmRegistry.ruleStack = vscTextMate.INITIAL;
   }
 
   const lines = props.children.split("\n");
@@ -99,7 +105,7 @@ export default function D2CodeBlock(props: any) {
 }
 
 function getTextMateGrammar(scope: any) {
-  const g = tmGrammars.get(scope);
+  const g = tm.tmGrammars.get(scope);
   if (g && !(g instanceof Promise)) {
     return g;
   }
@@ -107,20 +113,20 @@ function getTextMateGrammar(scope: any) {
 }
 
 async function initTextMateGrammar(scope: any) {
-  let g = tmGrammars.get(scope);
+  let g = tm.tmGrammars.get(scope);
   if (g) {
     return await g;
   }
 
-  if (!tmRegistry) {
-    tmRegistry = newTextMateRegistry();
+  if (!tm.tmRegistry) {
+    tm.tmRegistry = newTextMateRegistry();
   }
-  tmRegistry = await tmRegistry;
+  tm.tmRegistry = await tm.tmRegistry;
 
-  g = tmRegistry.loadGrammar(scope);
-  tmGrammars.set(scope, g);
+  g = tm.tmRegistry.loadGrammar(scope);
+  tm.tmGrammars.set(scope, g);
   g = await g;
-  tmGrammars.set(scope, g);
+  tm.tmGrammars.set(scope, g);
   return g;
 }
 
@@ -135,6 +141,8 @@ async function newTextMateRegistry() {
       switch (scope) {
         case "source.d2":
           return parseRawGrammar(d2Grammar);
+        case "source.wsd":
+          return parseRawGrammar(plantumlGrammar);
         case "text.html.markdown.d2":
           return parseRawGrammar(markdownGrammar);
       }
@@ -170,8 +178,8 @@ const fontStyles: any = {
 
 function highlightLine(tmGrammar: any, line: any) {
   const children = [];
-  const colorMap = tmRegistry.getColorMap();
-  const res = tmGrammar.tokenizeLine2(line, tmRegistry.ruleStack);
+  const colorMap = tm.tmRegistry.getColorMap();
+  const res = tmGrammar.tokenizeLine2(line, tm.tmRegistry.ruleStack);
 
   for (let j = 0; j < res.tokens.length; j += 2) {
     const style: any = {};
@@ -216,6 +224,6 @@ function highlightLine(tmGrammar: any, line: any) {
       </span>
     );
   }
-  tmRegistry.ruleStack = res.ruleStack;
+  tm.tmRegistry.ruleStack = res.ruleStack;
   return children;
 }

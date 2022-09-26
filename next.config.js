@@ -34,7 +34,7 @@ module.exports = {
       type: "asset",
     });
     config.module.rules.push({
-      test: new RegExp(`d2-vscode/syntaxes/.*\.json$`),
+      test: new RegExp(`syntaxes/.*\.json$`),
       type: "asset",
     });
 
