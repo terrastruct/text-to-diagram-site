@@ -15,7 +15,6 @@ module.exports = {
   //   ],
   // },
 
-  // SVGR
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -30,6 +29,18 @@ module.exports = {
         },
       ],
     });
+    config.module.rules.push({
+      test: /\.wasm$/,
+      type: "asset",
+    });
+    config.module.rules.push({
+      test: new RegExp(`d2-vscode/syntaxes/.*\.json$`),
+      type: "asset",
+    });
+
+    config.experiments = {
+      asyncWebAssembly: true,
+    };
 
     return config;
   },

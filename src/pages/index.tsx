@@ -5,6 +5,7 @@ import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import CodeBlock from '@/components/CodeBlock';
 import Seo from '@/components/Seo';
 
 import Vercel from '~/svg/Vercel.svg';
@@ -17,6 +18,10 @@ export default function HomePage() {
       <main>
         <section className='bg-white'>
           <div className='layout flex min-h-screen flex-col items-center justify-center text-center'>
+            <CodeBlock>
+              {`a -> x: hello`}
+            </CodeBlock>
+
             <Vercel className='text-5xl' />
             <h1 className='mt-4'>
               Yo
