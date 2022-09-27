@@ -23,7 +23,7 @@ export default function D2CodeBlock(props: any) {
   if (source === "plantuml") {
     source = "wsd";
   }
-  let scope = "source." + source;
+  const scope = "source." + source;
 
   const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
 
