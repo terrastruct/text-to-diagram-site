@@ -22,22 +22,20 @@ export default function HomePage(props: any) {
             <div className='flex flex-col items-center justify-center w-full h-96 dots-white relative' >
               <div className='absolute left-0 bottom-0 top-0 right-0 dots-blue' >
               </div>
-              <div className='flex flex-col items-center justify-center z-10'>
-                <h1 className='flex items-center text-5xl'>
-                  Text
-                  <Switch className='text-7xl' />
-                  Diagrams
+              <div className='flex flex-col items-center justify-center mt-auto z-10'>
+                <Switch className='text-9xl' />
+                <h1 className='flex flex-col items-center text-5xl font-extrabold'>
+                  <span>
+                    Community list of comparisons
+                  </span>
+                  <span className='p-2 text-transparent bg-clip-text purple-gradient'>
+                    between Text to Diagram tools
+                  </span>
                 </h1>
-
-                <h2 className='font-extrabold text-transparent text-6xl p-2 bg-clip-text purple-gradient'>
-                  Declarative Diagramming
-                </h2>
-                <p className='mt-4'>
-                  Coming soon
-                </p>
               </div>
+              <div className="bg-hero-shadow h-[24px] w-full mt-auto" />
             </div>
-            <div className='layout'>
+            <div className='layout pt-8'>
               <Comparisons comparisons={props.comparisons} langA={"d2"} langB={"plantuml"} />
             </div>
 
