@@ -1,0 +1,1 @@
+An example of the most basic diagramming functions: create a box, give it a label, connect it to another box, label that connection. It also demonstrates shorthand ID substitution, if it exists in the syntax.

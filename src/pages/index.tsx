@@ -18,21 +18,28 @@ export default function HomePage(props: any) {
 
       <main>
         <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col items-center justify-center text-center'>
-            <h1 className='flex items-center'>
-              Text
-              <Switch className='text-7xl' />
-              Diagrams
-            </h1>
+          <div className='flex flex-col items-center justify-center text-center'>
+            <div className='flex flex-col items-center justify-center w-full h-96 dots-white relative' >
+              <div className='absolute left-0 bottom-0 top-0 right-0 dots-blue' >
+              </div>
+              <div className='flex flex-col items-center justify-center z-10'>
+                <h1 className='flex items-center text-5xl'>
+                  Text
+                  <Switch className='text-7xl' />
+                  Diagrams
+                </h1>
 
-            <h2 className='font-extrabold text-transparent text-4xl bg-clip-text purple-gradient'>
-              Declarative Diagramming
-            </h2>
-            <p className='mt-4'>
-              Turning text into diagrams
-            </p>
-
-            <Comparisons comparisons={props.comparisons} langA={"d2"} langB={"plantuml"} />
+                <h2 className='font-extrabold text-transparent text-6xl p-2 bg-clip-text purple-gradient'>
+                  Declarative Diagramming
+                </h2>
+                <p className='mt-4'>
+                  Coming soon
+                </p>
+              </div>
+            </div>
+            <div className='layout'>
+              <Comparisons comparisons={props.comparisons} langA={"d2"} langB={"plantuml"} />
+            </div>
 
             <footer className='absolute bottom-2 text-gray-700'>
               © {new Date().getFullYear()} {' '}
@@ -57,8 +64,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const comparisons: any = [];
   for (const comparisonName of fs.readdirSync(root)) {
+    const description = fs.readFileSync(path.resolve(root, comparisonName, "description.txt"), { encoding: "utf8" });
+    let name = comparisonName.replace(/[0-9]+_/g, "");
+    name = name.charAt(0).toUpperCase() + name.slice(1)
     const comparison: any = {
-      name: comparisonName.replace(/[0-9]+_/g, ""),
+      name,
+      description,
       syntax: {},
       layout: {},
     };
