@@ -3,6 +3,11 @@ import * as React from 'react';
 
 import clsxm from '@/lib/clsxm';
 
+// opt-out of image optimization, no-op
+const customLoader = ({ src }) => {
+  return src
+}
+
 type NextImageProps = {
   useSkeleton?: boolean;
   imgClassName?: string;
@@ -46,6 +51,7 @@ export default function NextImage({
           imgClassName,
           status === 'loading' && clsxm('animate-pulse', blurClassName)
         )}
+        loader={customLoader}
         src={src}
         width={width}
         height={height}

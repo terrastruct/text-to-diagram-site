@@ -108,7 +108,6 @@ function Comparison(props: ComparisonProps) {
             {props.text}
           </CodeBlock>
           {props.render &&
-          // <div style={{backgroundImage: `url(${require(props.render)})`}} />
           <Image src={props.render} width={200} height={200}/>
           }
         </div>
@@ -147,7 +146,6 @@ export default function Comparisons(props: ComparisonsProps) {
 
   const langARender = example.render[langA];
   const langBRender = example.render[langB];
-  console.log(example);
 
   return (
     <div
