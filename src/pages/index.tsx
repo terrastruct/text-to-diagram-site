@@ -70,22 +70,9 @@ export const getStaticProps: GetStaticProps = async () => {
       const text = fs.readFileSync(path.resolve(root, exampleName, "syntax", lang), { encoding: "utf8" });
       example.syntax[lang] = text;
     }
-    // 1v1ing nextJS's image serving:
-    // - copy images on the fly to public
-    // - resolve modules
-    // - carry the src as props to load in Image elements
-    const publicExampleDir = path.resolve(process.cwd(), "public/images/examples", exampleName, "render")
-    if (!fs.existsSync(publicExampleDir )){
-      fs.mkdirSync(publicExampleDir , { recursive: true });
-    }
-    for (const lang of fs.readdirSync(path.resolve(root, exampleName, "render"))) {
-      fs.copyFile(path.resolve(root, exampleName, "render", lang), path.resolve(publicExampleDir, lang), err => {
-        if (err) {
-          console.log(err);
-        }
-      });
-      const mod = require(`~/images/examples/${exampleName}/render/${lang}`);
-      example.render[lang.split(".")[0]] = mod.default.src;
+    for (const f of fs.readdirSync(path.resolve(root, exampleName, "render"))) {
+      const lang = f.split(".")[0]
+      example.render[lang] = `${lang}-${name}`;
     }
     examples.push(example);
   }

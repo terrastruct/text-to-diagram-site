@@ -7,7 +7,8 @@ import D2Logo from '~/svg/d2.svg';
 import { LangNames } from '@/constant/langs';
 
 import CodeBlock from '@/components/CodeBlock';
-import Image from '@/components/NextImage';
+
+import {getImage} from '@/lib/imgImports';
 
 type LangProps = {
   name: string;
@@ -94,22 +95,40 @@ type ComparisonProps = {
   lang: string;
   otherLang: string;
   text: string|undefined;
-  render: string|undefined;
+  renderID: string|undefined;
   setLang: (x: string) => void;
 }
 
 function Comparison(props: ComparisonProps) {
+  const renderRender = () => {
+    if (!props.renderID) {
+      return null;
+    }
+    const img = getImage(props.renderID);
+    // TODO add some placeholder for when a language can't render
+    if (!img) {
+      return null;
+    }
+    return (
+      <div className='w-full flex justify-center items-center'>
+        <img src={img.src} className='object-contain' alt={`Example of ${props.lang}`}/>
+      </div>
+    );
+  }
+
   return (
-    <div className='text-left grow'>
+    <div className='text-left w-1/2'>
       <Langs activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
       <div className='h-96 border border-solid border-steel-200 rounded-md shadow-light'>
         <div className='m-4 flex flex-col'>
-          <CodeBlock source={props.lang}>
-            {props.text}
-          </CodeBlock>
-          {props.render &&
-          <Image src={props.render} width={200} height={200}/>
-          }
+          <div className='h-48'>
+            <CodeBlock source={props.lang}>
+              {props.text}
+            </CodeBlock>
+          </div>
+          <div className='flex flex-col justify-center items-center h-48'>
+            {renderRender()}
+          </div>
         </div>
       </div>
     </div>
@@ -144,8 +163,8 @@ export default function Comparisons(props: ComparisonsProps) {
   const langASyntax = example.syntax[langA];
   const langBSyntax = example.syntax[langB];
 
-  const langARender = example.render[langA];
-  const langBRender = example.render[langB];
+  const langARenderID = example.render[langA];
+  const langBRenderID = example.render[langB];
 
   return (
     <div
@@ -161,8 +180,8 @@ export default function Comparisons(props: ComparisonsProps) {
         {example.description}
       </p>
       <div id='comparisons' className='flex gap-12 justify-center'>
-        <Comparison lang={langA} otherLang={langB} text={langASyntax} render={langARender} setLang={setLangA} />
-        <Comparison lang={langB} otherLang={langA} text={langBSyntax} render={langBRender} setLang={setLangB} />
+        <Comparison lang={langA} otherLang={langB} text={langASyntax} renderID={langARenderID} setLang={setLangA} />
+        <Comparison lang={langB} otherLang={langA} text={langBSyntax} renderID={langBRenderID} setLang={setLangB} />
       </div>
     </div>
   );

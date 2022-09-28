@@ -39,7 +39,7 @@ export default function D2CodeBlock(props: any) {
 
   let theme: any;
   const preStyle: any = {
-    lineHeight: "25px",
+    lineHeight: "20px",
   };
   const colorMode = "light";
   switch (colorMode) {
