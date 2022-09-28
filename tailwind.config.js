@@ -11,6 +11,8 @@ module.exports = {
         "primary-medium": "SourceSansProSemiBold, Arial, Sans-Serif",
         "primary-bold": "SourceSansProBold, Arial, Sans-Serif",
         "primary-black": "SourceSansProBlack, Arial, Sans-Serif",
+        "code-regular": "SourceCodeProRegular, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+        "code-bold": "SourceCodeProBold, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
       },
       maxWidth: {
         hero: "1200px",

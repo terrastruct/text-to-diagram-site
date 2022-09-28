@@ -32,6 +32,15 @@
   src: url("/fonts/SourceSansPro/SourceSansPro-Black.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "SourceCodeProRegular";
+  src: url("/fonts/SourceCodePro/SourceCodePro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SourceCodeProBold";
+  src: url("/fonts/SourceCodePro/SourceCodePro-Bold.ttf") format("truetype");
+}
 
 
 @layer base {
@@ -58,10 +67,11 @@
 
   body {
     font-size: 18px;
-    position: fixed;
-    height: 100vh;
     width: 100%;
-    overflow: hidden;
+  }
+
+  pre {
+    font-family: SourceCodeProRegular, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   body,

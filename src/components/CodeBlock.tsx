@@ -13,9 +13,7 @@ import lightTheme from "@/extensions/d2-vscode/themes/light-color-theme.json";
 // import darkTheme from "@/d2-vscode/themes/dark-color-theme.json";
 
 import metadataConsts from "./metadata-consts";
-
 import tm from "@/lib/tm";
-
 
 // TODO: clipboard copy button
 export default function D2CodeBlock(props: any) {
@@ -28,9 +26,6 @@ export default function D2CodeBlock(props: any) {
   const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
 
   React.useEffect(() => {
-    if (tmGrammar) {
-      return;
-    }
     (async () => {
       try {
         const g = await initTextMateGrammar(scope);
@@ -40,7 +35,7 @@ export default function D2CodeBlock(props: any) {
       }
     })();
     return () => {};
-  }, []);
+  }, [props.source]);
 
   let theme: any;
   const preStyle: any = {
@@ -50,7 +45,6 @@ export default function D2CodeBlock(props: any) {
   switch (colorMode) {
     case "light":
       theme = lightTheme;
-      preStyle.border = "solid #dee1eb 1px";
       break;
     // case "dark":
     //   theme = darkTheme;

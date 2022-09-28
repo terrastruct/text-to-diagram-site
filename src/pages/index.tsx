@@ -36,10 +36,10 @@ export default function HomePage(props: any) {
               <div className="bg-hero-shadow h-[24px] w-full mt-auto" />
             </div>
             <div className='layout pt-8'>
-              <Comparisons comparisons={props.comparisons} langA={"d2"} langB={"plantuml"} />
+              <Comparisons examples={props.examples} />
             </div>
 
-            <footer className='absolute bottom-2 text-gray-700'>
+            <footer className='mt-auto text-gray-700'>
               © {new Date().getFullYear()} {' '}
               <UnderlineLink href='https://terrastruct.com?ref=text-to-diagram'>
                 Terrastruct
@@ -52,35 +52,33 @@ export default function HomePage(props: any) {
   );
 }
 
-const langs = [
-  "d2",
-  "plantuml",
-];
-
 export const getStaticProps: GetStaticProps = async () => {
-  const root = path.resolve(process.cwd(), "src/comparisons");
+  const root = path.resolve(process.cwd(), "src/examples");
 
-  const comparisons: any = [];
-  for (const comparisonName of fs.readdirSync(root)) {
-    const description = fs.readFileSync(path.resolve(root, comparisonName, "description.txt"), { encoding: "utf8" });
-    let name = comparisonName.replace(/[0-9]+_/g, "");
+  const examples: any = [];
+  for (const exampleName of fs.readdirSync(root)) {
+    const description = fs.readFileSync(path.resolve(root, exampleName, "description.txt"), { encoding: "utf8" });
+    let name = exampleName.replace(/[0-9]+_/g, "");
     name = name.charAt(0).toUpperCase() + name.slice(1)
-    const comparison: any = {
+    const example: any = {
       name,
       description,
       syntax: {},
-      layout: {},
+      render: {},
     };
-    for (const lang of fs.readdirSync(path.resolve(root, comparisonName, "syntax"))) {
-      const text = fs.readFileSync(path.resolve(root, comparisonName, "syntax", lang), { encoding: "utf8" });
-      comparison.syntax[lang] = text;
+    for (const lang of fs.readdirSync(path.resolve(root, exampleName, "syntax"))) {
+      const text = fs.readFileSync(path.resolve(root, exampleName, "syntax", lang), { encoding: "utf8" });
+      example.syntax[lang] = text;
     }
-    comparisons.push(comparison);
+    for (const lang of fs.readdirSync(path.resolve(root, exampleName, "render"))) {
+      example.render[lang.split(".")[0]] = path.resolve(root, exampleName, "render", lang);
+    }
+    examples.push(example);
   }
 
   return {
     props: {
-      comparisons
+      examples
     },
   };
 };
