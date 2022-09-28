@@ -1,0 +1,5 @@
+graph TD
+    hello
+    w[world]
+
+    hello -->|there| w

@@ -3,6 +3,8 @@ import classnames from 'classnames';
 
 import PlantUMLLogo from '~/svg/plantuml.svg';
 import D2Logo from '~/svg/d2.svg';
+import MermaidLogo from '~/svg/mermaid.svg';
+import GraphvizLogo from '~/svg/graphviz.svg';
 
 import { LangNames } from '@/constant/langs';
 
@@ -28,6 +30,14 @@ function Lang(props: LangProps) {
     case "plantuml":
       canonicalName = "PlantUML";
       logo = <PlantUMLLogo className={className} />;
+      break;
+    case "mermaid":
+      canonicalName = "MermaidJS";
+      logo = <MermaidLogo className={className} />;
+      break;
+    case "graphviz":
+      canonicalName = "GraphViz";
+      logo = <GraphvizLogo className={className} />;
       break;
   }
   const onClick = () => {
