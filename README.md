@@ -1,7 +1,11 @@
 <div align="center">
+  <img
+  src="https://github.com/terrastruct/text-to-diagram.com/blob/6e91e491a0ac913b1ac8b9f710d520cdee903057/public/svg/switch.svg"
+  width="150px"
+  height="150px"
+  />
   <h1>Text to diagram comparisons</h1>
-  <p>Compare syntax, layouts, features between all the most popular languages and tools
-  for generating diagrams with text.</p>
+  <p>Compare syntax, layouts, outputs between languages for generating diagrams with text.</p>
   <p>Created and maintained by <a href="https://terrastruct.com">Terrastruct</a></p>
 </div>
 
