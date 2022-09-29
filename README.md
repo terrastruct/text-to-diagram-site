@@ -19,3 +19,7 @@
 - Can I help?
   - Yes! If you'd like to help support your favorite tool, we welcome pull requests for
     language additions.
+
+## Run locally
+
+`yarn && yarn dev`
