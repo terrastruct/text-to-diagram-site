@@ -10,6 +10,7 @@ import Comparisons from '@/components/Comparisons/Comparisons';
 import { GetStaticProps } from "next";
 
 import Switch from '~/svg/Switch.svg';
+import Hero from '~/svg/hero.svg';
 
 export default function HomePage(props: any) {
   return (
@@ -19,7 +20,7 @@ export default function HomePage(props: any) {
       <main>
         <section className='bg-white'>
           <div className='flex flex-col items-center justify-center text-center'>
-            <div className='flex flex-col items-center justify-center w-full h-96 dots-white relative' >
+            <div className='flex flex-col items-center justify-center w-full dots-white relative' >
               <div className='absolute left-0 bottom-0 top-0 right-0 dots-blue' >
               </div>
               <div className='flex flex-col items-center justify-center mt-auto z-10'>
@@ -28,12 +29,18 @@ export default function HomePage(props: any) {
                   <span>
                     Community list of comparisons
                   </span>
-                  <span className='p-2 text-transparent bg-clip-text purple-gradient'>
-                    between Text to Diagram tools
+                  <span className='p-2'>
+                    between <span className='text-transparent bg-clip-text purple-gradient'>Text to Diagram</span> tools
                   </span>
                 </h1>
               </div>
-              <div className="bg-hero-shadow h-[24px] w-full mt-auto" />
+              <Hero className='w-full h-[250px] -mb-6 z-10' />
+              <div className="bg-hero-shadow h-[24px] w-full mt-auto z-10" />
+            </div>
+            <div className='flex flex-col items-center mt-12'>
+              <div className=''>
+                Every time there's a discussion on diagramming tools, someone asks what the difference is between x and y.
+              </div>
             </div>
             <div className='layout pt-8'>
               <Comparisons examples={props.examples} />

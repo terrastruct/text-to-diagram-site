@@ -6,11 +6,17 @@ import D2Logo from '~/svg/d2.svg';
 import MermaidLogo from '~/svg/mermaid.svg';
 import GraphvizLogo from '~/svg/graphviz.svg';
 
+import Info from '~/svg/info.svg';
+import Link from '~/svg/link.svg';
+
 import { LangNames } from '@/constant/langs';
 
 import CodeBlock from '@/components/CodeBlock';
 
 import {getImage} from '@/lib/imgImports';
+
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 type LangProps = {
   name: string;
@@ -18,28 +24,37 @@ type LangProps = {
   select: (x: string) => void;
 }
 
-function Lang(props: LangProps) {
-  let canonicalName;
-  let logo;
-  const className = "text-xl";
-  switch (props.name) {
+function getCanonicalName(name: string) {
+  switch (name) {
     case "d2":
-      logo = <D2Logo className={className} />;
-      canonicalName = "D2";
-      break;
+      return "D2";
     case "plantuml":
-      canonicalName = "PlantUML";
-      logo = <PlantUMLLogo className={className} />;
-      break;
+      return "PlantUML";
     case "mermaid":
-      canonicalName = "MermaidJS";
-      logo = <MermaidLogo className={className} />;
-      break;
+      return "MermaidJS";
     case "graphviz":
-      canonicalName = "GraphViz";
-      logo = <GraphvizLogo className={className} />;
-      break;
+      return "GraphViz";
   }
+  return "Unknown";
+}
+
+function getLogo(name: string, size: string) {
+  switch (name) {
+    case "d2":
+      return <D2Logo className={size} />;
+    case "plantuml":
+      return <PlantUMLLogo className={size} />;
+    case "mermaid":
+      return <MermaidLogo className={size} />;
+    case "graphviz":
+      return <GraphvizLogo className={size} />;
+  }
+  return "Unknown";
+}
+
+function Lang(props: LangProps) {
+  const canonicalName = getCanonicalName(props.name);
+  const logo = getLogo(props.name, "text-xl");
   const onClick = () => {
     if (props.active) {
       return;
@@ -47,20 +62,9 @@ function Lang(props: LangProps) {
     props.select(props.name);
   }
   return (
-    <div>
-      <div
-        className={classnames('flex flex-col justify-center items-center text-steel-900 w-32 h-10 rounded-md', {
-          'bg-white': props.active,
-          'cursor-pointer': !props.active,
-        })}
-        onClick={onClick}
-      >
-        <div className='flex justify-center items-center gap-2'>
-          {logo}
-          {canonicalName}
-        </div>
-      </div>
-    </div>
+    <div
+    onClick={onClick}
+    className="text-steel-900 block px-4 py-2 flex justify-start items-center gap-2 font-primary-medium text-l cursor-pointer" role="menuitem" tabIndex={-1}>{logo} {canonicalName}</div>
   );
 }
 
@@ -68,19 +72,97 @@ type LangsProps = {
   activeLang: string;
   inactiveLang: string;
   setActive: (x: string) => void;
+  index: number;
 }
 
 function Langs(props: LangsProps) {
+  const [menuShown, setMenuShown] = React.useState<boolean>(false);
+
+  const onClick = (name: string) => {
+    setMenuShown(false);
+    props.setActive(name);
+  }
+
   const langEls = [];
   for (const langName of LangNames) {
     langEls.push(
-      <Lang name={langName} key={langName} active={langName === props.activeLang} select={props.setActive} />
+      <Lang name={langName} key={langName} active={langName === props.activeLang} select={onClick} />
     );
   }
+
+  const renderInfo = () => {
+    const renderD2Description = () => {
+      return <div>
+        D2 is a diagramming released in 2022 by Terrastruct, Inc. It is focused on software architecture diagrams.
+      </div>
+    }
+
+    let description;
+    switch (props.activeLang) {
+      case 'd2': description = renderD2Description();
+    }
+    return (
+      <div className='bg-white'>
+        <div className='flex flex-col justify-start text-steel-900'>
+          <h2 className='font-primary-regular flex items-center justify-start gap-2'>{getLogo(props.activeLang, "text-3xl")} {getCanonicalName(props.activeLang)}</h2>
+          {description}
+        </div>
+      </div>
+    );
+  }
+
+  let link: string;
+  switch (props.activeLang) {
+    case 'd2': link = "https://d2-lang.com"; break;
+    case 'plantuml': link = "https://plantuml.com"; break;
+    case 'mermaid': link = "https://mermaid-js.github.io/mermaid"; break;
+    case 'graphviz': link = "https://graphviz.org/"; break;
+  }
+
+  const ReffedInfo = React.forwardRef((props, ref: any) => {
+    return <div ref={ref}><Info className='text-xl' /></div>
+  });
+
+  const ReffedLink = React.forwardRef((props, ref: any) => {
+    return <div ref={ref} onClick={() => window.open(link, "_blank")}><Link className='text-xl cursor-pointer' /></div>
+  });
+
+
+  // https://tailwindui.com/components/application-ui/elements/dropdowns
   return (
     <div>
-      <div className='flex justify-start items-center bg-steel-50 p-1 mb-4 rounded-md'>
-        {langEls}
+      <div className='flex justify-start items-center bg-steel-25 rounded-t-md border-b border-solid border-steel-200 gap-4 px-4 py-2'>
+        <div className="relative inline-block text-left grow">
+          <button type="button" className="w-full rounded-md border border-steel-200 bg-white pr-4 py-0 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true"
+            onClick={() => setMenuShown(!menuShown)}
+          >
+            <div className='flex justify-between items-center w-full text-left'>
+              <div className='flex flex-col justify-start items-start'>
+                <span className="text-sm text-steel-500 pl-4 -mb-2">
+                  {props.index === 1 ? "1st" : "2nd"} language
+                </span>
+                <Lang name={props.activeLang} key="active" active={true} select={() => {}} />
+              </div>
+
+              <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </button>
+          {menuShown &&
+          <div className="absolute left-0 z-10 mt-2 w-full origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex={-1}>
+            <div className="py-1" role="none">
+              {langEls}
+            </div>
+          </div>
+          }
+        </div>
+        <Tippy content={renderInfo()}>
+          <ReffedInfo />
+        </Tippy>
+        <Tippy content={link}>
+          <ReffedLink />
+        </Tippy>
       </div>
     </div>
   );
@@ -119,6 +201,7 @@ type ComparisonProps = {
   text: string|undefined;
   renderID: string|undefined;
   setLang: (x: string) => void;
+  index: number;
 
   upperRef: any;
   otherUpperRef: any;
@@ -161,9 +244,9 @@ function Comparison(props: ComparisonProps) {
   }
 
   return (
-    <div className='flex flex-col text-left w-1/2 flex-1'>
-      <Langs activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
-      <div className='flex flex-col grow border-solid border-steel-200 rounded-md shadow-light'>
+    <div className='flex flex-col text-left w-1/2 flex-1 border border-solid border-steel-200 rounded-md '>
+      <Langs index={props.index} activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
+      <div className='flex flex-col grow border-solid border-steel-200 shadow-light'>
         <div className='border-b border-solid border-steel-200 p-4 pb-2' ref={props.upperRef} style={upperStyle} >
           <CodeBlock source={props.lang}>
             {props.text}
@@ -229,8 +312,8 @@ export default function Comparisons(props: ComparisonsProps) {
       </p>
       <div className='h-[900px]'>
         <div id='comparisons' className='flex gap-12 justify-center'>
-          <Comparison lang={langA} otherLang={langB} text={langASyntax} upperRef={langAUpperRef} otherUpperRef={langBUpperRef} renderID={langARenderID} setLang={setLangA} />
-          <Comparison lang={langB} otherLang={langA} text={langBSyntax} upperRef={langBUpperRef} otherUpperRef={langAUpperRef} renderID={langBRenderID} setLang={setLangB} />
+          <Comparison index={1} lang={langA} otherLang={langB} text={langASyntax} upperRef={langAUpperRef} otherUpperRef={langBUpperRef} renderID={langARenderID} setLang={setLangA} />
+          <Comparison index={2} lang={langB} otherLang={langA} text={langBSyntax} upperRef={langBUpperRef} otherUpperRef={langAUpperRef} renderID={langBRenderID} setLang={setLangB} />
         </div>
       </div>
     </div>

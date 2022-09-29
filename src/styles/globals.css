@@ -112,3 +112,15 @@
     background-size: 100px 100px;
   }
 }
+
+.tippy-content {
+  background:white;
+  border: 1px solid black;
+  color: #0A0F25;
+}
+
+.tippy-arrow {
+  border-radius: 4px;
+  background:white;
+  border: 1px solid #0A0F25;
+}
