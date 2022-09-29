@@ -50,6 +50,9 @@ module.exports = {
           800: "#042597",
           900: "#021a74",
         },
+        violet: {
+          900: "#2A118F",
+        },
         steel: {
           25: "#FBFBFD",
           50: "#F6F6FA",

@@ -88,13 +88,25 @@ function Langs(props: LangsProps) {
 
 type ExampleProps = {
   name: string;
+  active: boolean;
   setExample: (x: string) => void;
 }
 
 function Example(props: ExampleProps) {
   return (
     <div>
-      <div className='flex flex-col justify-center items-center text-steel-900 shadow-light border border-solid border-steel-200 rounded-md w-32 h-16 font-primary-medium'>
+      <div className={classnames('flex flex-col justify-center items-center text-steel-900 shadow-light border border-solid border-steel-200 rounded-md w-32 h-16 font-primary-medium', {
+          'cursor-pointer': !props.active,
+          'opacity-50': !props.active,
+          'bg-steel-50': !props.active,
+        })}
+        onClick={() => !props.active && props.setExample(props.name)}
+      >
+        {props.active &&
+        <div className='border border-solid border-blue-300 rounded-md px-1 text-xs tracking-wider text-violet-900'>
+          SELECTED
+        </div>
+        }
         {props.name}
       </div>
     </div>
@@ -118,7 +130,7 @@ function Comparison(props: ComparisonProps) {
   React.useEffect(() => {
     setHeight("unset");
     return () => {};
-  }, [props.lang, props.otherLang]);
+  }, [props.lang, props.otherLang, props.text]);
 
   React.useEffect(() => {
     const myHeight = props.upperRef.current.getBoundingClientRect().height;
@@ -152,7 +164,7 @@ function Comparison(props: ComparisonProps) {
     <div className='flex flex-col text-left w-1/2 flex-1'>
       <Langs activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
       <div className='flex flex-col grow border-solid border-steel-200 rounded-md shadow-light'>
-        <div className='border-b border-solid border-steel-200 pb-2' ref={props.upperRef} style={upperStyle} >
+        <div className='border-b border-solid border-steel-200 p-4 pb-2' ref={props.upperRef} style={upperStyle} >
           <CodeBlock source={props.lang}>
             {props.text}
           </CodeBlock>
@@ -206,8 +218,8 @@ export default function Comparisons(props: ComparisonsProps) {
     <div
       className=""
     >
-      <div id='choices'>
-        {props.examples.map(e => <Example name={e.name} key={e.name} setExample={setExampleName} />)}
+      <div id='choices' className="flex gap-4">
+        {props.examples.map(e => <Example name={e.name} key={e.name} active={exampleName === e.name} setExample={setExampleName} />)}
       </div>
       <h2 id='choice'>
         {exampleName}

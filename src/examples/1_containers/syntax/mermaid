@@ -1,0 +1,8 @@
+graph TD
+    subgraph parent
+      subgraph childB
+        grandchild
+      end
+      childA --> grandchild
+    end
+    foo --> childA

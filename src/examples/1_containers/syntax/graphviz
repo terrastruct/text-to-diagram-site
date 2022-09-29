@@ -1,0 +1,11 @@
+digraph G {
+  subgraph cluster_0 {
+    label="parent"
+    subgraph cluster_1 {
+        label="childB"
+        grandchild
+    }
+    childA -> grandchild
+  }
+  foo -> childA
+}

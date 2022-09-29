@@ -6,6 +6,11 @@ import plantuml_basic from '@/examples/0_basic/render/plantuml.png';
 import mermaid_basic from '@/examples/0_basic/render/mermaid.png';
 import graphviz_basic from '@/examples/0_basic/render/graphviz.png';
 
+import d2_containers from '@/examples/1_containers/render/d2.png';
+import plantuml_containers from '@/examples/1_containers/render/plantuml.png';
+import mermaid_containers from '@/examples/1_containers/render/mermaid.png';
+import graphviz_containers from '@/examples/1_containers/render/graphviz.png';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case "d2-basic":
@@ -16,5 +21,14 @@ export function getImage(id: string) {
       return mermaid_basic;
     case "graphviz-basic":
       return graphviz_basic;
+
+    case "d2-containers":
+      return d2_containers;
+    case "plantuml-containers":
+      return plantuml_containers;
+    case "mermaid-containers":
+      return mermaid_containers;
+    case "graphviz-containers":
+      return graphviz_containers;
   }
 }
