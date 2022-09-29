@@ -107,9 +107,26 @@ type ComparisonProps = {
   text: string|undefined;
   renderID: string|undefined;
   setLang: (x: string) => void;
+
+  upperRef: any;
+  otherUpperRef: any;
 }
 
 function Comparison(props: ComparisonProps) {
+  const [height, setHeight] = React.useState<string>("unset");
+
+  React.useEffect(() => {
+    setHeight("unset");
+    return () => {};
+  }, [props.lang, props.otherLang]);
+
+  React.useEffect(() => {
+    const myHeight = props.upperRef.current.getBoundingClientRect().height;
+    const otherHeight = props.otherUpperRef.current.getBoundingClientRect().height;
+    setHeight(Math.max(myHeight, otherHeight) + "px");
+    return () => {};
+  }, [height]);
+
   const renderRender = () => {
     if (!props.renderID) {
       return null;
@@ -121,24 +138,33 @@ function Comparison(props: ComparisonProps) {
     }
     return (
       <div className='w-full flex justify-center items-center'>
-        <img src={img.src} className='object-contain' alt={`Example of ${props.lang}`}/>
+        <img src={img.src} className='object-contain min-h-[100px]' alt={`Example of ${props.lang}`}/>
       </div>
     );
   }
 
+  const upperStyle: any = {};
+  if (props.upperRef.current && props.otherUpperRef.current) {
+    // const myHeight = props.upperRef.current.getBoundingClientRect().height;
+    // const otherHeight = props.otherUpperRef.current.getBoundingClientRect().height;
+    upperStyle.height = height;
+    // console.log(upperStyle.minHeight);
+  }
+
   return (
-    <div className='text-left w-1/2'>
+    <div className='flex flex-col text-left w-1/2 flex-1'>
       <Langs activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
-      <div className='h-96 border border-solid border-steel-200 rounded-md shadow-light'>
-        <div className='m-4 flex flex-col'>
-          <div className='h-48'>
-            <CodeBlock source={props.lang}>
-              {props.text}
-            </CodeBlock>
-          </div>
-          <div className='flex flex-col justify-center items-center h-48'>
-            {renderRender()}
-          </div>
+      <div className='flex flex-col grow border-solid border-steel-200 rounded-md shadow-light'>
+        <div className='' ref={props.upperRef} style={upperStyle} >
+          <CodeBlock source={props.lang}>
+            {props.text}
+          </CodeBlock>
+        </div>
+        <div className={classnames('grow flex flex-col justify-center items-center', {
+          // Prevent jank effect when changing layouts
+            'opacity-0': upperStyle.height === 'unset',
+          })}>
+          {renderRender()}
         </div>
       </div>
     </div>
@@ -176,6 +202,9 @@ export default function Comparisons(props: ComparisonsProps) {
   const langARenderID = example.render[langA];
   const langBRenderID = example.render[langB];
 
+  const langAUpperRef = React.useRef<HTMLDivElement>(null);
+  const langBUpperRef = React.useRef<HTMLDivElement>(null);
+
   return (
     <div
       className=""
@@ -189,9 +218,11 @@ export default function Comparisons(props: ComparisonsProps) {
       <p id='description' className='m-4 text-steel-900'>
         {example.description}
       </p>
-      <div id='comparisons' className='flex gap-12 justify-center'>
-        <Comparison lang={langA} otherLang={langB} text={langASyntax} renderID={langARenderID} setLang={setLangA} />
-        <Comparison lang={langB} otherLang={langA} text={langBSyntax} renderID={langBRenderID} setLang={setLangB} />
+      <div className='h-[900px]'>
+        <div id='comparisons' className='flex gap-12 justify-center'>
+          <Comparison lang={langA} otherLang={langB} text={langASyntax} upperRef={langAUpperRef} otherUpperRef={langBUpperRef} renderID={langARenderID} setLang={setLangA} />
+          <Comparison lang={langB} otherLang={langA} text={langBSyntax} upperRef={langBUpperRef} otherUpperRef={langAUpperRef} renderID={langBRenderID} setLang={setLangB} />
+        </div>
       </div>
     </div>
   );
