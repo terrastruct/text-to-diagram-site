@@ -145,22 +145,19 @@ function Comparison(props: ComparisonProps) {
 
   const upperStyle: any = {};
   if (props.upperRef.current && props.otherUpperRef.current) {
-    // const myHeight = props.upperRef.current.getBoundingClientRect().height;
-    // const otherHeight = props.otherUpperRef.current.getBoundingClientRect().height;
     upperStyle.height = height;
-    // console.log(upperStyle.minHeight);
   }
 
   return (
     <div className='flex flex-col text-left w-1/2 flex-1'>
       <Langs activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
       <div className='flex flex-col grow border-solid border-steel-200 rounded-md shadow-light'>
-        <div className='' ref={props.upperRef} style={upperStyle} >
+        <div className='border-b border-solid border-steel-200 pb-2' ref={props.upperRef} style={upperStyle} >
           <CodeBlock source={props.lang}>
             {props.text}
           </CodeBlock>
         </div>
-        <div className={classnames('grow flex flex-col justify-center items-center', {
+        <div className={classnames('border-t border-solid border-steel-200 mt-1 grow flex flex-col justify-center items-center', {
           // Prevent jank effect when changing layouts
             'opacity-0': upperStyle.height === 'unset',
           })}>
@@ -188,7 +185,7 @@ type ComparisonsProps = {
 
 export default function Comparisons(props: ComparisonsProps) {
   const [langA, setLangA] = React.useState("d2");
-  const [langB, setLangB] = React.useState("plantuml");
+  const [langB, setLangB] = React.useState("mermaid");
   const [exampleName, setExampleName] = React.useState("Basic");
 
   const example = props.examples.find(c => c.name === exampleName);

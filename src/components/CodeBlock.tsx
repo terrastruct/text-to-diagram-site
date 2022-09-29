@@ -7,6 +7,8 @@ import onigWasm from "vscode-oniguruma/release/onig.wasm";
 
 import d2Grammar from "@/extensions/d2-vscode/syntaxes/d2.tmLanguage.json";
 import plantumlGrammar from "@/extensions/vscode-plantuml/syntaxes/plantuml.tmLanguage.json";
+import mermaidGrammar from "@/extensions/mermaid-vscode/syntaxes/mermaid.tmLanguage.json";
+import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/graphviz.tmLanguage.json";
 
 import markdownGrammar from "@/extensions/d2-vscode/syntaxes/markdown.tmLanguage.json";
 import lightTheme from "@/extensions/d2-vscode/themes/light-color-theme.json";
@@ -20,6 +22,8 @@ export default function D2CodeBlock(props: any) {
   let source = props.source;
   if (source === "plantuml") {
     source = "wsd";
+  } else if (source === "graphviz") {
+    source = "dot";
   }
   const scope = "source." + source;
 
@@ -137,6 +141,10 @@ async function newTextMateRegistry() {
           return parseRawGrammar(d2Grammar);
         case "source.wsd":
           return parseRawGrammar(plantumlGrammar);
+        case "source.mermaid":
+          return parseRawGrammar(mermaidGrammar);
+        case "source.dot":
+          return parseRawGrammar(graphvizGrammar);
         case "text.html.markdown.d2":
           return parseRawGrammar(markdownGrammar);
       }

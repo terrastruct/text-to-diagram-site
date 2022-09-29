@@ -1,4 +1,4 @@
-graph TD
+flowchart LR
     hello
     w[world]
 
