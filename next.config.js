@@ -37,6 +37,14 @@ module.exports = {
       test: new RegExp(`syntaxes/.*\.json$`),
       type: "asset",
     });
+    config.module.rules.push({
+      test: new RegExp(`shiki/.*\.json$`),
+      type: "asset",
+    });
+    config.module.rules.push({
+      test: new RegExp(`.*\.tmLanguage$`),
+      type: "asset/resource",
+    });
 
     config.experiments = {
       asyncWebAssembly: true,

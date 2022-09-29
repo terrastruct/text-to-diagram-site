@@ -7,8 +7,10 @@ import onigWasm from "vscode-oniguruma/release/onig.wasm";
 
 import d2Grammar from "@/extensions/d2-vscode/syntaxes/d2.tmLanguage.json";
 import plantumlGrammar from "@/extensions/vscode-plantuml/syntaxes/plantuml.tmLanguage.json";
-import mermaidGrammar from "@/extensions/mermaid-vscode/syntaxes/mermaid.tmLanguage.json";
-import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/graphviz.tmLanguage.json";
+// import mermaidGrammar from "@/extensions/mermaid-vscode/syntaxes/mermaid.tmLanguage.json";
+import mermaidGrammar from "shiki/languages/mermaid.tmLanguage.json";
+// import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/graphviz.tmLanguage";
+import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/dot.tmLanguage";
 
 import markdownGrammar from "@/extensions/d2-vscode/syntaxes/markdown.tmLanguage.json";
 import lightTheme from "@/extensions/d2-vscode/themes/light-color-theme.json";
