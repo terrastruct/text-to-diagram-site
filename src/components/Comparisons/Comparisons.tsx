@@ -56,15 +56,15 @@ function Lang(props: LangProps) {
   const canonicalName = getCanonicalName(props.name);
   const logo = getLogo(props.name, "text-xl");
   const onClick = () => {
-    if (props.active) {
-      return;
-    }
     props.select(props.name);
   }
   return (
     <div
-    onClick={onClick}
-    className="text-steel-900 block px-4 py-2 flex justify-start items-center gap-2 font-primary-medium text-l cursor-pointer" role="menuitem" tabIndex={-1}>{logo} {canonicalName}</div>
+      onClick={onClick}
+      className={classnames("text-steel-900 block px-4 py-2 flex justify-start items-center gap-2 font-primary-medium text-l", {
+        'cursor-pointer': !props.active,
+        'hover:bg-steel-50': !props.active,
+      })} role="menuitem" tabIndex={-1}>{logo} {canonicalName}</div>
   );
 }
 
@@ -80,7 +80,9 @@ function Langs(props: LangsProps) {
 
   const onClick = (name: string) => {
     setMenuShown(false);
-    props.setActive(name);
+    if (name !== props.activeLang) {
+      props.setActive(name);
+    }
   }
 
   const langEls = [];
@@ -93,7 +95,7 @@ function Langs(props: LangsProps) {
   const renderInfo = () => {
     const renderD2Description = () => {
       return <div>
-        D2 is a diagramming released in 2022 by Terrastruct, Inc. It is focused on software architecture diagrams.
+        D2 is a diagramming language written in Go released in 2022 by Terrastruct, Inc. It is focused on flowchart-style software architecture diagrams. It has native support for icons,
       </div>
     }
 
@@ -102,10 +104,12 @@ function Langs(props: LangsProps) {
       case 'd2': description = renderD2Description();
     }
     return (
-      <div className='bg-white'>
+      <div className='bg-white p-4'>
         <div className='flex flex-col justify-start text-steel-900'>
-          <h2 className='font-primary-regular flex items-center justify-start gap-2'>{getLogo(props.activeLang, "text-3xl")} {getCanonicalName(props.activeLang)}</h2>
+          <h2 className='font-primary-regular flex items-center justify-start gap-2 pb-2'>{getLogo(props.activeLang, "text-3xl")} {getCanonicalName(props.activeLang)}</h2>
+          <div className="text-steel-800">
           {description}
+          </div>
         </div>
       </div>
     );
@@ -130,7 +134,9 @@ function Langs(props: LangsProps) {
 
   // https://tailwindui.com/components/application-ui/elements/dropdowns
   return (
-    <div>
+    <div
+      onMouseLeave={() => setMenuShown(false)}
+    >
       <div className='flex justify-start items-center bg-steel-25 rounded-t-md border-b border-solid border-steel-200 gap-4 px-4 py-2'>
         <div className="relative inline-block text-left grow">
           <button type="button" className="w-full rounded-md border border-steel-200 bg-white pr-4 py-0 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true"
@@ -177,15 +183,16 @@ type ExampleProps = {
 function Example(props: ExampleProps) {
   return (
     <div>
-      <div className={classnames('flex flex-col justify-center items-center text-steel-900 shadow-light border border-solid border-steel-200 rounded-md w-32 h-16 font-primary-medium', {
+      <div className={classnames('flex flex-col justify-center items-center text-steel-900 shadow-light rounded-md w-32 sm:w-48 h-20 font-primary-medium', {
+        'border border-solid border-steel-200': props.active,
           'cursor-pointer': !props.active,
           'opacity-50': !props.active,
-          'bg-steel-50': !props.active,
+          'bg-steel-100': !props.active,
         })}
         onClick={() => !props.active && props.setExample(props.name)}
       >
         {props.active &&
-        <div className='border border-solid border-blue-300 rounded-md px-1 text-xs tracking-wider text-violet-900'>
+        <div className='border border-solid border-blue-300 px-1 text-xs tracking-wider text-violet-900'>
           SELECTED
         </div>
         }
@@ -244,7 +251,8 @@ function Comparison(props: ComparisonProps) {
   }
 
   return (
-    <div className='flex flex-col text-left w-1/2 flex-1 border border-solid border-steel-200 rounded-md '>
+    <div className='flex flex-col text-left w-full sm:w-1/2 flex-1 border border-solid border-steel-200 rounded-md'
+    >
       <Langs index={props.index} activeLang={props.lang} inactiveLang={props.otherLang} setActive={props.setLang} />
       <div className='flex flex-col grow border-solid border-steel-200 shadow-light'>
         <div className='border-b border-solid border-steel-200 p-4 pb-2' ref={props.upperRef} style={upperStyle} >
@@ -279,8 +287,8 @@ type ComparisonsProps = {
 }
 
 export default function Comparisons(props: ComparisonsProps) {
-  const [langA, setLangA] = React.useState("d2");
-  const [langB, setLangB] = React.useState("mermaid");
+  const [langA, setLangA] = React.useState(LangNames[0]);
+  const [langB, setLangB] = React.useState(LangNames[1]);
   const [exampleName, setExampleName] = React.useState("Basic");
 
   const example = props.examples.find(c => c.name === exampleName);
@@ -304,14 +312,11 @@ export default function Comparisons(props: ComparisonsProps) {
       <div id='choices' className="flex gap-4">
         {props.examples.map(e => <Example name={e.name} key={e.name} active={exampleName === e.name} setExample={setExampleName} />)}
       </div>
-      <h2 id='choice'>
-        {exampleName}
-      </h2>
-      <p id='description' className='m-4 text-steel-900'>
+      <p id='description' className='my-8 text-steel-800 text-left text-l'>
         {example.description}
       </p>
-      <div className='h-[900px]'>
-        <div id='comparisons' className='flex gap-12 justify-center'>
+      <div className='mb-16'>
+        <div id='comparisons' className='flex gap-12 justify-center flex-col sm:flex-row'>
           <Comparison index={1} lang={langA} otherLang={langB} text={langASyntax} upperRef={langAUpperRef} otherUpperRef={langBUpperRef} renderID={langARenderID} setLang={setLangA} />
           <Comparison index={2} lang={langB} otherLang={langA} text={langBSyntax} upperRef={langBUpperRef} otherUpperRef={langAUpperRef} renderID={langBRenderID} setLang={setLangB} />
         </div>

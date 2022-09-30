@@ -6,10 +6,12 @@ import path from "path";
 import Layout from '@/components/layout/Layout';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import Seo from '@/components/Seo';
+import FAQ from '@/components/faq';
 import Comparisons from '@/components/Comparisons/Comparisons';
 import { GetStaticProps } from "next";
 
 import Switch from '~/svg/Switch.svg';
+import GithubDark from '~/svg/github_dark.svg';
 import Hero from '~/svg/hero.svg';
 
 export default function HomePage(props: any) {
@@ -25,7 +27,7 @@ export default function HomePage(props: any) {
               </div>
               <div className='flex flex-col items-center justify-center mt-auto z-10'>
                 <Switch className='text-9xl' />
-                <h1 className='flex flex-col items-center text-5xl font-extrabold'>
+                <h1 className='flex flex-col items-center lg:text-5xl font-extrabold text-4xl'>
                   <span>
                     Community list of comparisons
                   </span>
@@ -34,25 +36,39 @@ export default function HomePage(props: any) {
                   </span>
                 </h1>
               </div>
-              <Hero className='w-full h-[250px] -mb-6 z-10' />
+              <Hero className='w-full h-[250px] lg:-mb-6 z-10 md:-mb-12 sm:-mb-16 -mb-20'/>
               <div className="bg-hero-shadow h-[24px] w-full mt-auto z-10" />
             </div>
             <div className='flex flex-col items-center mt-12'>
-              <div className=''>
-                Every time there's a discussion on diagramming tools, someone asks what the difference is between x and y.
+              <h2 className=''>
+                Which diagramming tool is right for you?
+              </h2>
+              <div className='text-l mt-4 text-steel-800'>
+                Compare the syntax and renders of various languages that produce diagrams from text.
               </div>
             </div>
             <div className='layout pt-8'>
               <Comparisons examples={props.examples} />
             </div>
 
-            <footer className='mt-auto text-gray-700'>
-              © {new Date().getFullYear()} {' '}
-              <UnderlineLink href='https://terrastruct.com?ref=text-to-diagram'>
-                Terrastruct
-              </UnderlineLink>
-            </footer>
           </div>
+          <div className='pt-8 bg-steel-800 w-full'>
+            <FAQ />
+          </div>
+
+          <footer className='mt-auto bg-steel-900 text-white'>
+            <div className='layout py-4 flex justify-between'>
+              <div>
+                © {new Date().getFullYear()} {' '}
+                <UnderlineLink href='https://terrastruct.com?ref=text-to-diagram'>
+                  Terrastruct
+                </UnderlineLink>
+              </div>
+              <div>
+                <GithubDark className='text-2xl cursor-pointer' onClick={() => window.open("https://github.com/terrastruct/text-to-diagram.com", "_blank")} />
+              </div>
+            </div>
+          </footer>
         </section>
       </main>
     </Layout>
