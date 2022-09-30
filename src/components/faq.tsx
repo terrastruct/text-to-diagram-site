@@ -30,7 +30,7 @@ const Collapsible = (props: {
 const items = [
   {
     question: "Where do the renders come from?",
-    answer: `As much as possible, renders are out-of-the-box. If a language has themes, we use the default one. If a language offers styling, we don't add any (unless the example calls for it). If you copy-paste the text into any online-hosted versions of the languages, you should get the same thing.`,
+    answer: `As much as possible, renders are out-of-the-box. If a language has themes, we use the default one. If a language offers styling, we don't add any (unless the example calls for it). For example, Graphviz renders nodes as ovals by default, and PlantUML renders containers as 3d. If you copy-paste the text into any online-hosted versions of the languages, you should get the same thing.`,
   },
   {
     question: "Who made this?",

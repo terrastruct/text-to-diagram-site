@@ -131,12 +131,7 @@
 
 .tippy-content {
   background:white;
-  border: 1px solid black;
+  border: 1px solid #DEE1EB;
   color: #0A0F25;
-}
-
-.tippy-arrow {
   border-radius: 4px;
-  background:white;
-  border: 1px solid #0A0F25;
 }

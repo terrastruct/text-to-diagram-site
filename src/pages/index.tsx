@@ -14,6 +14,7 @@ import Switch from '~/svg/Switch.svg';
 import GithubDark from '~/svg/github_dark.svg';
 import Hero from '~/images/hero.webp';
 
+              // <img src={Hero.src} className='w-auto lg:h-[400px] md:h-[350px] sm:h-[250px] h-[150px] lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
 export default function HomePage(props: any) {
   return (
     <Layout>
@@ -36,7 +37,7 @@ export default function HomePage(props: any) {
                   </span>
                 </h1>
               </div>
-              <img src={Hero.src} className='w-auto lg:h-[400px] md:h-[350px] sm:h-[250px] h-[150px] lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
+              <img src={Hero.src} className='w-10/12 lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
               <div className="bg-hero-shadow h-[24px] w-full mt-auto z-10" />
             </div>
             <div className='flex flex-col items-center mt-12 px-4'>

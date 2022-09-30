@@ -109,16 +109,20 @@ function Langs(props: LangsProps) {
   }
 
   const renderInfo = () => {
-    const renderD2Description = () => {
-      return <div>
-        D2 is a diagramming language written in Go released in 2022 by Terrastruct, Inc. It is focused on flowchart-style software architecture diagrams. It has native support for icons,
-      </div>
+    const renderDescription = () => {
+      switch (props.activeLang) {
+        case 'd2':
+          return "D2 is written in Go and released in 2022 by Terrastruct, Inc. It is focused on flowchart-style software architecture diagrams. It has native support for icons";
+        case 'plantuml':
+          return "PlantUML is a Java-based tool released in 2009 primarily for creating UML diagrams. It's specification, at 416 pages, is rigorous, closely aligning with the specification of UML. It has since grown to support non-UML diagrams as well, such as network diagrams, Gantt charts, and mind maps.";
+        case 'mermaid':
+          return "Mermaid, or MermaidJS, is a Javascript-based diagramming tool first released in 2014 by Knut Sveidqvist. It renders Markdown-inspired text definitions to create and modify diagrams dynamically. One of its goals is to allow even non-programmers to easily create detailed diagrams. Mermaid has distinct syntax for a variety of diagrams, and leverages open-source layout engines for client-side rendering. Recently, Github has adopted native support for Mermaid diagrams in Markdown."
+        case 'graphviz':
+          return "Graphviz is a graph visualization software for abstract graphs and networks born at AT&T Bell Labs in 1991. It uses a variety of layout algorithms to cover a wide breadth of domains such as UML diagrams, code dependency graphs, network maps, mind maps, and more."
+      }
     }
 
-    let description;
-    switch (props.activeLang) {
-      case 'd2': description = renderD2Description();
-    }
+    const description = renderDescription();
     return (
       <div className='bg-white p-4'>
         <div className='flex flex-col justify-start text-steel-900'>
@@ -172,10 +176,10 @@ function Langs(props: LangsProps) {
           </div>
           }
         </div>
-        <Tippy content={renderInfo()}>
+        <Tippy content={renderInfo()} arrow={false}>
           <ReffedInfo />
         </Tippy>
-        <Tippy content={renderLink()}>
+        <Tippy content={renderLink()} arrow={false}>
           <ReffedLink />
         </Tippy>
       </div>
