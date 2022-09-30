@@ -27,7 +27,7 @@ export default function HomePage(props: any) {
               </div>
               <div className='flex flex-col items-center justify-center mt-auto z-10'>
                 <Switch className='text-9xl' />
-                <h1 className='flex flex-col items-center lg:text-5xl font-extrabold text-4xl'>
+                <h1 className='flex flex-col items-center lg:text-5xl font-extrabold sm:text-4xl text-2xl'>
                   <span>
                     Community list of comparisons
                   </span>
@@ -36,10 +36,10 @@ export default function HomePage(props: any) {
                   </span>
                 </h1>
               </div>
-              <Hero className='w-full h-[250px] lg:-mb-6 z-10 md:-mb-12 sm:-mb-16 -mb-20'/>
+              <Hero className='w-full sm:h-[250px] h-[100px] lg:-mb-6 z-10 md:-mb-12 sm:-mb-16 -mb-4'/>
               <div className="bg-hero-shadow h-[24px] w-full mt-auto z-10" />
             </div>
-            <div className='flex flex-col items-center mt-12'>
+            <div className='flex flex-col items-center mt-12 px-4'>
               <h2 className=''>
                 Which diagramming tool is right for you?
               </h2>

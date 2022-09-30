@@ -49,7 +49,7 @@ const items = [
 export default function FAQ(props: any) {
   const [openQuestion, setOpenQuestion] = useState<number>();
   return (
-    <div className="">
+    <div className="px-4">
       <div className="w-full">
         <div className="w-full my-12 flex flex-col items-center">
           <h1 className="text-4xl text-white font-primary-bold">
