@@ -92,6 +92,22 @@ function Langs(props: LangsProps) {
     );
   }
 
+  let link: string;
+  switch (props.activeLang) {
+    case 'd2': link = "https://d2-lang.com"; break;
+    case 'plantuml': link = "https://plantuml.com"; break;
+    case 'mermaid': link = "https://mermaid-js.github.io/mermaid"; break;
+    case 'graphviz': link = "https://graphviz.org/"; break;
+  }
+
+  const renderLink = () => {
+    return (
+      <span>
+        {link}
+      </span>
+    );
+  }
+
   const renderInfo = () => {
     const renderD2Description = () => {
       return <div>
@@ -115,13 +131,6 @@ function Langs(props: LangsProps) {
     );
   }
 
-  let link: string;
-  switch (props.activeLang) {
-    case 'd2': link = "https://d2-lang.com"; break;
-    case 'plantuml': link = "https://plantuml.com"; break;
-    case 'mermaid': link = "https://mermaid-js.github.io/mermaid"; break;
-    case 'graphviz': link = "https://graphviz.org/"; break;
-  }
 
   const ReffedInfo = React.forwardRef((props, ref: any) => {
     return <div ref={ref}><Info className='text-xl' /></div>
@@ -166,7 +175,7 @@ function Langs(props: LangsProps) {
         <Tippy content={renderInfo()}>
           <ReffedInfo />
         </Tippy>
-        <Tippy content={link}>
+        <Tippy content={renderLink()}>
           <ReffedLink />
         </Tippy>
       </div>
@@ -291,6 +300,9 @@ export default function Comparisons(props: ComparisonsProps) {
   const [langB, setLangB] = React.useState(LangNames[1]);
   const [exampleName, setExampleName] = React.useState("Basic");
 
+  const langAUpperRef = React.useRef<HTMLDivElement>(null);
+  const langBUpperRef = React.useRef<HTMLDivElement>(null);
+
   const example = props.examples.find(c => c.name === exampleName);
   if (!example) {
     return null;
@@ -301,9 +313,6 @@ export default function Comparisons(props: ComparisonsProps) {
 
   const langARenderID = example.render[langA];
   const langBRenderID = example.render[langB];
-
-  const langAUpperRef = React.useRef<HTMLDivElement>(null);
-  const langBUpperRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <div

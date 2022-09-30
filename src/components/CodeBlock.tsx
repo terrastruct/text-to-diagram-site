@@ -10,6 +10,7 @@ import plantumlGrammar from "@/extensions/vscode-plantuml/syntaxes/plantuml.tmLa
 // import mermaidGrammar from "@/extensions/mermaid-vscode/syntaxes/mermaid.tmLanguage.json";
 import mermaidGrammar from "shiki/languages/mermaid.tmLanguage.json";
 // import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/graphviz.tmLanguage";
+// @ts-ignore
 import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/dot.tmLanguage";
 
 import markdownGrammar from "@/extensions/d2-vscode/syntaxes/markdown.tmLanguage.json";
