@@ -1,12 +1,11 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
   title: 'Text to diagram',
   siteName: 'Text to diagram',
   description:
-    'Placeholder blah blah',
+    'Community list of comparisons between text to diagram tools',
   url: 'https://text-to-diagram.com',
   type: 'website',
   robots: 'follow, index',
