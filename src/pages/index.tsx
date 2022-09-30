@@ -12,7 +12,7 @@ import { GetStaticProps } from "next";
 
 import Switch from '~/svg/Switch.svg';
 import GithubDark from '~/svg/github_dark.svg';
-import Hero from '~/svg/hero.svg';
+import Hero from '~/images/hero.png';
 
 export default function HomePage(props: any) {
   return (
@@ -36,7 +36,7 @@ export default function HomePage(props: any) {
                   </span>
                 </h1>
               </div>
-              <Hero className='w-full sm:h-[250px] h-[100px] lg:-mb-6 z-10 md:-mb-12 sm:-mb-16 -mb-4'/>
+              <img src={Hero.src} className='w-auto md:h-[250px] sm:h-[150px] h-[160px] lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
               <div className="bg-hero-shadow h-[24px] w-full mt-auto z-10" />
             </div>
             <div className='flex flex-col items-center mt-12 px-4'>
