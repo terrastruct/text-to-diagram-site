@@ -20,9 +20,9 @@ const Collapsible = (props: {
               ? <Up className='text-3xl'/>
               : <Down className='text-3xl' />
           }
-          <span className="px-8 py-6 font-primary-medium">{props.question}</span>
+        <span className="sm:px-8 px-4 sm:py-6 py-4 font-primary-medium">{props.question}</span>
       </div>
-      {props.isOpen && <div className="p-8 bg-steel-50">{props.answer}</div>}
+      {props.isOpen && <div className="sm:p-8 p-4 bg-steel-50">{props.answer}</div>}
     </div>
   );
 };
@@ -51,8 +51,8 @@ export default function FAQ(props: any) {
   return (
     <div className="px-4">
       <div className="w-full">
-        <div className="w-full my-12 flex flex-col items-center">
-          <h1 className="text-4xl text-white font-primary-bold">
+        <div className="w-full sm:my-12 my-8 flex flex-col items-center">
+          <h1 className="text-2xl text-white font-primary-bold sm:text-4xl">
             Frequently asked questions
           </h1>
         </div>

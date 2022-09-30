@@ -5,41 +5,57 @@
 @font-face {
   font-family: "SourceSansProRegular";
   src: url("/fonts/SourceSansPro/SourceSansPro-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceSansProItalic";
   src: url("/fonts/SourceSansPro/SourceSansPro-Italic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceSansProBold";
   src: url("/fonts/SourceSansPro/SourceSansPro-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceSansProSemiBold";
   src: url("/fonts/SourceSansPro/SourceSansPro-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceSansProLight";
   src: url("/fonts/SourceSansPro/SourceSansPro-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceSansProBlack";
   src: url("/fonts/SourceSansPro/SourceSansPro-Black.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceCodeProRegular";
   src: url("/fonts/SourceCodePro/SourceCodePro-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SourceCodeProBold";
   src: url("/fonts/SourceCodePro/SourceCodePro-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
 
 
