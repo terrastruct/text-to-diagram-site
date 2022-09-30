@@ -37,7 +37,7 @@ export default function HomePage(props: any) {
                   </span>
                 </h1>
               </div>
-              <img src={Hero.src} className='w-10/12 lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
+              <img src={Hero.src} className='w-10/12 max-w-[1200px] lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
               <div className="bg-hero-shadow h-[24px] w-full mt-auto z-10" />
             </div>
             <div className='flex flex-col items-center mt-12 px-4'>
