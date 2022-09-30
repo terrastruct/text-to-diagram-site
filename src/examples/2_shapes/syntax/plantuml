@@ -1,0 +1,13 @@
+@startuml
+
+parse -> compile
+compile -> export
+
+database db
+cloud cloud
+file doc
+
+doc -> cloud
+queue pipeline
+
+@enduml

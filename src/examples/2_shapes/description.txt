@@ -1,0 +1,1 @@
+An example covering many different types of shapes. No two tools have the same overlap in coverage of shapes, so each one showcases a few unique to it and a few common.

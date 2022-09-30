@@ -30,11 +30,11 @@ const Collapsible = (props: {
 const items = [
   {
     question: "Where do the renders come from?",
-    answer: `As much as possible, renders are out-of-the-box. If a language has themes, we use the default one. If a language offers styling, we don't add any (unless the example calls for it). For example, Graphviz renders nodes as ovals by default, and PlantUML renders containers as 3d. If you copy-paste the text into any online-hosted versions of the languages, you should get the same thing.`,
+    answer: `As much as possible, renders are out-of-the-box. If a language has themes, we use the default one. If a language offers styling, we don't add any (unless the example calls for it). For example, Graphviz renders nodes as ovals by default, and PlantUML renders containers as 3d. We don't upscale or crop the images. We don't change fonts to match. If you copy-paste the text into any online-hosted versions of the languages, you should get the same thing.`,
   },
   {
     question: "Who made this?",
-    answer: `This is created and maintained by Terrastruct. We created D2, and it's in our interest to provide anyone evaluating us with an objective comparison against others in the space. The only favor granted to D2 is that it shows up as the first comparison. We welcome contributions, and if any examples potentially make D2 look bad, we will include them without bias (and then furiously improve D2 so the example looks better).`
+    answer: `This is created and maintained by Terrastruct. We created D2, and it's in our interest to provide anyone evaluating us with an objective comparison against others in the space. The only favor granted to D2 is that it shows up as the first comparison. We welcome contributions, and if any examples potentially make D2 look bad, we will include them without bias (and then furiously improve D2 so the example looks better, a right other tools have as well).`
   },
   {
     question: "Why isn't [my favorite underground language] here?",

@@ -1,0 +1,15 @@
+digraph G {
+    parse [shape=cds]
+    compile [shape=cds]
+    export [shape=cds]
+
+    parse -> compile -> export
+
+    doc [shape=note]
+    egg [shape=egg]
+
+    doc -> egg
+
+    house [shape=house]
+    db [shape=cylinder]
+}
