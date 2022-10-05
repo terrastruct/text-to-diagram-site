@@ -42,7 +42,7 @@ const items = [
   },
   {
     question: "Future plans?",
-    answer: `We'd like this to be the go-to source of comparisons for text-to-diagram tools and languages. We plan to include tables of feature comparisons, and a live-runner where you can try out any of the tools/languages.`
+    answer: `We'd like this to be the go-to source of comparisons for text-to-diagram tools and languages. We plan to include tables of feature comparisons, and a live-runner where you can try out any of the tools/languages. After D2 is more stable, we plan to write transpilers to all popular languages for easy imports and exports. When that becomes a reality, you'll be able to write one example and compare across languages.`
   },
 ];
 
