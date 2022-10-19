@@ -2,19 +2,17 @@
 // Whenever an example is added, this file will also have to be updated
 
 import d2_basic from '@/examples/0_basic/render/d2.png';
-import plantuml_basic from '@/examples/0_basic/render/plantuml.png';
-import mermaid_basic from '@/examples/0_basic/render/mermaid.png';
 import graphviz_basic from '@/examples/0_basic/render/graphviz.png';
-
+import mermaid_basic from '@/examples/0_basic/render/mermaid.png';
+import plantuml_basic from '@/examples/0_basic/render/plantuml.png';
 import d2_containers from '@/examples/1_containers/render/d2.png';
-import plantuml_containers from '@/examples/1_containers/render/plantuml.png';
-import mermaid_containers from '@/examples/1_containers/render/mermaid.png';
 import graphviz_containers from '@/examples/1_containers/render/graphviz.png';
-
+import mermaid_containers from '@/examples/1_containers/render/mermaid.png';
+import plantuml_containers from '@/examples/1_containers/render/plantuml.png';
 import d2_shapes from '@/examples/2_shapes/render/d2.png';
-import plantuml_shapes from '@/examples/2_shapes/render/plantuml.png';
-import mermaid_shapes from '@/examples/2_shapes/render/mermaid.png';
 import graphviz_shapes from '@/examples/2_shapes/render/graphviz.png';
+import mermaid_shapes from '@/examples/2_shapes/render/mermaid.png';
+import plantuml_shapes from '@/examples/2_shapes/render/plantuml.png';
 
 export function getImage(id: string) {
   switch (id.toLowerCase()) {

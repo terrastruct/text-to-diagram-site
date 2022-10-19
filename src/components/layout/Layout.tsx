@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import Button from '@/components/Button';
+
 import Github from '~/svg/Github.svg';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -10,18 +12,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         Contribute
       </div>
     );
-  }
+  };
   return (
     <>
-      <div className='layout flex items-center justify-between w-full h-16'>
+      <div className='layout flex h-16 w-full items-center justify-between'>
         <Button
-          onClick={() => window.open("https://github.com/terrastruct/text-to-diagram.com", "_blank")}
+          onClick={() =>
+            window.open(
+              'https://github.com/terrastruct/text-to-diagram.com',
+              '_blank'
+            )
+          }
           className='ml-auto mr-8 h-8'
           isPrimaryOutline
           label={contributeButtonLabel()}
         />
       </div>
-      <div className="bg-header-gradient h-[4px] w-screen" />
+      <div className='h-[4px] w-screen bg-header-gradient' />
       {children}
     </>
   );
