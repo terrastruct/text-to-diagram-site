@@ -11,6 +11,7 @@ import CodeBlock from '@/components/CodeBlock';
 import { LangNames } from '@/constant/langs';
 
 import D2Logo from '~/svg/d2.svg';
+import GearIcon from '~/svg/gear.svg';
 import GraphvizLogo from '~/svg/graphviz.svg';
 import Info from '~/svg/info.svg';
 import Link from '~/svg/link.svg';
@@ -21,6 +22,7 @@ type LangProps = {
   name: string;
   active: boolean;
   select: (x: string) => void;
+  isMenu?: boolean;
 };
 
 function getCanonicalName(name: string) {
@@ -63,8 +65,8 @@ function Lang(props: LangProps) {
       className={classnames(
         'text-l block flex items-center justify-start gap-2 px-4 py-2 font-primary-medium text-steel-900',
         {
-          'cursor-pointer': !props.active,
-          'hover:bg-steel-50': !props.active,
+          'cursor-pointer hover:bg-steel-50': !props.active,
+          'bg-blue-50': props.active && props?.isMenu,
         }
       )}
       role='menuitem'
@@ -84,6 +86,8 @@ type LangsProps = {
 
 function Langs(props: LangsProps) {
   const [menuShown, setMenuShown] = React.useState<boolean>(false);
+  const [layoutEngineShown, setLayoutEngineShown] =
+    React.useState<boolean>(false);
 
   const onClick = (name: string) => {
     setMenuShown(false);
@@ -92,7 +96,7 @@ function Langs(props: LangsProps) {
     }
   };
 
-  const langEls = [];
+  const langEls: JSX.Element[] = [];
   for (const langName of LangNames) {
     langEls.push(
       <Lang
@@ -100,6 +104,7 @@ function Langs(props: LangsProps) {
         key={langName}
         active={langName === props.activeLang}
         select={onClick}
+        isMenu
       />
     );
   }
@@ -152,84 +157,186 @@ function Langs(props: LangsProps) {
     );
   };
 
-  const ReffedInfo = React.forwardRef((props, ref: any) => {
+  const renderLanguageDropdown = () => {
     return (
-      <div ref={ref}>
-        <Info className='text-xl' />
+      <div
+        className='relative mt-2 inline-block grow pb-2 text-left'
+        onMouseLeave={() => {
+          setMenuShown(false);
+        }}
+      >
+        <button
+          type='button'
+          className='w-full rounded-md border border-steel-200 bg-white py-0 pr-4 text-sm font-medium text-gray-700 shadow-sm'
+          id='menu-button'
+          aria-expanded='true'
+          aria-haspopup='true'
+          onClick={() => setMenuShown(!menuShown)}
+        >
+          <div className='flex w-full items-center justify-between text-left'>
+            <div className='flex flex-col items-start justify-start'>
+              <span className='-mb-2 pl-4 text-sm text-steel-500'>
+                {props.index === 1 ? '1st' : '2nd'} language
+              </span>
+              <Lang
+                name={props.activeLang}
+                key='active'
+                active={true}
+                select={() => {}}
+              />
+            </div>
+            <svg
+              className='-mr-1 ml-2 h-5 w-5'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 20 20'
+              fill='currentColor'
+              aria-hidden='true'
+            >
+              <path
+                fillRule='evenodd'
+                d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'
+                clipRule='evenodd'
+              />
+            </svg>
+          </div>
+        </button>
+        {menuShown && (
+          <div
+            className='absolute left-0 z-10 mt-1 w-full origin-top-left overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+            role='menu'
+            aria-orientation='vertical'
+            aria-labelledby='menu-button'
+            tabIndex={-1}
+          >
+            {langEls}
+          </div>
+        )}
       </div>
     );
-  });
+  };
 
-  const ReffedLink = React.forwardRef((props, ref: any) => {
+  type LayoutProps = {
+    name: string;
+    active: boolean;
+    setLayout: (layout: string) => void;
+  };
+
+  const Layout = (props: LayoutProps) => {
     return (
-      <div ref={ref} onClick={() => window.open(link, '_blank')}>
-        <Link className='cursor-pointer text-xl' />
+      <div
+        className={classnames(
+          'flex items-center gap-2 px-4 py-2 text-sm text-steel-900',
+          {
+            'cursor-pointer hover:bg-steel-50': !props.active,
+          }
+        )}
+        onClick={() => props.setLayout(props.name)}
+      >
+        <input type='radio' checked={props.active} readOnly />
+        {props.name}
       </div>
     );
-  });
+  };
+
+  const layouts = ['TALA', 'Dagre', 'Dot'];
+
+  const Layouts = () => {
+    const [layout, setLayout] = React.useState<string>(layouts[0]);
+
+    return (
+      <>
+        <div className='px-2 pt-3 text-sm text-steel-900'>Layout engine: </div>
+        {layouts.map((lo) => {
+          return (
+            <Layout
+              key={lo}
+              name={lo}
+              setLayout={setLayout}
+              active={layout === lo}
+            />
+          );
+        })}
+      </>
+    );
+  };
+
+  const renderLayoutDropdown = () => {
+    return (
+      <div
+        className='relative mt-2 inline-block pb-2 text-left'
+        onMouseLeave={() => {
+          setLayoutEngineShown(false);
+        }}
+      >
+        <button
+          type='button'
+          className={classnames(
+            'flex h-6 w-6 items-center justify-center rounded-md p-0 hover:bg-blue-50',
+            {
+              'bg-blue-50 shadow-sm': layoutEngineShown,
+            }
+          )}
+          id='menu-button'
+          aria-expanded='true'
+          aria-haspopup='true'
+          onClick={() => setLayoutEngineShown(!menuShown)}
+        >
+          <GearIcon
+            className={classnames('h-4 w-4', {
+              'filter-blue-600': layoutEngineShown,
+            })}
+          />
+        </button>
+        {layoutEngineShown && (
+          <div
+            className='absolute left-0 z-10 mt-1 w-32 origin-top-left overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+            role='menu'
+            aria-orientation='vertical'
+            aria-labelledby='menu-button'
+            tabIndex={-1}
+          >
+            <Layouts />
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const ReffedInfo = React.forwardRef(
+    (_, ref: React.ForwardedRef<HTMLDivElement>) => {
+      return (
+        <div ref={ref} className='flex h-6 w-6 items-center justify-center'>
+          <Info className='h-4 w-4 text-xl' />
+        </div>
+      );
+    }
+  );
+
+  const ReffedLink = React.forwardRef(
+    (_, ref: React.ForwardedRef<HTMLDivElement>) => {
+      return (
+        <div
+          ref={ref}
+          onClick={() => window.open(link, '_blank')}
+          className='flex h-6 w-6 items-center justify-center'
+        >
+          <Link className='h-4 w-4 cursor-pointer text-xl' />
+        </div>
+      );
+    }
+  );
 
   // https://tailwindui.com/components/application-ui/elements/dropdowns
   return (
-    <div onMouseLeave={() => setMenuShown(false)}>
-      <div className='flex items-center justify-start gap-4 rounded-t-md border-b border-solid border-steel-200 bg-steel-25 px-4 py-2'>
-        <div className='relative inline-block grow text-left'>
-          <button
-            type='button'
-            className='w-full rounded-md border border-steel-200 bg-white py-0 pr-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100'
-            id='menu-button'
-            aria-expanded='true'
-            aria-haspopup='true'
-            onClick={() => setMenuShown(!menuShown)}
-          >
-            <div className='flex w-full items-center justify-between text-left'>
-              <div className='flex flex-col items-start justify-start'>
-                <span className='-mb-2 pl-4 text-sm text-steel-500'>
-                  {props.index === 1 ? '1st' : '2nd'} language
-                </span>
-                <Lang
-                  name={props.activeLang}
-                  key='active'
-                  active={true}
-                  select={() => {}}
-                />
-              </div>
-
-              <svg
-                className='-mr-1 ml-2 h-5 w-5'
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 20 20'
-                fill='currentColor'
-                aria-hidden='true'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'
-                  clipRule='evenodd'
-                />
-              </svg>
-            </div>
-          </button>
-          {menuShown && (
-            <div
-              className='absolute left-0 z-10 mt-2 w-full origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
-              role='menu'
-              aria-orientation='vertical'
-              aria-labelledby='menu-button'
-              tabIndex={-1}
-            >
-              <div className='py-1' role='none'>
-                {langEls}
-              </div>
-            </div>
-          )}
-        </div>
-        <Tippy content={renderInfo()} arrow={false}>
-          <ReffedInfo />
-        </Tippy>
-        <Tippy content={renderLink()} arrow={false}>
-          <ReffedLink />
-        </Tippy>
-      </div>
+    <div className='flex items-center justify-start gap-2 rounded-t-md border-b border-solid border-steel-200 bg-steel-25 px-4'>
+      {renderLanguageDropdown()}
+      {renderLayoutDropdown()}
+      <Tippy content={renderInfo()} arrow={false}>
+        <ReffedInfo />
+      </Tippy>
+      <Tippy content={renderLink()} arrow={false}>
+        <ReffedLink />
+      </Tippy>
     </div>
   );
 }

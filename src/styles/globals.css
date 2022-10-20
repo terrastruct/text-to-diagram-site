@@ -137,3 +137,8 @@
   color: #0a0f25;
   border-radius: 4px;
 }
+
+.filter-blue-600 {
+  filter: brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(3335%)
+    hue-rotate(227deg) brightness(88%) contrast(94%);
+}
