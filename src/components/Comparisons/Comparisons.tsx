@@ -1,6 +1,6 @@
 import Tippy from '@tippyjs/react';
 import classnames from 'classnames';
-import * as React from 'react';
+import React from 'react';
 
 import 'tippy.js/dist/tippy.css';
 
@@ -272,8 +272,8 @@ type ComparisonProps = {
   setLang: (x: string) => void;
   index: number;
 
-  upperRef: any;
-  otherUpperRef: any;
+  upperRef: React.RefObject<HTMLDivElement>;
+  otherUpperRef: React.RefObject<HTMLDivElement>;
 };
 
 function Comparison(props: ComparisonProps) {
@@ -285,12 +285,15 @@ function Comparison(props: ComparisonProps) {
   }, [props.lang, props.otherLang, props.text]);
 
   React.useEffect(() => {
+    if (!props.upperRef.current || !props.otherUpperRef.current) {
+      return;
+    }
     const myHeight = props.upperRef.current.getBoundingClientRect().height;
     const otherHeight =
       props.otherUpperRef.current.getBoundingClientRect().height;
     setHeight(Math.max(myHeight, otherHeight) + 'px');
     return () => {};
-  }, [height]);
+  }, [props.upperRef, props.otherUpperRef, height]);
 
   const renderRender = () => {
     if (!props.renderID) {
@@ -302,7 +305,7 @@ function Comparison(props: ComparisonProps) {
       return null;
     }
     return (
-      <div className='flex w-full items-center justify-center'>
+      <div className='relative flex w-full items-center justify-center'>
         <img
           src={img.src}
           className='min-h-[100px] object-contain'
@@ -312,7 +315,7 @@ function Comparison(props: ComparisonProps) {
     );
   };
 
-  const upperStyle: any = {};
+  const upperStyle: React.CSSProperties = {};
   if (props.upperRef.current && props.otherUpperRef.current) {
     upperStyle.height = height;
   }
