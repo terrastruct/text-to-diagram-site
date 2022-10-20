@@ -10,6 +10,8 @@ import UnderlineLink from '@/components/links/UnderlineLink';
 import Seo from '@/components/Seo';
 
 import Hero from '~/images/hero.webp';
+import Hero1024 from '~/images/hero_1024.webp';
+import Hero1280 from '~/images/hero_1280.webp';
 import GithubDark from '~/svg/github_dark.svg';
 import Switch from '~/svg/Switch.svg';
 
@@ -39,7 +41,18 @@ export default function HomePage(props: any) {
               </div>
               <img
                 src={Hero.src}
-                className='z-10 -mb-6 w-10/12 max-w-[1200px] sm:-mb-6 md:-mb-6 lg:-mb-6'
+                className='z-10 -mb-6 mt-4 w-10/12 max-w-[1280px] sm:-mb-6 md:-mb-6 lg:-mb-6 lg:hidden'
+                alt='hero'
+              />
+              <img
+                src={Hero1280.src}
+                className='z-10 -mb-6 mt-4 hidden w-10/12 max-w-[1280px] sm:-mb-6 md:-mb-6 lg:-mb-6 xl:block'
+                alt='hero'
+              />
+              <img
+                src={Hero1024.src}
+                className='z-10 -mb-6 mt-4 hidden w-10/12 max-w-[1280px] sm:-mb-6 md:-mb-6 lg:-mb-6 lg:block xl:hidden'
+                alt='hero'
               />
               <div className='z-10 mt-auto h-[24px] w-full bg-hero-shadow' />
             </div>
