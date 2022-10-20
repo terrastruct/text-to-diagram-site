@@ -242,26 +242,24 @@ type ExampleProps = {
 
 function Example(props: ExampleProps) {
   return (
-    <div>
-      <div
-        className={classnames(
-          'flex h-20 w-32 flex-col items-center justify-center rounded-md font-primary-medium text-steel-900 shadow-light sm:w-48',
-          {
-            'border border-solid border-steel-200': props.active,
-            'cursor-pointer': !props.active,
-            'opacity-50': !props.active,
-            'bg-steel-100': !props.active,
-          }
-        )}
-        onClick={() => !props.active && props.setExample(props.name)}
-      >
-        {props.active && (
-          <div className='border border-solid border-blue-300 px-1 text-xs tracking-wider text-violet-900'>
-            SELECTED
-          </div>
-        )}
-        {props.name}
-      </div>
+    <div
+      className={classnames(
+        'flex h-20 flex-col items-center justify-center rounded-md font-primary-medium text-steel-900 shadow-light',
+        {
+          'border border-solid border-steel-200': props.active,
+          'cursor-pointer': !props.active,
+          'opacity-50': !props.active,
+          'bg-steel-100': !props.active,
+        }
+      )}
+      onClick={() => !props.active && props.setExample(props.name)}
+    >
+      {props.active && (
+        <div className='border border-solid border-blue-300 px-1 text-xs tracking-wider text-violet-900'>
+          SELECTED
+        </div>
+      )}
+      {props.name}
     </div>
   );
 }
@@ -387,7 +385,7 @@ export default function Comparisons(props: ComparisonsProps) {
 
   return (
     <div className=''>
-      <div id='choices' className='flex gap-4'>
+      <div id='choices' className='grid grid-cols-3 gap-4'>
         {props.examples.map((e) => (
           <Example
             name={e.name}
