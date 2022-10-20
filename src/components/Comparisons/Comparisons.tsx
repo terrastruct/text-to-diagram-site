@@ -7,107 +7,26 @@ import 'tippy.js/dist/tippy.css';
 import { getImage } from '@/lib/imgImports';
 
 import CodeBlock from '@/components/CodeBlock';
+import LanguageDropdown, {
+  getCanonicalName,
+  getLogo,
+} from '@/components/LanguageDropdown/LanguageDropdown';
 
 import { LangNames } from '@/constant/langs';
 
-import D2Logo from '~/svg/d2.svg';
 import GearIcon from '~/svg/gear.svg';
-import GraphvizLogo from '~/svg/graphviz.svg';
 import Info from '~/svg/info.svg';
 import Link from '~/svg/link.svg';
-import MermaidLogo from '~/svg/mermaid.svg';
-import PlantUMLLogo from '~/svg/plantuml.svg';
-
-type LangProps = {
-  name: string;
-  active: boolean;
-  select: (x: string) => void;
-  isMenu?: boolean;
-};
-
-function getCanonicalName(name: string) {
-  switch (name) {
-    case 'd2':
-      return 'D2';
-    case 'plantuml':
-      return 'PlantUML';
-    case 'mermaid':
-      return 'MermaidJS';
-    case 'graphviz':
-      return 'GraphViz';
-  }
-  return 'Unknown';
-}
-
-function getLogo(name: string, size: string) {
-  switch (name) {
-    case 'd2':
-      return <D2Logo className={size} />;
-    case 'plantuml':
-      return <PlantUMLLogo className={size} />;
-    case 'mermaid':
-      return <MermaidLogo className={size} />;
-    case 'graphviz':
-      return <GraphvizLogo className={size} />;
-  }
-  return 'Unknown';
-}
-
-function Lang(props: LangProps) {
-  const canonicalName = getCanonicalName(props.name);
-  const logo = getLogo(props.name, 'text-xl');
-  const onClick = () => {
-    props.select(props.name);
-  };
-  return (
-    <div
-      onClick={onClick}
-      className={classnames(
-        'text-l block flex items-center justify-start gap-2 px-4 py-2 font-primary-medium text-steel-900',
-        {
-          'cursor-pointer hover:bg-steel-50': !props.active,
-          'bg-blue-50': props.active && props?.isMenu,
-        }
-      )}
-      role='menuitem'
-      tabIndex={-1}
-    >
-      {logo} {canonicalName}
-    </div>
-  );
-}
 
 type LangsProps = {
   activeLang: string;
-  inactiveLang: string;
   setActive: (x: string) => void;
   index: number;
 };
 
 function Langs(props: LangsProps) {
-  const [menuShown, setMenuShown] = React.useState<boolean>(false);
   const [layoutEngineShown, setLayoutEngineShown] =
     React.useState<boolean>(false);
-
-  const onClick = (name: string) => {
-    setMenuShown(false);
-    if (name !== props.activeLang) {
-      props.setActive(name);
-    }
-  };
-
-  const langEls: JSX.Element[] = [];
-  for (const langName of LangNames) {
-    langEls.push(
-      <Lang
-        name={langName}
-        key={langName}
-        active={langName === props.activeLang}
-        select={onClick}
-        isMenu
-      />
-    );
-  }
 
   let link: string;
   switch (props.activeLang) {
@@ -153,64 +72,6 @@ function Langs(props: LangsProps) {
           </h2>
           <div className='text-steel-800'>{description}</div>
         </div>
-      </div>
-    );
-  };
-
-  const renderLanguageDropdown = () => {
-    return (
-      <div
-        className='relative mt-2 inline-block grow pb-2 text-left'
-        onMouseLeave={() => {
-          setMenuShown(false);
-        }}
-      >
-        <button
-          type='button'
-          className='w-full rounded-md border border-steel-200 bg-white py-0 pr-4 text-sm font-medium text-gray-700 shadow-sm'
-          id='menu-button'
-          aria-expanded='true'
-          aria-haspopup='true'
-          onClick={() => setMenuShown(!menuShown)}
-        >
-          <div className='flex w-full items-center justify-between text-left'>
-            <div className='flex flex-col items-start justify-start'>
-              <span className='-mb-2 pl-4 text-sm text-steel-500'>
-                {props.index === 1 ? '1st' : '2nd'} language
-              </span>
-              <Lang
-                name={props.activeLang}
-                key='active'
-                active={true}
-                select={() => {}}
-              />
-            </div>
-            <svg
-              className='-mr-1 ml-2 h-5 w-5'
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 20 20'
-              fill='currentColor'
-              aria-hidden='true'
-            >
-              <path
-                fillRule='evenodd'
-                d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'
-                clipRule='evenodd'
-              />
-            </svg>
-          </div>
-        </button>
-        {menuShown && (
-          <div
-            className='absolute left-0 z-10 mt-1 w-full origin-top-left overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
-            role='menu'
-            aria-orientation='vertical'
-            aria-labelledby='menu-button'
-            tabIndex={-1}
-          >
-            {langEls}
-          </div>
-        )}
       </div>
     );
   };
@@ -279,7 +140,7 @@ function Langs(props: LangsProps) {
           id='menu-button'
           aria-expanded='true'
           aria-haspopup='true'
-          onClick={() => setLayoutEngineShown(!menuShown)}
+          onClick={() => setLayoutEngineShown(!layoutEngineShown)}
         >
           <GearIcon
             className={classnames('h-4 w-4', {
@@ -329,7 +190,11 @@ function Langs(props: LangsProps) {
   // https://tailwindui.com/components/application-ui/elements/dropdowns
   return (
     <div className='flex items-center justify-start gap-2 rounded-t-md border-b border-solid border-steel-200 bg-steel-25 px-4'>
-      {renderLanguageDropdown()}
+      <LanguageDropdown
+        activeLang={props.activeLang}
+        setActive={props.setActive}
+        index={props.index}
+      />
       {renderLayoutDropdown()}
       <Tippy content={renderInfo()} arrow={false}>
         <ReffedInfo />
@@ -432,7 +297,6 @@ function Comparison(props: ComparisonProps) {
       <Langs
         index={props.index}
         activeLang={props.lang}
-        inactiveLang={props.otherLang}
         setActive={props.setLang}
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
