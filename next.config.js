@@ -31,19 +31,19 @@ module.exports = {
     });
     config.module.rules.push({
       test: /\.wasm$/,
-      type: "asset",
+      type: 'asset',
     });
     config.module.rules.push({
       test: new RegExp(`syntaxes/.*\.json$`),
-      type: "asset",
+      type: 'asset',
     });
     config.module.rules.push({
       test: new RegExp(`shiki/.*\.json$`),
-      type: "asset",
+      type: 'asset',
     });
     config.module.rules.push({
       test: new RegExp(`.*\.tmLanguage$`),
-      type: "asset/resource",
+      type: 'asset/resource',
     });
 
     config.experiments = {
