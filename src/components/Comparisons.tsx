@@ -287,7 +287,7 @@ function Comparison(props: ComparisonProps) {
       <div className='relative flex w-full items-center justify-center'>
         <img
           src={img.src}
-          className='min-h-[100px] max-h-52 object-contain'
+          className='min-h-[100px] max-h-[900px] object-contain'
           alt={`Example of ${props.lang}`}
         />
       </div>
