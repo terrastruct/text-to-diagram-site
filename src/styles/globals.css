@@ -3,61 +3,60 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "SourceSansProRegular";
-  src: url("/fonts/SourceSansPro/SourceSansPro-Regular.ttf") format("truetype");
+  font-family: 'SourceSansProRegular';
+  src: url('/fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceSansProItalic";
-  src: url("/fonts/SourceSansPro/SourceSansPro-Italic.ttf") format("truetype");
+  font-family: 'SourceSansProItalic';
+  src: url('/fonts/SourceSansPro/SourceSansPro-Italic.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceSansProBold";
-  src: url("/fonts/SourceSansPro/SourceSansPro-Bold.ttf") format("truetype");
+  font-family: 'SourceSansProBold';
+  src: url('/fonts/SourceSansPro/SourceSansPro-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceSansProSemiBold";
-  src: url("/fonts/SourceSansPro/SourceSansPro-SemiBold.ttf") format("truetype");
+  font-family: 'SourceSansProSemiBold';
+  src: url('/fonts/SourceSansPro/SourceSansPro-SemiBold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceSansProLight";
-  src: url("/fonts/SourceSansPro/SourceSansPro-Light.ttf") format("truetype");
+  font-family: 'SourceSansProLight';
+  src: url('/fonts/SourceSansPro/SourceSansPro-Light.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceSansProBlack";
-  src: url("/fonts/SourceSansPro/SourceSansPro-Black.ttf") format("truetype");
+  font-family: 'SourceSansProBlack';
+  src: url('/fonts/SourceSansPro/SourceSansPro-Black.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceCodeProRegular";
-  src: url("/fonts/SourceCodePro/SourceCodePro-Regular.ttf") format("truetype");
+  font-family: 'SourceCodeProRegular';
+  src: url('/fonts/SourceCodePro/SourceCodePro-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "SourceCodeProBold";
-  src: url("/fonts/SourceCodePro/SourceCodePro-Bold.ttf") format("truetype");
+  font-family: 'SourceCodeProBold';
+  src: url('/fonts/SourceCodePro/SourceCodePro-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
 }
-
 
 @layer base {
   /* #region  /**=========== Typography =========== */
@@ -83,11 +82,13 @@
 
   body {
     font-size: 18px;
-    width: 100%;
+    width: 100vw;
+    overflow-x: hidden;
   }
 
   pre {
-    font-family: SourceCodeProRegular, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-family: SourceCodeProRegular, ui-monospace, SFMono-Regular, Menlo,
+      Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   body,
@@ -100,6 +101,7 @@
   .layout {
     /* 1100px */
     max-width: 68.75rem;
+    box-sizing: border-box;
     @apply mx-auto w-11/12;
   }
 
@@ -115,23 +117,28 @@
 
 @layer utilities {
   .purple-gradient {
-    background-image: linear-gradient(90.4deg, #4A6FF3 1.75%, #6747E8 100%);
+    background-image: linear-gradient(90.4deg, #4a6ff3 1.75%, #6747e8 100%);
   }
   .dots-white {
-    background-image: radial-gradient(#ECF0FD 2px, transparent 2%);
+    background-image: radial-gradient(#ecf0fd 2px, transparent 2%);
     background-position: 0 0, 20px 20px;
     background-size: 20px 20px;
   }
   .dots-blue {
-    background-image: radial-gradient(#BCCAFF 2px, transparent 2%);
+    background-image: radial-gradient(#bccaff 2px, transparent 2%);
     background-position: 0 0, 100px 100px;
     background-size: 100px 100px;
   }
 }
 
 .tippy-content {
-  background:white;
-  border: 1px solid #DEE1EB;
-  color: #0A0F25;
+  background: white;
+  border: 1px solid #dee1eb;
+  color: #0a0f25;
   border-radius: 4px;
+}
+
+.filter-blue-600 {
+  filter: brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(3335%)
+    hue-rotate(227deg) brightness(88%) contrast(94%);
 }

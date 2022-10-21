@@ -1,34 +1,33 @@
-import * as React from "react";
-
-import * as vscOniguruma from "vscode-oniguruma";
-import * as vscTextMate from "vscode-textmate";
-// @ts-ignore
-import onigWasm from "vscode-oniguruma/release/onig.wasm";
-
-import d2Grammar from "@/extensions/d2-vscode/syntaxes/d2.tmLanguage.json";
-import plantumlGrammar from "@/extensions/vscode-plantuml/syntaxes/plantuml.tmLanguage.json";
+import * as React from 'react';
 // import mermaidGrammar from "@/extensions/mermaid-vscode/syntaxes/mermaid.tmLanguage.json";
-import mermaidGrammar from "shiki/languages/mermaid.tmLanguage.json";
+import mermaidGrammar from 'shiki/languages/mermaid.tmLanguage.json';
+import * as vscOniguruma from 'vscode-oniguruma';
+// @ts-ignore
+import onigWasm from 'vscode-oniguruma/release/onig.wasm';
+import * as vscTextMate from 'vscode-textmate';
+
+import tm from '@/lib/tm';
+
+import d2Grammar from '@/extensions/d2-vscode/syntaxes/d2.tmLanguage.json';
+import markdownGrammar from '@/extensions/d2-vscode/syntaxes/markdown.tmLanguage.json';
+import lightTheme from '@/extensions/d2-vscode/themes/light-color-theme.json';
 // import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/graphviz.tmLanguage";
 // @ts-ignore
-import graphvizGrammar from "@/extensions/graphviz-vscode/syntaxes/dot.tmLanguage";
+import graphvizGrammar from '@/extensions/graphviz-vscode/syntaxes/dot.tmLanguage';
+import plantumlGrammar from '@/extensions/vscode-plantuml/syntaxes/plantuml.tmLanguage.json';
 
-import markdownGrammar from "@/extensions/d2-vscode/syntaxes/markdown.tmLanguage.json";
-import lightTheme from "@/extensions/d2-vscode/themes/light-color-theme.json";
 // import darkTheme from "@/d2-vscode/themes/dark-color-theme.json";
-
-import metadataConsts from "./metadata-consts";
-import tm from "@/lib/tm";
+import metadataConsts from './metadata-consts';
 
 // TODO: clipboard copy button
 export default function D2CodeBlock(props: any) {
   let source = props.source;
-  if (source === "plantuml") {
-    source = "wsd";
-  } else if (source === "graphviz") {
-    source = "dot";
+  if (source === 'plantuml') {
+    source = 'wsd';
+  } else if (source === 'graphviz') {
+    source = 'dot';
   }
-  const scope = "source." + source;
+  const scope = 'source.' + source;
 
   const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
 
@@ -46,11 +45,11 @@ export default function D2CodeBlock(props: any) {
 
   let theme: any;
   const preStyle: any = {
-    lineHeight: "20px",
+    lineHeight: '20px',
   };
-  const colorMode = "light";
+  const colorMode = 'light';
   switch (colorMode) {
-    case "light":
+    case 'light':
       theme = lightTheme;
       break;
     // case "dark":
@@ -58,7 +57,7 @@ export default function D2CodeBlock(props: any) {
     //   preStyle.border = "solid #606770 1px";
     //   break;
   }
-  preStyle.backgroundColor = theme.colors["editor.background"];
+  preStyle.backgroundColor = theme.colors['editor.background'];
 
   const children = [];
   if (tmGrammar) {
@@ -68,22 +67,22 @@ export default function D2CodeBlock(props: any) {
     tm.tmRegistry.ruleStack = vscTextMate.INITIAL;
   }
 
-  const lines = props.children.split("\n");
+  const lines = props.children.split('\n');
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (i == lines.length - 1 && line === "") {
+    if (i == lines.length - 1 && line === '') {
       continue;
     }
 
     children.push(
       <span
         style={{
-          color: theme.colors["editorLineNumber.foreground"],
-          marginRight: "20px",
-          userSelect: "none",
-          textAlign: "right",
-          width: lines.length > 9 ? "20px" : undefined,
-          display: "inline-block",
+          color: theme.colors['editorLineNumber.foreground'],
+          marginRight: '20px',
+          userSelect: 'none',
+          textAlign: 'right',
+          width: lines.length > 9 ? '20px' : undefined,
+          display: 'inline-block',
         }}
         key={`ln-${i}`}
       >
@@ -140,15 +139,15 @@ async function newTextMateRegistry() {
     onigLib: vscOniguruma,
     loadGrammar: async (scope) => {
       switch (scope) {
-        case "source.d2":
+        case 'source.d2':
           return parseRawGrammar(d2Grammar);
-        case "source.wsd":
+        case 'source.wsd':
           return parseRawGrammar(plantumlGrammar);
-        case "source.mermaid":
+        case 'source.mermaid':
           return parseRawGrammar(mermaidGrammar);
-        case "source.dot":
+        case 'source.dot':
           return parseRawGrammar(graphvizGrammar);
-        case "text.html.markdown.d2":
+        case 'text.html.markdown.d2':
           return parseRawGrammar(markdownGrammar);
       }
 
@@ -174,11 +173,11 @@ async function fetch(path: any) {
 }
 
 const fontStyles: any = {
-  "-1": "inherit",
-  0: "normal",
-  1: "italic",
-  2: "bold",
-  3: "underline",
+  '-1': 'inherit',
+  0: 'normal',
+  1: 'italic',
+  2: 'bold',
+  3: 'underline',
 };
 
 function highlightLine(tmGrammar: any, line: any) {
@@ -213,10 +212,10 @@ function highlightLine(tmGrammar: any, line: any) {
 
     const fontStyle = fontStyles[fontStyleIndex];
     switch (fontStyle) {
-      case "bold":
+      case 'bold':
         style.fontWeight = fontStyle;
         break;
-      case "underline":
+      case 'underline':
         style.textDecoration = fontStyle;
         break;
       default:

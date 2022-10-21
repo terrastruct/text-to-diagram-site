@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 const defaultMeta = {
   title: 'Text to diagram',
   siteName: 'Text to diagram',
-  description:
-    'Community list of comparisons between text to diagram tools',
+  description: 'Community list of comparisons between text to diagram tools',
   url: 'https://text-to-diagram.com',
   type: 'website',
   robots: 'follow, index',
