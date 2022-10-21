@@ -12,7 +12,7 @@ import LanguageDropdown, {
   getLogo,
 } from '@/components/LanguageDropdown';
 
-import { LangNames } from '@/constant/langs';
+import { LangNames, LayoutOrder, LayoutCapitalizedNames } from '@/constant/langs';
 
 import GearIcon from '~/svg/gear.svg';
 import Info from '~/svg/info.svg';
@@ -110,7 +110,7 @@ function Langs(props: LangsProps) {
           return (
             <Layout
               key={lo}
-              name={lo}
+              name={LayoutCapitalizedNames[lo]}
               setLayout={props.setActiveLayout}
               active={props.activeLayout === lo}
             />
@@ -242,6 +242,13 @@ function Comparison(props: ComparisonProps) {
     for (const k of Object.keys(props.renderIDs)) {
       layoutChoices.push(k);
     }
+    layoutChoices.sort((a, b) => {
+      if (LayoutOrder.indexOf(a) < LayoutOrder.indexOf(b)) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
     setLayout(layoutChoices[0]);
     return () => {};
   }, [props.renderIDs, setLayout]);
