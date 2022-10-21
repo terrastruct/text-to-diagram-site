@@ -134,7 +134,7 @@ export const getStaticProps: GetStaticProps = async () => {
       if (!Object.keys(example.render).includes(lang)) {
         example.render[lang] = {}
       }
-      example.render[lang][layout] = `${lang}-${name}`;
+      example.render[lang][layout] = `${lang}-${name}-${layout}`;
     }
     examples.push(example);
   }

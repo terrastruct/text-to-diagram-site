@@ -97,7 +97,7 @@ function Langs(props: LangsProps) {
         onClick={() => props.setLayout(props.name)}
       >
         <input type='radio' checked={props.active} readOnly />
-        {props.name}
+        {LayoutCapitalizedNames[props.name]}
       </div>
     );
   };
@@ -110,7 +110,7 @@ function Langs(props: LangsProps) {
           return (
             <Layout
               key={lo}
-              name={LayoutCapitalizedNames[lo]}
+              name={lo}
               setLayout={props.setActiveLayout}
               active={props.activeLayout === lo}
             />
@@ -230,26 +230,28 @@ type ComparisonProps = {
 };
 
 function Comparison(props: ComparisonProps) {
-  let layoutChoices = [];
-  for (const k of Object.keys(props.renderIDs)) {
-    layoutChoices.push(k);
-  }
-  const [layout, setLayout] = React.useState<string>(layoutChoices[0]);
+  const [layoutChoices, setLayoutChoices] = React.useState<string[]>([]);
+  const [layout, setLayout] = React.useState<string>("");
   const [height, setHeight] = React.useState<string>('unset');
 
-  React.useEffect(() => {
-    layoutChoices = [];
+  const resetLayoutChoices = () => {
+    const newLayoutChoices = [];
     for (const k of Object.keys(props.renderIDs)) {
-      layoutChoices.push(k);
+      newLayoutChoices.push(k);
     }
-    layoutChoices.sort((a, b) => {
+    newLayoutChoices.sort((a, b) => {
       if (LayoutOrder.indexOf(a) < LayoutOrder.indexOf(b)) {
-        return 1;
-      } else {
         return -1;
+      } else {
+        return 1;
       }
     });
-    setLayout(layoutChoices[0]);
+    setLayoutChoices(newLayoutChoices);
+    setLayout(newLayoutChoices[0]);
+  }
+
+  React.useEffect(() => {
+    resetLayoutChoices();
     return () => {};
   }, [props.renderIDs, setLayout]);
 
@@ -285,7 +287,7 @@ function Comparison(props: ComparisonProps) {
       <div className='relative flex w-full items-center justify-center'>
         <img
           src={img.src}
-          className='min-h-[100px] object-contain'
+          className='min-h-[100px] max-h-52 object-contain'
           alt={`Example of ${props.lang}`}
         />
       </div>
