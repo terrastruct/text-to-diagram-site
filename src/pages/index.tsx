@@ -129,8 +129,12 @@ export const getStaticProps: GetStaticProps = async () => {
       example.syntax[lang] = text;
     }
     for (const f of fs.readdirSync(path.resolve(root, exampleName, 'render'))) {
-      const lang = f.split('.')[0];
-      example.render[lang] = `${lang}-${name}`;
+      const lang = f.split('_')[0];
+      const layout = f.split('_')[1].split('.')[0];
+      if (!Object.keys(example.render).includes(lang)) {
+        example.render[lang] = {}
+      }
+      example.render[lang][layout] = `${lang}-${name}-${layout}`;
     }
     examples.push(example);
   }
