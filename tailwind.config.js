@@ -104,6 +104,9 @@ module.exports = {
         'hero-shadow':
           'linear-gradient(180deg, rgba(10, 15, 37, 0) 0%, rgba(10, 15, 37, 0.05) 100%, rgba(10, 15, 37, 0.05) 100%)',
       },
+      screens: {
+        mobile: '576px',
+      },
     },
   },
   variants: {

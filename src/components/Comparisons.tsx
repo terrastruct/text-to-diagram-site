@@ -10,7 +10,7 @@ import CodeBlock from '@/components/CodeBlock';
 import LanguageDropdown, {
   getCanonicalName,
   getLogo,
-} from '@/components/LanguageDropdown/LanguageDropdown';
+} from '@/components/LanguageDropdown';
 
 import { LangNames } from '@/constant/langs';
 
@@ -163,31 +163,6 @@ function Langs(props: LangsProps) {
     );
   };
 
-  const ReffedInfo = React.forwardRef(
-    (_, ref: React.ForwardedRef<HTMLDivElement>) => {
-      return (
-        <div ref={ref} className='flex h-6 w-6 items-center justify-center'>
-          <Info className='h-4 w-4 text-xl' />
-        </div>
-      );
-    }
-  );
-
-  const ReffedLink = React.forwardRef(
-    (_, ref: React.ForwardedRef<HTMLDivElement>) => {
-      return (
-        <div
-          ref={ref}
-          onClick={() => window.open(link, '_blank')}
-          className='flex h-6 w-6 items-center justify-center'
-        >
-          <Link className='h-4 w-4 cursor-pointer text-xl' />
-        </div>
-      );
-    }
-  );
-
-  // https://tailwindui.com/components/application-ui/elements/dropdowns
   return (
     <div className='flex items-center justify-start gap-2 rounded-t-md border-b border-solid border-steel-200 bg-steel-25 px-4'>
       <LanguageDropdown
@@ -197,10 +172,17 @@ function Langs(props: LangsProps) {
       />
       {renderLayoutDropdown()}
       <Tippy content={renderInfo()} arrow={false}>
-        <ReffedInfo />
+        <div className='flex h-6 w-6 items-center justify-center'>
+          <Info className='h-4 w-4 text-xl' />
+        </div>
       </Tippy>
       <Tippy content={renderLink()} arrow={false}>
-        <ReffedLink />
+        <div
+          onClick={() => window.open(link, '_blank')}
+          className='flex h-6 w-6 items-center justify-center'
+        >
+          <Link className='h-4 w-4 cursor-pointer text-xl' />
+        </div>
       </Tippy>
     </div>
   );
@@ -358,7 +340,7 @@ export default function Comparisons(props: ComparisonsProps) {
   const langBRenderID = example.render[langB];
 
   return (
-    <div className=''>
+    <div>
       <div id='choices' className='grid grid-cols-3 gap-4'>
         {props.examples.map((e) => (
           <Example

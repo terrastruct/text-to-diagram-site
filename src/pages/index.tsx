@@ -3,8 +3,9 @@ import { GetStaticProps } from 'next';
 import path from 'path';
 import * as React from 'react';
 
-import Comparisons from '@/components/Comparisons/Comparisons';
+import Comparisons from '@/components/Comparisons';
 import FAQ from '@/components/faq';
+import Features from '@/components/Features';
 import Layout from '@/components/layout/Layout';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import Seo from '@/components/Seo';
@@ -65,6 +66,9 @@ export default function HomePage(props: any) {
             </div>
             <div className='layout pt-8'>
               <Comparisons examples={props.examples} />
+            </div>
+            <div className='layout pt-8'>
+              <Features />
             </div>
           </div>
           <div className='w-full bg-steel-800 pt-8'>

@@ -12,6 +12,7 @@ type LanguageDropdownProps = {
   activeLang: string;
   setActive: (x: string) => void;
   index: number;
+  className?: string;
 };
 
 const LanguageDropdown = (props: LanguageDropdownProps) => {
@@ -34,16 +35,20 @@ const LanguageDropdown = (props: LanguageDropdownProps) => {
     />
   ));
 
+  // https://tailwindui.com/components/application-ui/elements/dropdowns
   return (
     <div
-      className='relative mt-2 inline-block grow pb-2 text-left'
+      className={classnames(
+        'relative mt-2 inline-block grow pb-2 text-left',
+        props?.className
+      )}
       onMouseLeave={() => {
         setMenuShown(false);
       }}
     >
       <button
         type='button'
-        className='w-full rounded-md border border-steel-200 bg-white py-0 pr-4 text-sm font-medium text-gray-700 shadow-sm'
+        className='w-full rounded-md border border-steel-200 bg-white py-0 pr-4 text-sm text-gray-700 shadow-sm'
         id='menu-button'
         aria-expanded='true'
         aria-haspopup='true'
@@ -54,12 +59,7 @@ const LanguageDropdown = (props: LanguageDropdownProps) => {
             <span className='-mb-2 pl-4 text-sm text-steel-500'>
               {props.index === 1 ? '1st' : '2nd'} language
             </span>
-            <Lang
-              name={props.activeLang}
-              key='active'
-              active={true}
-              select={() => {}}
-            />
+            <Lang name={props.activeLang} key='active' active={true} />
           </div>
           <svg
             className='-mr-1 ml-2 h-5 w-5'
@@ -122,7 +122,7 @@ export function getLogo(name: string, size: string) {
 type LangProps = {
   name: string;
   active: boolean;
-  select: (x: string) => void;
+  select?: (x: string) => void;
   isMenu?: boolean;
 };
 
@@ -130,7 +130,7 @@ const Lang = (props: LangProps) => {
   const canonicalName = getCanonicalName(props.name);
   const logo = getLogo(props.name, 'text-xl');
   const onClick = () => {
-    props.select(props.name);
+    props.select?.(props.name);
   };
   return (
     <div
