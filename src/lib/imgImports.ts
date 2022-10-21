@@ -1,18 +1,20 @@
 // This sucks. Tried a fair amount of ways to get dynamic image imports from just reading examples, but couldn't get it to work.
 // Whenever an example is added, this file will also have to be updated
 
-import d2_basic from '@/examples/0_basic/render/d2.png';
-import graphviz_basic from '@/examples/0_basic/render/graphviz.png';
-import mermaid_basic from '@/examples/0_basic/render/mermaid.png';
-import plantuml_basic from '@/examples/0_basic/render/plantuml.png';
-import d2_containers from '@/examples/1_containers/render/d2.png';
-import graphviz_containers from '@/examples/1_containers/render/graphviz.png';
-import mermaid_containers from '@/examples/1_containers/render/mermaid.png';
-import plantuml_containers from '@/examples/1_containers/render/plantuml.png';
-import d2_shapes from '@/examples/2_shapes/render/d2.png';
-import graphviz_shapes from '@/examples/2_shapes/render/graphviz.png';
-import mermaid_shapes from '@/examples/2_shapes/render/mermaid.png';
-import plantuml_shapes from '@/examples/2_shapes/render/plantuml.png';
+import d2_basic from '@/examples/0_basic/render/d2_tala.png';
+import graphviz_basic from '@/examples/0_basic/render/graphviz_dot.png';
+import mermaid_basic from '@/examples/0_basic/render/mermaid_dagre.png';
+import plantuml_basic from '@/examples/0_basic/render/plantuml_dot.png';
+
+import d2_containers from '@/examples/1_containers/render/d2_tala.png';
+import graphviz_containers from '@/examples/1_containers/render/graphviz_dot.png';
+import mermaid_containers from '@/examples/1_containers/render/mermaid_dagre.png';
+import plantuml_containers from '@/examples/1_containers/render/plantuml_dot.png';
+
+import d2_shapes from '@/examples/2_shapes/render/d2_tala.png';
+import graphviz_shapes from '@/examples/2_shapes/render/graphviz_dot.png';
+import mermaid_shapes from '@/examples/2_shapes/render/mermaid_dagre.png';
+import plantuml_shapes from '@/examples/2_shapes/render/plantuml_dot.png';
 
 export function getImage(id: string) {
   switch (id.toLowerCase()) {

@@ -19,8 +19,11 @@ import Info from '~/svg/info.svg';
 import Link from '~/svg/link.svg';
 
 type LangsProps = {
+  layoutChoices: string[];
+  activeLayout: string;
+  setActiveLayout: (x: string) => void;
   activeLang: string;
-  setActive: (x: string) => void;
+  setActiveLang: (x: string) => void;
   index: number;
 };
 
@@ -99,21 +102,17 @@ function Langs(props: LangsProps) {
     );
   };
 
-  const layouts = ['TALA', 'Dagre', 'Dot'];
-
   const Layouts = () => {
-    const [layout, setLayout] = React.useState<string>(layouts[0]);
-
     return (
       <>
         <div className='px-2 pt-3 text-sm text-steel-900'>Layout engine: </div>
-        {layouts.map((lo) => {
+        {props.layoutChoices.map((lo) => {
           return (
             <Layout
               key={lo}
               name={lo}
-              setLayout={setLayout}
-              active={layout === lo}
+              setLayout={props.setActiveLayout}
+              active={props.activeLayout === lo}
             />
           );
         })}
@@ -167,7 +166,7 @@ function Langs(props: LangsProps) {
     <div className='flex items-center justify-start gap-2 rounded-t-md border-b border-solid border-steel-200 bg-steel-25 px-4'>
       <LanguageDropdown
         activeLang={props.activeLang}
-        setActive={props.setActive}
+        setActive={props.setActiveLang}
         index={props.index}
       />
       {renderLayoutDropdown()}
@@ -222,7 +221,7 @@ type ComparisonProps = {
   lang: string;
   otherLang: string;
   text: string | undefined;
-  renderID: string | undefined;
+  renderIDs: any;
   setLang: (x: string) => void;
   index: number;
 
@@ -231,7 +230,21 @@ type ComparisonProps = {
 };
 
 function Comparison(props: ComparisonProps) {
+  let layoutChoices = [];
+  for (const k of Object.keys(props.renderIDs)) {
+    layoutChoices.push(k);
+  }
+  const [layout, setLayout] = React.useState<string>(layoutChoices[0]);
   const [height, setHeight] = React.useState<string>('unset');
+
+  React.useEffect(() => {
+    layoutChoices = [];
+    for (const k of Object.keys(props.renderIDs)) {
+      layoutChoices.push(k);
+    }
+    setLayout(layoutChoices[0]);
+    return () => {};
+  }, [props.renderIDs, setLayout]);
 
   React.useEffect(() => {
     setHeight('unset');
@@ -250,10 +263,13 @@ function Comparison(props: ComparisonProps) {
   }, [props.upperRef, props.otherUpperRef, height]);
 
   const renderRender = () => {
-    if (!props.renderID) {
+    if (!props.renderIDs) {
       return null;
     }
-    const img = getImage(props.renderID);
+    if (!props.renderIDs[layout]) {
+      return null;
+    }
+    const img = getImage(props.renderIDs[layout]);
     // TODO add some placeholder for when a language can't render
     if (!img) {
       return null;
@@ -279,7 +295,10 @@ function Comparison(props: ComparisonProps) {
       <Langs
         index={props.index}
         activeLang={props.lang}
-        setActive={props.setLang}
+        setActiveLang={props.setLang}
+        layoutChoices={layoutChoices}
+        activeLayout={layout}
+        setActiveLayout={setLayout}
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
@@ -336,8 +355,8 @@ export default function Comparisons(props: ComparisonsProps) {
   const langASyntax = example.syntax[langA];
   const langBSyntax = example.syntax[langB];
 
-  const langARenderID = example.render[langA];
-  const langBRenderID = example.render[langB];
+  const langARenderIDs = example.render[langA];
+  const langBRenderIDs = example.render[langB];
 
   return (
     <div>
@@ -366,7 +385,7 @@ export default function Comparisons(props: ComparisonsProps) {
             text={langASyntax}
             upperRef={langAUpperRef}
             otherUpperRef={langBUpperRef}
-            renderID={langARenderID}
+            renderIDs={langARenderIDs}
             setLang={setLangA}
           />
           <Comparison
@@ -376,7 +395,7 @@ export default function Comparisons(props: ComparisonsProps) {
             text={langBSyntax}
             upperRef={langBUpperRef}
             otherUpperRef={langAUpperRef}
-            renderID={langBRenderID}
+            renderIDs={langBRenderIDs}
             setLang={setLangB}
           />
         </div>
