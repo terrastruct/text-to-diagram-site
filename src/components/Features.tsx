@@ -4,7 +4,7 @@ import React from 'react';
 
 import LanguageDropdown from '@/components/LanguageDropdown';
 
-import { LangNames } from '@/constant/langs';
+import { LangNames, D2_LANG, MERMAID_LANG, GRAPHVIZ_LANG, PLANTUML_LANG } from '@/constant/langs';
 
 import CheckIcon from '~/svg/checkcircle.svg';
 import InfoIcon from '~/svg/info.svg';
@@ -13,58 +13,168 @@ import XIcon from '~/svg/x.svg';
 type Feature = {
   title: string;
   description: string;
-  availability: {
-    [name: typeof LangNames[number]]: boolean;
+  value: {
+    [name: typeof LangNames[number]]: any;
   };
 };
 
 const features: Feature[] = [
   {
-    title: 'Feature one',
-    description: 'This is a description',
-    availability: {
-      [LangNames[0]]: true,
-      [LangNames[1]]: false,
-      [LangNames[2]]: false,
-      [LangNames[3]]: false,
+    title: 'Open source',
+    description: 'The language is free and open-source.',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: true,
+      [GRAPHVIZ_LANG]: true,
+      [PLANTUML_LANG]: true,
     },
   },
   {
-    title: 'Feature two',
-    description: 'This is a description',
-    availability: {
-      [LangNames[0]]: true,
-      [LangNames[1]]: true,
-      [LangNames[2]]: false,
-      [LangNames[3]]: false,
+    title: 'License',
+    description: 'The license that governs terms of usage.',
+    value: {
+      [D2_LANG]: "MPL 2.0",
+      [MERMAID_LANG]: "MIT",
+      [GRAPHVIZ_LANG]: "CPL 1.0",
+      [PLANTUML_LANG]: "GPL 3.0",
     },
   },
   {
-    title: 'Feature three',
-    description: 'This is a description',
-    availability: {
-      [LangNames[0]]: true,
-      [LangNames[1]]: false,
-      [LangNames[2]]: false,
-      [LangNames[3]]: false,
+    title: 'Downloadable CLI',
+    description: 'Is a runnable download available (if not, it requires building from source).',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: true,
+      [PLANTUML_LANG]: "Requires Java",
     },
   },
   {
-    title: 'Feature four',
-    description: 'This is a description',
-    availability: {
-      [LangNames[0]]: true,
-      [LangNames[1]]: false,
-      [LangNames[2]]: true,
-      [LangNames[3]]: false,
+    title: 'Released in',
+    description: 'First year of public release',
+    value: {
+      [D2_LANG]: 2022,
+      [MERMAID_LANG]: 2014,
+      [GRAPHVIZ_LANG]: 1991,
+      [PLANTUML_LANG]: 2009,
+    },
+  },
+  {
+    title: 'Maintanence',
+    description: 'Is the language actively maintained',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: true,
+      [GRAPHVIZ_LANG]: `"This project has only 3 of its founders remaining as volunteer maintainers, and support is limited and may end soon." - Graphviz's README`,
+      [PLANTUML_LANG]: true,
+    },
+  },
+  {
+    title: 'Compiler language',
+    description: 'The language it is implemented in',
+    value: {
+      [D2_LANG]: `Go`,
+      [MERMAID_LANG]: `Javascript/Typescript`,
+      [GRAPHVIZ_LANG]: `C`,
+      [PLANTUML_LANG]: `Java`,
+    },
+  },
+  {
+    title: 'Editor support',
+    description: 'The state of editor support for the language',
+    value: {
+      [D2_LANG]: `Creator-made extensions for VSCode and Vim`,
+      [MERMAID_LANG]: `Community-made extensions for VSCode and Atom`,
+      [GRAPHVIZ_LANG]: `Community-made extensions for VSCode, Vim, most IDEs`,
+      [PLANTUML_LANG]: `Community-made extensions for VSCode, Vim, Atom`,
+    },
+  },
+  {
+    title: 'Themes',
+    description: 'Configurable themes for diagrams',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: true,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: true,
+    },
+  },
+  {
+    title: 'Sequence diagrams',
+    description: '',
+    value: {
+      [D2_LANG]: false,
+      [MERMAID_LANG]: true,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: true,
+    },
+  },
+  {
+    title: 'SQL tables',
+    description: 'Support for Entity-Relational-Diagrams (ERD)',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: "Experimental",
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: true,
+    },
+  },
+  {
+    title: 'Markdown',
+    description: 'Use Markdown for text objects in the diagram',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
+  {
+    title: 'Code snippets',
+    description: 'Render syntax-highlighted code snippets',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
+  {
+    title: 'Accessibility',
+    description: 'Support for accessibility options like description tags for screen readers',
+    value: {
+      [D2_LANG]: false,
+      [MERMAID_LANG]: true,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
+  {
+    title: 'Autoformat',
+    description: 'Language tooling to autoformat a file',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
     },
   },
 ];
 
-const FeatureAvailable = (props: {
-  isAvailable: boolean;
+const FeatureValue = (props: {
+  value: any;
   className?: string;
 }) => {
+  let el;
+  if (typeof props.value === "boolean") {
+    el = props.value ? (
+      <CheckIcon className='h-8 w-8' />
+    ) : (
+      <XIcon className='h-8 w-8' />
+    )
+  } else {
+    el = <div className="">{props.value}</div>
+  }
   return (
     <div
       className={classnames(
@@ -72,11 +182,7 @@ const FeatureAvailable = (props: {
         props.className
       )}
     >
-      {props.isAvailable ? (
-        <CheckIcon className='h-8 w-8' />
-      ) : (
-        <XIcon className='h-8 w-8' />
-      )}
+      {el}
     </div>
   );
 };
@@ -112,11 +218,11 @@ const Features = () => {
             </Tippy>
           </span>
           <div className='relative flex items-stretch'>
-            <FeatureAvailable
+            <FeatureValue
               className='border-r border-dashed border-steel-300'
-              isAvailable={feature.availability[language1]}
+              value={feature.value[language1]}
             />
-            <FeatureAvailable isAvailable={feature.availability[language2]} />
+            <FeatureValue value={feature.value[language2]} />
           </div>
         </div>
       );
@@ -139,10 +245,10 @@ const Features = () => {
           </span>
         </td>
         <td className='border-r border-dashed border-steel-300 p-4'>
-          <FeatureAvailable isAvailable={feature.availability[language1]} />
+          <FeatureValue value={feature.value[language1]} />
         </td>
         <td className='rounded-r p-4'>
-          <FeatureAvailable isAvailable={feature.availability[language2]} />
+          <FeatureValue value={feature.value[language2]} />
         </td>
       </tr>
     );
