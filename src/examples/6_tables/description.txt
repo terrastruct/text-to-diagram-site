@@ -1,0 +1,8 @@
+Show the flow of data, concretely, with a diagram of SQL tables pointing to
+each other, otherwise known as an ERD (Entity Relation Diagram).
+
+There's a lot of variation in how the different langauges implement this.
+PlantUML and Mermaid have mature support for different types of endpoints,
+which is showcased here. GraphViz does not support table shapes natively, but a
+replica built with HTML is used instead to get a comparable render. Notice that
+Mermaid declares a new graph type, whereas D2 and PlantUML change the shape.

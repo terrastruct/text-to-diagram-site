@@ -120,6 +120,16 @@ const features: Feature[] = [
     },
   },
   {
+    title: 'Images & Icons',
+    description: 'What are the available options for including images and icons',
+    value: {
+      [D2_LANG]: "Any URL",
+      [MERMAID_LANG]: "FontAwesome. Hacky <img> tags",
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
+  {
     title: 'Sequence diagrams',
     description: 'The best part of UML',
     value: {

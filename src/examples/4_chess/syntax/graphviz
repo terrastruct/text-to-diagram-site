@@ -1,5 +1,4 @@
 digraph G {
-    compound=true;
     // Actors
     hans [label="Hans Niemann"]
 

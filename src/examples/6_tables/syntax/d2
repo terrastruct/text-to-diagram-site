@@ -1,0 +1,30 @@
+car: {
+  shape: sql_table
+
+  id: int {constraint: primary_key}
+  last_updated: timestamp with time zone
+
+  make: string
+  model: string
+  year: int
+}
+
+factory: {
+  shape: sql_table
+
+  id: int {constraint: primary_key}
+
+  country: string
+}
+
+factory_car_support: {
+  shape: sql_table
+
+  id: int {constraint: primary_key}
+
+  factory: int {constraint: foreign_key}
+  car: int {constraint: foreign_key}
+}
+
+factory_car_support.factory -> factory.id
+factory_car_support.car -> car.id

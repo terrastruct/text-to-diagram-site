@@ -35,6 +35,12 @@ import d2_icons_dagre from '@/examples/5_icons/render/d2_dagre.svg';
 import mermaid_icons_dagre from '@/examples/5_icons/render/mermaid_dagre.svg';
 import plantuml_icons_dot from '@/examples/5_icons/render/plantuml_dot.svg';
 
+import d2_tables_tala from '@/examples/6_tables/render/d2_tala.svg';
+import d2_tables_dagre from '@/examples/6_tables/render/d2_dagre.svg';
+import graphviz_tables_dot from '@/examples/6_tables/render/graphviz_dot.svg';
+import mermaid_tables_dagre from '@/examples/6_tables/render/mermaid_dagre.svg';
+import plantuml_tables_dot from '@/examples/6_tables/render/plantuml_dot.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case "d2-basic-tala":
@@ -98,5 +104,16 @@ export function getImage(id: string) {
       return plantuml_icons_dot;
     case "mermaid-icons-dagre":
       return mermaid_icons_dagre;
+
+    case "d2-tables-tala":
+      return d2_tables_tala;
+    case "d2-tables-dagre":
+      return d2_tables_dagre;
+    case "plantuml-tables-dot":
+      return plantuml_tables_dot;
+    case "mermaid-tables-dagre":
+      return mermaid_tables_dagre;
+    case "graphviz-tables-dot":
+      return graphviz_tables_dot;
   }
 }
