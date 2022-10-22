@@ -14,10 +14,9 @@
 
 *Full disclosure: This is created and maintained by Terrastruct. We created D2, and it's
 in our interest to provide anyone evaluating us with an objective comparison against
-others in the space. The only favor granted to D2 is that it shows up as the first
-comparison. We welcome contributions, and if any examples potentially make D2 look bad, we
-will include them without bias (and then furiously improve D2 so the example looks better,
-a right other tools have as well).*
+alternatives. The only favor granted to D2 is that it shows up as the first
+comparison. We welcome contributions. Even ones that make D2 look bad (it'll be motivation
+for us to patch it!).*
 
 ### Currently supported comparisons
 
