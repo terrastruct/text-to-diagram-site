@@ -1,0 +1,14 @@
+graph TD
+    root
+
+    root --> childA(child A)
+    root --> childB(child B)
+    root --> childC(child C)
+
+    childA --> grandChildAA(grand child AA)
+    childA --> grandChildAB(grand child AB)
+    childA --> grandChildAC(grand child AC)
+    childA --> grandChildAD(grand child AD)
+
+    childB --> grandChildBA(grand child BA)
+    grandChildBA --> grandGrandChildBAA(grand grand child BAA)

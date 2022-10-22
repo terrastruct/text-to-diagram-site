@@ -1,0 +1,13 @@
+root
+
+root -> child A
+root -> child B
+root -> child C
+
+child A -> grand child AA
+child A -> grand child AB
+child A -> grand child AC
+child A -> grand child AD
+
+child B -> grand child BA
+grand child BA -> grand grand child BAA

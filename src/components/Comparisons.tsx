@@ -283,10 +283,16 @@ function Comparison(props: ComparisonProps) {
     if (!img) {
       return null;
     }
+    let src = img;
+    // PNG (loaded as object) vs SVG (loaded as asset string)
+    if (typeof img == "object") {
+      src = img.src;
+    }
+
     return (
       <div className='relative flex w-full items-center justify-center'>
         <img
-          src={img.src}
+          src={src}
           className='min-h-[100px] max-h-[900px] object-contain'
           alt={`Example of ${props.lang}`}
         />
@@ -311,7 +317,7 @@ function Comparison(props: ComparisonProps) {
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
-          className='border-b border-solid border-steel-200 p-4 pb-2'
+          className='border-b border-solid border-steel-200 p-4 pb-2 overflow-scroll'
           ref={props.upperRef}
           style={upperStyle}
         >
