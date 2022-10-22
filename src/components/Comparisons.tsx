@@ -322,11 +322,13 @@ function Comparison(props: ComparisonProps) {
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
-          className='border-b border-solid border-steel-200 p-4 pb-2 overflow-scroll'
+          className='border-b border-solid border-steel-200 p-4 pb-2'
           ref={props.upperRef}
           style={upperStyle}
         >
-          <CodeBlock source={props.lang}>{props.text}</CodeBlock>
+          <div className="overflow-scroll h-full">
+            <CodeBlock source={props.lang}>{props.text}</CodeBlock>
+          </div>
         </div>
         <div
           className={classnames(
@@ -407,7 +409,7 @@ export default function Comparisons(props: ComparisonsProps) {
       <div className='mb-16'>
         <div
           id='comparisons'
-          className='flex flex-col justify-center gap-12 sm:flex-row'
+          className='flex flex-col justify-center gap-6 sm:flex-row'
         >
           <Comparison
             index={1}

@@ -121,7 +121,7 @@ const features: Feature[] = [
   },
   {
     title: 'Sequence diagrams',
-    description: '',
+    description: 'The best part of UML',
     value: {
       [D2_LANG]: false,
       [MERMAID_LANG]: true,
@@ -249,7 +249,7 @@ const Features = () => {
     }
 
     return (
-      <tr className='odd:bg-blue-50 even:bg-white' key={feature.title}>
+      <tr className='odd:bg-blue-25 even:bg-white' key={feature.title}>
         <td className='rounded-l border-r border-dashed border-steel-300 p-4 text-left'>
           <span className='flex hidden items-baseline md:inline-block'>
             <span className='font-primary-medium'>{feature.title}:</span>{' '}
