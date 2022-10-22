@@ -17,6 +17,7 @@ import { LangNames, LayoutOrder, LayoutCapitalizedNames } from '@/constant/langs
 import GearIcon from '~/svg/gear.svg';
 import Info from '~/svg/info.svg';
 import Link from '~/svg/link.svg';
+import Sad from '~/svg/sad.svg';
 
 type LangsProps = {
   layoutChoices: string[];
@@ -222,6 +223,7 @@ type ComparisonProps = {
   otherLang: string;
   text: string | undefined;
   renderIDs: any;
+  error: string | undefined;
   setLang: (x: string) => void;
   index: number;
 
@@ -235,6 +237,9 @@ function Comparison(props: ComparisonProps) {
   const [height, setHeight] = React.useState<string>('unset');
 
   const resetLayoutChoices = () => {
+    if (!props.renderIDs) {
+      return;
+    }
     const newLayoutChoices = [];
     for (const k of Object.keys(props.renderIDs)) {
       newLayoutChoices.push(k);
@@ -332,7 +337,12 @@ function Comparison(props: ComparisonProps) {
             }
           )}
         >
-          {renderRender()}
+          {props.error ? <Sad width="8rem" height="8rem"/> : renderRender()}
+          {props.error && (
+            <div className='px-8 text-center mt-8 text-steel-800'>
+              {"Compile error: "}{props.error}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -346,6 +356,9 @@ type Example = {
     [key: string]: string;
   };
   render: {
+    [key: string]: string;
+  };
+  error: {
     [key: string]: string;
   };
 };
@@ -372,6 +385,9 @@ export default function Comparisons(props: ComparisonsProps) {
 
   const langARenderIDs = example.render[langA];
   const langBRenderIDs = example.render[langB];
+
+  const langAError = example.error[langA];
+  const langBError = example.error[langB];
 
   return (
     <div>
@@ -401,6 +417,7 @@ export default function Comparisons(props: ComparisonsProps) {
             upperRef={langAUpperRef}
             otherUpperRef={langBUpperRef}
             renderIDs={langARenderIDs}
+            error={langAError}
             setLang={setLangA}
           />
           <Comparison
@@ -411,6 +428,7 @@ export default function Comparisons(props: ComparisonsProps) {
             upperRef={langBUpperRef}
             otherUpperRef={langAUpperRef}
             renderIDs={langBRenderIDs}
+            error={langBError}
             setLang={setLangB}
           />
         </div>

@@ -50,6 +50,16 @@ const features: Feature[] = [
     },
   },
   {
+    title: 'Container edges',
+    description: 'Edges going from or to containers is very popular in software architecture diagrams.',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: "Hacky",
+      [PLANTUML_LANG]: true,
+    },
+  },
+  {
     title: 'Released in',
     description: 'First year of public release',
     value: {
@@ -95,8 +105,18 @@ const features: Feature[] = [
     value: {
       [D2_LANG]: true,
       [MERMAID_LANG]: true,
-      [GRAPHVIZ_LANG]: false,
+      [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: true,
+    },
+  },
+  {
+    title: 'Friendly error messages',
+    description: 'Not just "syntax error"',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
     },
   },
   {

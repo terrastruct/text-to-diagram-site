@@ -25,6 +25,11 @@ import graphviz_trees_dot from '@/examples/3_trees/render/graphviz_dot.svg';
 import mermaid_trees_dagre from '@/examples/3_trees/render/mermaid_dagre.svg';
 import plantuml_trees_dot from '@/examples/3_trees/render/plantuml_dot.svg';
 
+import d2_chess_tala from '@/examples/4_chess/render/d2_tala.svg';
+import d2_chess_dagre from '@/examples/4_chess/render/d2_dagre.svg';
+import graphviz_chess_dot from '@/examples/4_chess/render/graphviz_dot.svg';
+import plantuml_chess_dot from '@/examples/4_chess/render/plantuml_dot.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case "d2-basic-tala":
@@ -70,5 +75,14 @@ export function getImage(id: string) {
       return mermaid_trees_dagre;
     case "graphviz-trees-dot":
       return graphviz_trees_dot;
+
+    case "d2-chess-tala":
+      return d2_chess_tala;
+    case "d2-chess-dagre":
+      return d2_chess_dagre;
+    case "plantuml-chess-dot":
+      return plantuml_chess_dot;
+    case "graphviz-chess-dot":
+      return graphviz_chess_dot;
   }
 }
