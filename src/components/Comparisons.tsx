@@ -251,6 +251,9 @@ function Comparison(props: ComparisonProps) {
         return 1;
       }
     });
+    if (newLayoutChoices.length === layoutChoices.length &&  newLayoutChoices.every(x => layoutChoices.includes(x))) {
+      return;
+    }
     setLayoutChoices(newLayoutChoices);
     setLayout(newLayoutChoices[0]);
   }
