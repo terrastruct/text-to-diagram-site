@@ -1,23 +1,23 @@
 // This sucks. Tried a fair amount of ways to get dynamic image imports from just reading examples, but couldn't get it to work.
 // Whenever an example is added, this file will also have to be updated
 
-import d2_basic_tala from '@/examples/0_basic/render/d2_tala.png';
-import d2_basic_dagre from '@/examples/0_basic/render/d2_dagre.png';
-import graphviz_basic_dot from '@/examples/0_basic/render/graphviz_dot.png';
-import mermaid_basic_dagre from '@/examples/0_basic/render/mermaid_dagre.png';
-import plantuml_basic_dot from '@/examples/0_basic/render/plantuml_dot.png';
+import d2_basic_tala from '@/examples/0_basic/render/d2_tala.svg';
+import d2_basic_dagre from '@/examples/0_basic/render/d2_dagre.svg';
+import graphviz_basic_dot from '@/examples/0_basic/render/graphviz_dot.svg';
+import mermaid_basic_dagre from '@/examples/0_basic/render/mermaid_dagre.svg';
+import plantuml_basic_dot from '@/examples/0_basic/render/plantuml_dot.svg';
 
-import d2_containers_tala from '@/examples/1_containers/render/d2_tala.png';
-import d2_containers_dagre from '@/examples/1_containers/render/d2_dagre.png';
-import graphviz_containers_dot from '@/examples/1_containers/render/graphviz_dot.png';
-import mermaid_containers_dagre from '@/examples/1_containers/render/mermaid_dagre.png';
-import plantuml_containers_dot from '@/examples/1_containers/render/plantuml_dot.png';
+import d2_containers_tala from '@/examples/1_containers/render/d2_tala.svg';
+import d2_containers_dagre from '@/examples/1_containers/render/d2_dagre.svg';
+import graphviz_containers_dot from '@/examples/1_containers/render/graphviz_dot.svg';
+import mermaid_containers_dagre from '@/examples/1_containers/render/mermaid_dagre.svg';
+import plantuml_containers_dot from '@/examples/1_containers/render/plantuml_dot.svg';
 
-import d2_shapes_tala from '@/examples/2_shapes/render/d2_tala.png';
-import d2_shapes_dagre from '@/examples/2_shapes/render/d2_dagre.png';
-import graphviz_shapes_dot from '@/examples/2_shapes/render/graphviz_dot.png';
-import mermaid_shapes_dagre from '@/examples/2_shapes/render/mermaid_dagre.png';
-import plantuml_shapes_dot from '@/examples/2_shapes/render/plantuml_dot.png';
+import d2_shapes_tala from '@/examples/2_shapes/render/d2_tala.svg';
+import d2_shapes_dagre from '@/examples/2_shapes/render/d2_dagre.svg';
+import graphviz_shapes_dot from '@/examples/2_shapes/render/graphviz_dot.svg';
+import mermaid_shapes_dagre from '@/examples/2_shapes/render/mermaid_dagre.svg';
+import plantuml_shapes_dot from '@/examples/2_shapes/render/plantuml_dot.svg';
 
 import d2_trees_tala from '@/examples/3_trees/render/d2_tala.svg';
 import d2_trees_dagre from '@/examples/3_trees/render/d2_dagre.svg';
