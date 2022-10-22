@@ -1,0 +1,1 @@
+Icons and images are essential to professional-looking diagrams. How do the different tools handle it? Note: PlantUML's icon system is to include pre-packaged icon sets, so the example shown is one that uses their icon set.

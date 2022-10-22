@@ -1,0 +1,28 @@
+@startuml
+
+entity "Car" as car {
+  *id : int <<primary key>>
+  --
+  *last_updated : timestamp with time zone
+  make : string
+  model : string
+  year : int
+}
+
+entity "Factory" as factory {
+  *id : int <<primary key>>
+  --
+  *country : string
+}
+
+entity "Factory Car Support" as factoryCarSupport {
+  *id: int <<primary key>>
+  --
+  factory : int <<FK>>
+  car : int <<FK>>
+}
+
+factoryCarSupport ||..o{ factory
+factoryCarSupport |o..o{ car
+
+@enduml

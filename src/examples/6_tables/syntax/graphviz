@@ -1,0 +1,36 @@
+digraph {
+    // Graphviz does not support tables natively, hack using HTML tables to achieve similar result
+
+    graph [pad="0.5", nodesep="0.5", ranksep="2"];
+    node [shape=plain]
+    rankdir=LR;
+
+
+    Car [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+      <tr><td><i>Car</i></td><td></td><td></td></tr>
+      <tr><td>int</td><td>id</td><td port="1">pk</td></tr>
+      <tr><td>timestamp with time zone</td><td>last_updated</td><td port="2"></td></tr>
+      <tr><td>string</td><td>make</td><td port="3"></td></tr>
+      <tr><td>string</td><td>model</td><td port="4"></td></tr>
+      <tr><td>int</td><td>year</td><td port="5"></td></tr>
+    </table>>];
+
+    Factory [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+      <tr><td><i>Factory</i></td><td></td><td></td></tr>
+      <tr><td port="1">int</td><td>id</td><td>pk</td></tr>
+      <tr><td port="2">string</td><td>country</td><td></td></tr>
+    </table>>];
+
+    FactoryCarSupport [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+      <tr><td><i>Factory Car Support</i></td><td></td><td></td></tr>
+      <tr><td port="1">int</td><td>id</td><td>pk</td></tr>
+      <tr><td port="2">int</td><td>factory</td><td>fk</td></tr>
+      <tr><td port="3">int</td><td>car</td><td>fk</td></tr>
+    </table>>];
+
+    FactoryCarSupport:2 -> Factory:1
+    FactoryCarSupport:3 -> Car:1
+}

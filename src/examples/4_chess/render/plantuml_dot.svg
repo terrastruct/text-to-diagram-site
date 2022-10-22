@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="230px" preserveAspectRatio="none" style="width:1412px;height:230px;background:#FFFFFF;" version="1.1" viewBox="0 0 1412 230" width="1412px" zoomAndPan="magnify"><defs/><g><!--MD5=[7d42c77b2c60eb755bef521213cc03fd]
+cluster defendants--><g id="cluster_defendants"><polygon fill="none" points="16,81.78,26,71.78,1029,71.78,1029,203.78,1019,213.78,16,213.78,16,81.78" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1019" x2="1029" y1="81.78" y2="71.78"/><line style="stroke:#181818;stroke-width:1.0;" x1="16" x2="1019" y1="81.78" y2="81.78"/><line style="stroke:#181818;stroke-width:1.0;" x1="1019" x2="1019" y1="81.78" y2="213.78"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="80" x="478.5" y="98.3152">defendants</text></g><!--MD5=[ea9461ce6f2db1a7316beda884e4a518]
+entity mc--><g id="elem_mc"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="150" x="59" y="143.78"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="189" y="148.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="187" y="150.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="187" y="154.78"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="74" y="177.3152">Magnus Carlsen</text></g><!--MD5=[986204cfc752a781f2a14c9f5d9e4711]
+entity playmagnus--><g id="elem_playmagnus"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172" x="337" y="143.78"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="489" y="148.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="487" y="150.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="487" y="154.78"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="352" y="177.3152">Play Magnus Group</text></g><!--MD5=[eba9cd5d608782dbe0a17c3a12c2c9b7]
+entity chesscom--><g id="elem_chesscom"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="114" x="624" y="143.78"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="718" y="148.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="716" y="150.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="716" y="154.78"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="639" y="177.3152">Chess.com</text></g><!--MD5=[44317bf1b2b9253dc4d58f09afb8e3e6]
+entity naka--><g id="elem_naka"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="845.5" y="143.78"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="984.5" y="148.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="982.5" y="150.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="982.5" y="154.78"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119" x="860.5" y="177.3152">Hikaru Nakamura</text></g><!--MD5=[346d2c472edf4d509a5539a1cfe1a0b5]
+entity hans--><g id="elem_hans"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="139" x="1267.5" y="143.78"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1386.5" y="148.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1384.5" y="150.78"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1384.5" y="154.78"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="1282.5" y="177.3152">Hans Niemann</text></g><!--MD5=[91d2d80f7e9c562d99b38ee1579db4e6]
+link mc to playmagnus--><g id="link_mc_playmagnus"><path d="M209.18,166.78 C246.63,166.78 292.23,166.78 331.68,166.78 " fill="none" id="mc-to-playmagnus" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="336.95,166.78,327.95,162.78,331.95,166.78,327.95,170.78,336.95,166.78" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="91" x="227.5" y="160.3484">Owns majority</text></g><!--MD5=[5d9662ec4d164e6f597cc51457b3df3b]
+link playmagnus to chesscom--><g id="link_playmagnus_chesscom"><path d="M514.6,166.78 C548.95,166.78 587.18,166.78 618.32,166.78 " fill="none" id="playmagnus-chesscom" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="623.65,166.78,614.65,162.78,618.65,166.78,614.65,170.78,623.65,166.78" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="509.27,166.78,518.27,170.78,514.27,166.78,518.27,162.78,509.27,166.78" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="527.5" y="160.3484">Merger talks</text></g><!--MD5=[c2aa47b2fc14a4a615a6f3d6af1fc18b]
+link chesscom to naka--><g id="link_chesscom_naka"><path d="M738.21,166.78 C768.42,166.78 806.11,166.78 839.71,166.78 " fill="none" id="chesscom-to-naka" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="845.06,166.78,836.06,162.78,840.06,166.78,836.06,170.78,845.06,166.78" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="756.25" y="160.3484">Sponsoring</text></g><!--MD5=[dd670f78ee9fce4ade6a9b5139899494]
+link hans to defendants--><g id="link_hans_defendants"><path d="M1285.78,143.67 C1224.35,117.34 1117.57,75.9 1021,60.03 C967.39,51.22 84.65,25.14 43,60.03 C40.7994,61.8738 38.7935,63.8766 36.967,66.0132 C36.0538,67.0814 35.1854,68.1831 34.3599,69.315 C33.9472,69.8809 33.5451,70.4545 33.1536,71.0351 C33.0557,71.1803 32.9585,71.3259 32.8619,71.4719 " fill="none" id="hans-to-defendants" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="32.8619,71.4719,41.1625,66.1709,35.6197,67.3012,34.4893,61.7585,32.8619,71.4719" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="912.5" y="44.3484">'sueing for $100M'</text></g><!--MD5=[c998af209d45d631067ae215bd0834ed]
+link naka to hans--><g id="link_naka_hans"><path d="M1004.93,166.78 C1079.31,166.78 1189.33,166.78 1262.06,166.78 " fill="none" id="naka-to-hans" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1267.24,166.78,1258.24,162.78,1262.24,166.78,1258.24,170.78,1267.24,166.78" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="218" x="1027" y="160.3484">Accused of cheating on his stream</text></g><!--MD5=[21e7d7eda1f8c01e0a4a7631967e5458]
+link mc to hans--><g id="link_mc_hans"><path d="M163.09,143.56 C197.98,117.32 259.38,76.19 320,60.03 C470.52,19.91 867.28,34.77 1021,60.03 C1115.12,75.5 1218.93,115.25 1281.01,141.64 " fill="none" id="mc-to-hans" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1285.78,143.67,1279.0834,136.4481,1281.1843,141.7004,1275.932,143.8013,1285.78,143.67" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="230" x="1037" y="44.3484">Lost then withdrew with accusations</text></g><!--MD5=[7249bb937a5fc301f6f643db8160ef05]
+link chesscom to hans--><g id="link_chesscom_hans"><path d="M703.3,143.41 C730.05,117.26 777.6,76.4 828,60.03 C994.36,6 1200.43,94.88 1290.83,141.31 " fill="none" id="chesscom-to-hans" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1295.31,143.63,1289.1369,135.9558,1290.8639,141.3426,1285.4771,143.0696,1295.31,143.63" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="167" x="738.5" y="44.3484">72 page report of cheating</text></g><!--MD5=[e55df9bbff198ca967c2b17c35cc7289]
+@startuml
+
+' Actors
+[Hans Niemann] as hans
+
+node "defendants" {
+  [Magnus Carlsen] as mc
+  [Play Magnus Group] as playmagnus
+  [Chess.com] as chesscom
+  [Hikaru Nakamura] as naka
+
+  [mc] -> [playmagnus]: Owns majority
+  [playmagnus] <-> [chesscom]: Merger talks
+  [chesscom] -> [naka]: Sponsoring
+}
+
+' Accusations
+[hans] -> defendants: 'sueing for $100M'
+
+' Offense
+[naka] -> [hans]: Accused of cheating on his stream
+[mc] -> [hans]: Lost then withdrew with accusations
+[chesscom] -> [hans]: 72 page report of cheating
+
+@enduml
+
+@startuml
+
+[Hans Niemann] as hans
+
+node "defendants" {
+  [Magnus Carlsen] as mc
+  [Play Magnus Group] as playmagnus
+  [Chess.com] as chesscom
+  [Hikaru Nakamura] as naka
+
+  [mc] -> [playmagnus]: Owns majority
+  [playmagnus] <-> [chesscom]: Merger talks
+  [chesscom] -> [naka]: Sponsoring
+}
+
+[hans] -> defendants: 'sueing for $100M'
+
+[naka] -> [hans]: Accused of cheating on his stream
+[mc] -> [hans]: Lost then withdrew with accusations
+[chesscom] -> [hans]: 72 page report of cheating
+
+@enduml
+
+PlantUML version 1.2022.8(Sun Sep 25 02:00:33 PDT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

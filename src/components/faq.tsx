@@ -34,7 +34,11 @@ const Collapsible = (props: {
 const items = [
   {
     question: 'Where do the renders come from?',
-    answer: `As much as possible, renders are out-of-the-box. If a language has themes, we use the default one. If a language offers styling, we don't add any (unless the example calls for it). For example, Graphviz renders nodes as ovals by default, and PlantUML renders containers as 3d. We don't upscale or crop the images. We don't change fonts to match. If you copy-paste the text into any online-hosted versions of the languages, you should get the same thing.`,
+    answer: `As much as possible, renders are out-of-the-box. If a language has themes, we use the default one. If a language offers styling, we don't add any (unless the example calls for it). For example, Graphviz renders nodes as ovals by default, and PlantUML renders containers as 3d. We don't upscale or crop the images. We don't change fonts to match. If you run any of these examples in the language's CLI, you will get the same render.`
+  },
+  {
+    question: 'Where does the syntax-highlighting come from?',
+    answer: `This site is using the best VSCode syntax highlighter that can be found online for each of the languages. Any odd-ness or differences should be reported upstream (you can find their repositories in this Github).`
   },
   {
     question: 'Who made this?',
@@ -46,7 +50,11 @@ const items = [
   },
   {
     question: 'Future plans?',
-    answer: `We'd like this to be the go-to source of comparisons for text-to-diagram tools and languages. We plan to include tables of feature comparisons, and a live-runner where you can try out any of the tools/languages. After D2 is more stable, we plan to write transpilers to all popular languages for easy imports and exports. When that becomes a reality, you'll be able to write one example and compare across languages.`,
+    answer: `We'll include a live-runner where you can try out any of the tools/languages. After D2 is more stable, we plan to write transpilers to and from all popular languages for easy imports and exports. When that becomes a reality, you'll be able to write one example and compare the equivalent syntax across languages.`,
+  },
+  {
+    question: `I'd like to make a correction/addition.`,
+    answer: `Contributions are welcome -- the Github repository for this is public.`,
   },
 ];
 
