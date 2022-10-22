@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 module.exports = {
   eslint: {
@@ -18,6 +20,9 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
+      include: [
+        path.resolve(__dirname, "public")
+      ],
       issuer: /\.[jt]sx?$/,
       use: [
         {
@@ -28,6 +33,13 @@ module.exports = {
           },
         },
       ],
+    });
+    config.module.rules.push({
+      test: /\.svg$/i,
+      include: [
+        path.resolve(__dirname, "src")
+      ],
+      type: 'asset',
     });
     config.module.rules.push({
       test: /\.wasm$/,

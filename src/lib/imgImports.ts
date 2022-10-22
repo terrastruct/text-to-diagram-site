@@ -19,6 +19,12 @@ import graphviz_shapes_dot from '@/examples/2_shapes/render/graphviz_dot.png';
 import mermaid_shapes_dagre from '@/examples/2_shapes/render/mermaid_dagre.png';
 import plantuml_shapes_dot from '@/examples/2_shapes/render/plantuml_dot.png';
 
+import d2_trees_tala from '@/examples/3_trees/render/d2_tala.svg';
+import d2_trees_dagre from '@/examples/3_trees/render/d2_dagre.svg';
+import graphviz_trees_dot from '@/examples/3_trees/render/graphviz_dot.svg';
+import mermaid_trees_dagre from '@/examples/3_trees/render/mermaid_dagre.svg';
+import plantuml_trees_dot from '@/examples/3_trees/render/plantuml_dot.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case "d2-basic-tala":
@@ -53,5 +59,16 @@ export function getImage(id: string) {
       return mermaid_shapes_dagre;
     case "graphviz-shapes-dot":
       return graphviz_shapes_dot;
+
+    case "d2-trees-tala":
+      return d2_trees_tala;
+    case "d2-trees-dagre":
+      return d2_trees_dagre;
+    case "plantuml-trees-dot":
+      return plantuml_trees_dot;
+    case "mermaid-trees-dagre":
+      return mermaid_trees_dagre;
+    case "graphviz-trees-dot":
+      return graphviz_trees_dot;
   }
 }
