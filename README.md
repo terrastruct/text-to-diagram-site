@@ -10,7 +10,7 @@
 
 ## FAQ
 
-- See [https://text-to-diagram.com#faq]([https://text-to-diagram.com#faq])
+- See [https://text-to-diagram.com#faq](https://text-to-diagram.com#faq)
 
 ## Contributing
 
