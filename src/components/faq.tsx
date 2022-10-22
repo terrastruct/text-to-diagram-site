@@ -64,7 +64,7 @@ export default function FAQ(props: any) {
     <div className='px-4'>
       <div className='w-full'>
         <div className='my-8 flex w-full flex-col items-center sm:my-12'>
-          <h1 className='font-primary-bold text-2xl text-white sm:text-4xl'>
+          <h1 className='font-primary-bold text-2xl text-white sm:text-4xl' id="faq">
             Frequently asked questions
           </h1>
         </div>

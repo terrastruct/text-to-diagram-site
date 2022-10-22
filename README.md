@@ -10,14 +10,7 @@
 
 ## FAQ
 
-- Why isn't [my favorite tool] on here?
-  - The cross-table of examples and tools is big, and nobody's gotten around to it yet.
-    The goal is to reach parity with
-    [https://xosh.org/text-to-diagram/](https://xosh.org/text-to-diagram/), which is the
-    current most comprehensive list on the web, and we're adding in order of popularity.
-- Can I help?
-  - Yes! If you'd like to help support your favorite tool, we welcome pull requests for
-    language additions.
+- See [https://text-to-diagram.com#faq]([https://text-to-diagram.com#faq])
 
 ## Contributing
 
@@ -42,3 +35,9 @@ Please follow the examples in `src/examples`.
 
 If you think there's a significant feature that people want to compare against, feel free
 to add a line in `src/components/Features.tsx`.
+
+### Adding languages
+
+If you wish to add a new language, please fill out as many of the examples and features as
+possible. It's a lot of work, but if there's enough interest in the language, perhaps
+others will help out.
