@@ -12,6 +12,27 @@
   <img align="center" width="754" alt="Screen Shot 2022-10-22 at 3 57 45 PM" src="https://user-images.githubusercontent.com/3120367/197365340-9d4ab821-acd9-4a64-9c9b-035da7f7a6bb.png">
 </p>
 
+*Full disclosure: This is created and maintained by Terrastruct. We created D2, and it's
+in our interest to provide anyone evaluating us with an objective comparison against
+others in the space. The only favor granted to D2 is that it shows up as the first
+comparison. We welcome contributions, and if any examples potentially make D2 look bad, we
+will include them without bias (and then furiously improve D2 so the example looks better,
+a right other tools have as well).*
+
+### Currently supported comparisons
+
+High-quality comparisons take a lot of work, which will only get more as the number of
+examples grows. Other than D2, the currently supported set are what seem to be the most
+popular tools for text-to-diagram.
+
+- D2
+- Mermaid
+- GraphViz
+- PlantUML
+
+For completeness, you may want to also evaluate less popular tools/languages. The best
+catalog we've found is
+[https://xosh.org/text-to-diagram/](https://xosh.org/text-to-diagram/).
 
 ## FAQ
 
