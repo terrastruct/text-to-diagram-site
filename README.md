@@ -8,7 +8,9 @@
   <p>Compare syntax, layouts, outputs between languages for generating diagrams with text.</p>
 </div>
 
-<img width="754" alt="Screen Shot 2022-10-22 at 3 57 45 PM" src="https://user-images.githubusercontent.com/3120367/197365340-9d4ab821-acd9-4a64-9c9b-035da7f7a6bb.png">
+<p align="center">
+  <img align="center" width="754" alt="Screen Shot 2022-10-22 at 3 57 45 PM" src="https://user-images.githubusercontent.com/3120367/197365340-9d4ab821-acd9-4a64-9c9b-035da7f7a6bb.png">
+</p>
 
 
 ## FAQ
