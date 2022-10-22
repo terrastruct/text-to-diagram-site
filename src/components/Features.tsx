@@ -46,7 +46,7 @@ const features: Feature[] = [
       [D2_LANG]: true,
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: true,
-      [PLANTUML_LANG]: "Requires Java",
+      [PLANTUML_LANG]: true,
     },
   },
   {
