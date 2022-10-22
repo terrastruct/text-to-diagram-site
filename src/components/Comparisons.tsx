@@ -296,10 +296,11 @@ function Comparison(props: ComparisonProps) {
 
     return (
       <div className='relative flex w-full items-center justify-center'>
-        <img
+        <embed
+          width='100%'
           src={src}
-          className='min-h-[100px] max-h-[900px] object-contain'
-          alt={`Example of ${props.lang}`}
+          className=''
+          // alt={`Example of ${props.lang}`}
         />
       </div>
     );
