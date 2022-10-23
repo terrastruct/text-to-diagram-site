@@ -1,0 +1,72 @@
+{
+  "name": "D2 Light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#ffffff",
+    "editorLineNumber.foreground": "#7d8295"
+  },
+  "tokenColors": [
+    {
+      "settings": {
+        "foreground": "#0A0F25"
+      }
+    },
+    {
+      "name": "errors",
+      "scope": "invalid.illegal",
+      "settings": {
+        "fontStyle": "bold",
+        "foreground": "#E70D36"
+      }
+    },
+    {
+      "name": "punctuation",
+      "scope": "punctuation",
+      "settings": {
+        "foreground": "#8D56E6"
+      }
+    },
+    {
+      "name": "string",
+      "scope": "string",
+      "settings": {
+        "foreground": "#008847"
+      }
+    },
+    {
+      "name": "escape",
+      "scope": "constant.character.escape",
+      "settings": {
+        "foreground": "#055625"
+      }
+    },
+    {
+      "name": "keys",
+      "scope": "entity.name.tag",
+      "settings": {
+        "foreground": "#0D32B2"
+      }
+    },
+    {
+      "name": "keywords",
+      "scope": "keyword",
+      "settings": {
+        "foreground": "#D91C9A"
+      }
+    },
+    {
+      "name": "number, boolean, null",
+      "scope": "constant",
+      "settings": {
+        "foreground": "#0B8484"
+      }
+    },
+    {
+      "name": "comment",
+      "scope": "comment",
+      "settings": {
+        "foreground": "#6D7284"
+      }
+    }
+  ]
+}

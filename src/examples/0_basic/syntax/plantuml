@@ -1,0 +1,8 @@
+@startuml
+
+[hello]
+[world] as w
+
+[hello] -> w: there
+
+@enduml

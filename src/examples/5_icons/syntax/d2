@@ -1,0 +1,41 @@
+aws: {
+  db: "" {
+    icon: https://icons.terrastruct.com/azure/Databases%20Service%20Color/Azure%20Database%20for%20PostgreSQL%20servers.svg
+    shape: image
+  }
+
+  cache: "" {
+    icon: https://icons.terrastruct.com/azure/_Companies/Azure%20Cache%20Redis%20Product%20icon.svg
+    shape: image
+  }
+
+  ec2: "" {
+    icon: https://icons.terrastruct.com/aws/_Group%20Icons/EC2-instance-container_light-bg.svg
+    shape: image
+  }
+
+  ec2 <-> db: get persisted data
+  ec2 <-> cache: get temporal data
+}
+
+gcloud: {
+  db: "" {
+    icon: https://icons.terrastruct.com/azure/Databases%20Service%20Color/Azure%20Database%20for%20PostgreSQL%20servers.svg
+    shape: image
+  }
+}
+
+aws.db -> gcloud.db: backup
+
+dev: "" {
+  icon: https://icons.terrastruct.com/essentials/005-programmer.svg
+  shape: image
+}
+
+github: "" {
+  icon: https://icons.terrastruct.com/dev/github.svg
+  shape: image
+}
+
+dev -> aws.ec2: ssh
+dev -> github: version control

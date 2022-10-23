@@ -1,0 +1,12 @@
+@startuml
+
+node "parent" {
+  node "childB" {
+    [grandchild]
+  }
+  [childA] -> [grandchild]
+}
+
+[foo] -> [childA]
+
+@enduml

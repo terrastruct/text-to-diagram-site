@@ -1,0 +1,6 @@
+digraph G {
+  hello
+  w [label="world"]
+
+  hello -> w [label="there"]
+}

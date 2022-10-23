@@ -1,0 +1,19 @@
+parse: {
+  shape: step
+}
+compile: {
+  shape: step
+}
+export: {
+  shape: step
+}
+
+parse -> compile -> export
+
+doc: {shape: page}
+cloud: {shape: cloud}
+
+doc -> cloud
+
+db: {shape: cylinder}
+pipeline: {shape: queue}

@@ -1,0 +1,27 @@
+digraph G {
+    // Actors
+    hans [label="Hans Niemann"]
+
+    subgraph cluster_0 {
+        label="defendants"
+
+        mc [label="Magnus Carlsen"]
+        playmagnus [label="Play Magnus Group"]
+        chesscom [label="Chess.com"]
+        naka [label="Hikaru Nakamura"]
+
+
+        mc -> playmagnus [label="Owns majority"]
+        playmagnus -> chesscom [label="Merger talks", dir="both"]
+        chesscom -> naka [label="Sponsoring"]
+    }
+
+    // Accusations
+    // NOTE: hack to get subgraph edges working
+    hans -> mc [lhead=cluster_0, label="sueing for $100M"];
+
+    // Offense
+    naka -> hans [label="Accused of cheating on his stream"]
+    mc -> hans [label="Lost then withdrew with accusations"]
+    chesscom -> hans [label="72 page report of cheating"]
+}

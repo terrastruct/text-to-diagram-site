@@ -1,0 +1,518 @@
+{
+  "#": "*************** AUTO GENERATED DO NOT EDIT BY HAND, SEE d2.tmLanguage.yaml ****************",
+  "name": "d2",
+  "scopeName": "source.d2",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#semicolon"
+    },
+    {
+      "include": "#key_value"
+    },
+    {
+      "include": "#spread_substitution"
+    },
+    {
+      "include": "#key"
+    },
+    {
+      "include": "#error"
+    }
+  ],
+  "repository": {
+    "error": {
+      "name": "invalid.illegal.d2",
+      "match": "\\S[^;\\n]*"
+    },
+    "string": {
+      "patterns": [
+        {
+          "name": "meta.string.quoted.single.d2",
+          "contentName": "string.quoted.single.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.quote.single.d2"
+            }
+          },
+          "begin": "'",
+          "end": "'|(?=\\n)",
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.quoted.double.d2",
+          "contentName": "string.quoted.double.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.quote.double.d2"
+            }
+          },
+          "begin": "\"",
+          "end": "\"|(?=\\n)",
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.shellscript.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)sh[\\n[:space:]]",
+          "end": "\\1\\|",
+          "patterns": [
+            {
+              "include": "source.shell"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.markdown.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)md[\\n[:space:]]",
+          "end": "\\1\\|",
+          "patterns": [
+            {
+              "include": "text.html.markdown.d2"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.js.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)js[\\n[:space:]]",
+          "end": "\\1\\|",
+          "patterns": [
+            {
+              "include": "source.js"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.go.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)go[\\n[:space:]]",
+          "end": "\\1\\|",
+          "patterns": [
+            {
+              "include": "source.go"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.text.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)text[\\n[:space:]]",
+          "end": "\\1\\|"
+        },
+        {
+          "name": "meta.string.block.d2.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)d2[\\n[:space:]]",
+          "end": "\\1\\|",
+          "patterns": [
+            {
+              "include": "source.d2"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.markdown.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)[\\n[:space:]]",
+          "end": "\\1\\|",
+          "patterns": [
+            {
+              "include": "text.html.markdown.d2"
+            }
+          ]
+        },
+        {
+          "name": "meta.string.block.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.block.d2"
+            }
+          },
+          "begin": "\\|([^[:alnum:]]*)[^[:space:]]+[\\n[:space:]]",
+          "end": "\\1\\|"
+        },
+        {
+          "name": "string.unquoted.d2",
+          "begin": "(?=[^[:space:]\\n#;\\[\\]{}|$'\"$])",
+          "end": "(?=\\s*[\\n#;\\[\\]{}|'\"])",
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        }
+      ]
+    },
+    "escape": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.d2",
+          "match": "\\\\U\\h{8}"
+        },
+        {
+          "name": "constant.character.escape.d2",
+          "match": "\\\\u\\h{4}"
+        },
+        {
+          "name": "constant.character.escape.d2",
+          "match": "\\\\[0-7]{3}"
+        },
+        {
+          "name": "constant.character.escape.d2",
+          "match": "\\\\x\\h{2}"
+        },
+        {
+          "name": "constant.character.escape.d2",
+          "match": "\\\\."
+        },
+        {
+          "name": "constant.character.escape.d2",
+          "match": "\\\\\\n"
+        }
+      ]
+    },
+    "line_continuation": {
+      "name": "constant.character.escape.d2",
+      "match": "\\\\\\n"
+    },
+    "key": {
+      "patterns": [
+        {
+          "name": "meta.key.quoted.single.d2",
+          "contentName": "entity.name.tag.quoted.single.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.quote.single.d2"
+            }
+          },
+          "begin": "'",
+          "end": "'|(?=\\n)",
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "meta.key.quoted.double.d2",
+          "contentName": "entity.name.tag.quoted.double.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.quote.double.d2"
+            }
+          },
+          "begin": "\"",
+          "end": "\"|(?=\\n)",
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "meta.key.group.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.parenthesis.d2"
+            }
+          },
+          "begin": "\\(",
+          "end": "\\)(?:\\[(?:[0-9_]+|\\*)\\])?",
+          "patterns": [
+            {
+              "include": "#key"
+            },
+            {
+              "include": "#error"
+            }
+          ]
+        },
+        {
+          "name": "keyword.reserved.d2",
+          "match": "(?:shape|layer|tooltip|icon|constraint|near|opacity|stroke|fill|filled|stroke\\-width|width|height|border\\-radius|source\\-arrowhead|target\\-arrowhead|link|stroke\\-dash|font\\-size|font\\-color|shadow|multiple|3d|animated|class|label|tooltip|style|imports|vars|scenarios|on_click|src|dst)(?=\\s*[\\n#;\\[\\]{}|$'\":.<>*&()]|-+-|-+>|-+\\*)"
+        },
+        {
+          "name": "punctuation.period.d2",
+          "match": "\\."
+        },
+        {
+          "name": "keyword.operator.glob.d2",
+          "match": "\\*"
+        },
+        {
+          "name": "keyword.operator.double_glob.d2",
+          "match": "\\*\\*"
+        },
+        {
+          "name": "keyword.operator.ampersand.d2",
+          "match": "&"
+        },
+        {
+          "name": "entity.name.tag.unquoted.d2",
+          "begin": "(?=[^[:space:]\\n#;\\[\\]{}|$'\":.<>*&()])(?!-+-)(?!-+>)(?!-+\\*)",
+          "end": "(?=\\s*[\\n#;\\[\\]{}|$'\":.<>*&()]|-+-|-+>|-+\\*)",
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "meta.key.edge.d2",
+          "captures": {
+            "0": {
+              "name": "punctuation.edge.d2"
+            }
+          },
+          "begin": "[\\-<>]+",
+          "end": "(?=[^\\-<>])",
+          "patterns": [
+            {
+              "include": "#line_continuation"
+            }
+          ]
+        }
+      ]
+    },
+    "null": {
+      "name": "constant.language.null.d2",
+      "match": "null(?=\\s|\\n)"
+    },
+    "boolean": {
+      "name": "constant.language.boolean.d2",
+      "match": "(?:true|false)(?=\\s|\\n)"
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hexadecimal.d2",
+          "match": "[+-]?0[xX][[:xdigit:]_]*\\.?[[:xdigit:]_]*(?:[eEpP][+-]?[0-9_]*)?(?=\\s|\\n)"
+        },
+        {
+          "name": "constant.numeric.binary.d2",
+          "match": "[+-]?0[bB][01_]*\\.?[01_]*(?:[eEpP][+-]?[0-9_]*)?(?=\\s|\\n)"
+        },
+        {
+          "name": "constant.numeric.octal.d2",
+          "match": "[+-]?0[oO]?[0-7_]*\\.?[0-7_]*(?=\\s|\\n)"
+        },
+        {
+          "name": "constant.numeric.decimal.d2",
+          "match": "[+-]?[0-9_]+(?:[eEpP][+-]?[0-9_]*)?(?=\\s|\\n)"
+        },
+        {
+          "name": "constant.numeric.decimal.d2",
+          "match": "[+-]?[0-9_]*\\.[0-9_]+(?:[eEpP][+-]?[0-9_]*)?(?=\\s|\\n)"
+        }
+      ]
+    },
+    "substitution": {
+      "name": "meta.operator.substitution.d2",
+      "captures": {
+        "0": {
+          "name": "keyword.operator.substitution.d2"
+        }
+      },
+      "begin": "\\$",
+      "end": "(?=\\s*[\\n#;\\[\\]{}|$])",
+      "patterns": [
+        {
+          "include": "#key"
+        }
+      ]
+    },
+    "spread_substitution": {
+      "name": "meta.operator.substitution.d2",
+      "captures": {
+        "0": {
+          "name": "keyword.operator.substitution.d2"
+        }
+      },
+      "begin": "\\.\\.\\.\\$",
+      "end": "(?=\\s*[\\n#;\\[\\]{}|$])",
+      "patterns": [
+        {
+          "include": "#key"
+        }
+      ]
+    },
+    "array": {
+      "name": "meta.array.d2",
+      "captures": {
+        "0": {
+          "name": "punctuation.array.d2"
+        }
+      },
+      "begin": "\\[",
+      "end": "\\]",
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#semicolon"
+        },
+        {
+          "include": "#value"
+        },
+        {
+          "include": "#error"
+        }
+      ]
+    },
+    "map": {
+      "name": "meta.map.d2",
+      "captures": {
+        "0": {
+          "name": "punctuation.map.d2"
+        }
+      },
+      "begin": "\\{",
+      "end": "\\}",
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "key_value": {
+      "name": "meta.key_value.d2",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.colon.d2"
+        }
+      },
+      "begin": ":",
+      "end": "(?=\\s*[\\n#;\\]}])",
+      "patterns": [
+        {
+          "include": "#value"
+        },
+        {
+          "include": "#error"
+        }
+      ]
+    },
+    "value": {
+      "patterns": [
+        {
+          "include": "#boolean"
+        },
+        {
+          "include": "#null"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "include": "#substitution"
+        },
+        {
+          "include": "#array"
+        },
+        {
+          "include": "#map"
+        },
+        {
+          "include": "#string"
+        }
+      ]
+    },
+    "semicolon": {
+      "name": "punctuation.semicolon.d2",
+      "match": ";"
+    },
+    "comment": {
+      "name": "comment.line.number-sign.d2",
+      "match": "#.*"
+    },
+    "debug": {
+      "patterns": [
+        {
+          "name": "invalid.illegal",
+          "match": ".*invalid\\.illegal.*"
+        },
+        {
+          "name": "punctuation",
+          "match": ".*punctuation.*"
+        },
+        {
+          "name": "string",
+          "match": ".*string.*"
+        },
+        {
+          "name": "constant.character.escape",
+          "match": ".*constant\\.character\\.escape.*"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": ".*entity\\.name\\.tag.*"
+        },
+        {
+          "name": "keyword",
+          "match": ".*keyword.*"
+        },
+        {
+          "name": "keyword.operator",
+          "match": ".*keyword\\.operator.*"
+        },
+        {
+          "name": "constant.numeric",
+          "match": ".*constant\\.numeric.*"
+        },
+        {
+          "name": "constant.language.boolean",
+          "match": ".*constant\\.language\\.boolean.*"
+        },
+        {
+          "name": "constant.language.null",
+          "match": ".*constant\\.language\\.null.*"
+        },
+        {
+          "name": "comment",
+          "match": ".*comment.*"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "comments": {
+    "lineComment": "#",
+    "blockComment": ["\"\"\"", "\"\"\""]
+  },
+  "brackets": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["|`", "`|"]
+  ],
+  "autoClosingPairs": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["'", "'"],
+    ["\"", "\""],
+    ["|`", "`|"]
+  ],
+  "surroundingPairs": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["'", "'"],
+    ["\"", "\""]
+  ],
+  "indentationRules": {
+    "increaseIndentPattern": "(?:\\|`+[^|`\\s]*\\s*|[{[]\\s*(?:#.*)?)$",
+    "decreaseIndentPattern": "^\\s*(?:`+\\||[}\\]])"
+  },
+  "onEnterRules": [
+    {
+      "previousLineText": "[^\\\\]$|^$",
+      "beforeText": "\\\\$",
+      "action": { "indent": "indent" }
+    },
+    {
+      "previousLineText": "\\\\$",
+      "beforeText": "[^\\\\]$",
+      "action": { "indent": "outdent" }
+    },
+    {
+      "beforeText": "^\\s*#.*$",
+      "action": { "indent": "none", "appendText": "# " }
+    },
+    {
+      "#": "This instructs VS Code to not align indentation to the indentation of lines above if there is a newline in between. To see what it prevents, delete the action field below to disable this rule and insert '  meow' in a file (two spaces and then the string meow). Now hit enter. Your cursor will be aligned with the m in meow. Now press backspace. Now if you press enter again, VS Code will insert a third line but instead of matching the no indent of the previous empty line, it will match the indent of the last non empty line which means your cursor will again be aligned with the m in meow except with a newline in between. Now follow the same steps with this rule enabled and you'll see that on the third line VS Code respects your outdent on the second line. Your cursor will remain in the first column unaligned with the m in meow.",
+      "beforeText": "^$",
+      "action": { "indent": "none" }
+    }
+  ]
+}

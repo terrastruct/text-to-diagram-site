@@ -1,0 +1,5 @@
+flowchart LR
+    hello
+    w[world]
+
+    hello -->|there| w

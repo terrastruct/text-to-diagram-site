@@ -1,0 +1,1 @@
+The best part of UML. Sequence diagrams are a clear way of showing a sequence of interactions between multiple actors.

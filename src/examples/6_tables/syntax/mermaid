@@ -1,0 +1,24 @@
+erDiagram
+  %% Should be "timestamp with time zone", but Mermaid does not allow multi-word types
+  CAR {
+    int id
+    timestamp lastUpdated
+
+    string make
+    string model
+    int year
+  }
+
+  FACTORY {
+    int id
+    string country
+  }
+
+  FACTORY_CAR_SUPPORT {
+    int id
+    int factory
+    int car
+  }
+
+  FACTORY_CAR_SUPPORT ||--o{ FACTORY: "factory_car_support.factory -> factory.id"
+  FACTORY_CAR_SUPPORT ||--o{ CAR: "factory_car_support.car -> car.id"
