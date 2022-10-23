@@ -336,7 +336,7 @@ function Comparison(props: ComparisonProps) {
         </div>
         <div
           className={classnames(
-            'mt-1 flex grow flex-col items-center justify-center border-t border-solid border-steel-200',
+            'mt-1 flex grow flex-col items-center justify-center border-t border-solid border-steel-200 p-4',
             {
               // Prevent jank effect when changing layouts
               'opacity-0': upperStyle.height === 'unset',
