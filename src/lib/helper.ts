@@ -1,5 +1,5 @@
 export function openGraph(): string {
-  return 'https://text-to-diagram.com/images/og.jpg';
+  return 'https://text-to-diagram.com/images/og.png';
 }
 
 export function getFromLocalStorage(key: string): string | null {

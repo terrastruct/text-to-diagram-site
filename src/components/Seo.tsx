@@ -8,7 +8,7 @@ const defaultMeta = {
   url: 'https://text-to-diagram.com',
   type: 'website',
   robots: 'follow, index',
-  image: 'https://text-to-diagram.com/images/switch.png',
+  image: 'https://text-to-diagram.com/images/og.png',
 };
 
 type SeoProps = {
