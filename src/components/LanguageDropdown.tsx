@@ -105,16 +105,17 @@ export function getCanonicalName(name: string) {
   return 'Unknown';
 }
 
-export function getLogo(name: string) {
+export function getLogo(name: string, isLarge?: boolean) {
+  const pngClassName = isLarge ? 'h-8 w-8' : 'h-5 w-5';
   switch (name) {
     case 'd2':
-      return <D2Logo className='text-xl' />;
+      return <D2Logo className={isLarge ? 'text-3xl' : 'text-xl'} />;
     case 'plantuml':
-      return <img src={PlantUMLLogo.src} className='h-5 w-5' alt={name} />;
+      return <img src={PlantUMLLogo.src} className={pngClassName} alt={name} />;
     case 'mermaid':
-      return <img src={MermaidLogo.src} className='h-5 w-5' alt={name} />;
+      return <img src={MermaidLogo.src} className={pngClassName} alt={name} />;
     case 'graphviz':
-      return <img src={GraphvizLogo.src} className='h-5 w-5' alt={name} />;
+      return <img src={GraphvizLogo.src} className={pngClassName} alt={name} />;
   }
   return 'Unknown';
 }

@@ -14,8 +14,8 @@ import LanguageDropdown, {
 
 import {
   LangNames,
-  LayoutOrder,
   LayoutCapitalizedNames,
+  LayoutOrder,
 } from '@/constant/langs';
 
 import GearIcon from '~/svg/gear.svg';
@@ -75,7 +75,7 @@ function Langs(props: LangsProps) {
       <div className='bg-white p-4'>
         <div className='flex flex-col justify-start text-steel-900'>
           <h2 className='flex items-center justify-start gap-2 pb-2 font-primary-regular'>
-            {getLogo(props.activeLang, 'text-3xl')}{' '}
+            {getLogo(props.activeLang, true)}{' '}
             {getCanonicalName(props.activeLang)}
           </h2>
           <div className='text-steel-800'>{description}</div>
@@ -202,21 +202,15 @@ function Example(props: ExampleProps) {
   return (
     <div
       className={classnames(
-        'flex h-20 flex-col items-center justify-center rounded-md font-primary-medium text-steel-900 shadow-light',
+        'flex h-12 flex-col items-center justify-center rounded-md bg-white font-primary-medium text-steel-900',
         {
-          'border border-solid border-steel-200': props.active,
-          'cursor-pointer': !props.active,
-          'opacity-50': !props.active,
-          'bg-steel-100': !props.active,
+          'border border-solid border-blue-300 drop-shadow-card-small':
+            props.active,
+          'cursor-pointer bg-steel-100 text-steel-550': !props.active,
         }
       )}
       onClick={() => !props.active && props.setExample(props.name)}
     >
-      {props.active && (
-        <div className='border border-solid border-blue-300 px-1 text-xs tracking-wider text-violet-900'>
-          SELECTED
-        </div>
-      )}
       {props.name}
     </div>
   );
@@ -322,7 +316,7 @@ function Comparison(props: ComparisonProps) {
   }
 
   return (
-    <div className='flex w-full flex-1 flex-col rounded-md border border-solid border-steel-200 text-left sm:w-1/2'>
+    <div className='flex flex-col rounded-md border border-solid border-steel-200 text-left'>
       <Langs
         index={props.index}
         activeLang={props.lang}
@@ -405,24 +399,23 @@ export default function Comparisons(props: ComparisonsProps) {
 
   return (
     <div>
-      <div id='choices' className='grid grid-cols-3 gap-4'>
-        {props.examples.map((e) => (
-          <Example
-            name={e.name}
-            key={e.name}
-            active={exampleName === e.name}
-            setExample={setExampleName}
-          />
-        ))}
+      <div className='mb-8 rounded-md bg-steel-50 p-4'>
+        <div id='choices' className='grid grid-cols-3 gap-2 mobile:grid-cols-4'>
+          {props.examples.map((e) => (
+            <Example
+              name={e.name}
+              key={e.name}
+              active={exampleName === e.name}
+              setExample={setExampleName}
+            />
+          ))}
+        </div>
+        <p id='description' className='text-l mt-4 text-left text-steel-800'>
+          <strong>{example.name}</strong>: {example.description}
+        </p>
       </div>
-      <p id='description' className='text-l my-8 text-left text-steel-800'>
-        {example.description}
-      </p>
       <div className='mb-16'>
-        <div
-          id='comparisons'
-          className='flex flex-col justify-center gap-6 sm:flex-row'
-        >
+        <div id='comparisons' className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
           <Comparison
             index={1}
             lang={langA}

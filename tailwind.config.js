@@ -57,8 +57,8 @@ module.exports = {
         },
         steel: {
           25: '#FBFBFD',
-          50: '#F6F6FA',
-          100: '#EFF1F7',
+          50: '#F8F8FB',
+          100: '#EEF1F6',
           200: '#DEE1EB',
           300: '#CACEDB',
           400: '#A6ABBC',

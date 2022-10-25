@@ -142,3 +142,7 @@
   filter: brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(3335%)
     hue-rotate(227deg) brightness(88%) contrast(94%);
 }
+
+strong {
+  font-family: SourceSansProSemiBold, Arial, Sans-Serif;
+}
