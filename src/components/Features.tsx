@@ -215,7 +215,7 @@ const FeatureValue = (props: { value: any; className?: string }) => {
   return (
     <div
       className={classnames(
-        'flex h-full w-full items-center justify-center',
+        'flex w-full items-center justify-center px-2',
         props.className
       )}
     >
@@ -244,17 +244,15 @@ const Features = () => {
           className='flex w-full flex-col p-4 odd:bg-steel-100 even:bg-white'
           key={feature.title}
         >
-          <span className='flex items-center justify-center gap-2'>
-            <span className='mb-2 font-primary-medium text-lg'>
-              {feature.title}
-            </span>
+          <span className='mb-2 flex items-center justify-center gap-2'>
+            <span className='font-primary-medium text-lg'>{feature.title}</span>
             <Tippy content={feature.description} arrow={false}>
               <div>
                 <InfoIcon />
               </div>
             </Tippy>
           </span>
-          <div className='relative flex items-stretch'>
+          <div className='relative flex items-stretch justify-center'>
             <FeatureValue
               className='border-r border-dashed border-steel-300'
               value={feature.value[language1]}
