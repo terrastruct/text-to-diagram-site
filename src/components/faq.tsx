@@ -75,7 +75,7 @@ export default function FAQ() {
         </div>
       </div>
       <div
-        className={classNames('layout min-h-[32rem] w-full', {
+        className={classNames('layout w-full pb-16', {
           'h-[40rem]': openQuestion !== -1,
         })}
       >
