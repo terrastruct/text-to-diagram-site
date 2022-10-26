@@ -386,11 +386,11 @@ function Comparison(props: ComparisonProps) {
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
-          className='border-b border-solid border-steel-200 p-4 pb-2'
+          className='border-b border-solid border-steel-200'
           ref={props.upperRef}
           style={upperStyle}
         >
-          <div className='h-full overflow-scroll'>
+          <div className='h-full overflow-scroll p-4'>
             <CodeBlock source={props.lang}>{props.text}</CodeBlock>
           </div>
         </div>
