@@ -177,9 +177,11 @@ function Langs(props: LangsProps) {
         <button
           type='button'
           className={classnames(
-            'flex h-6 w-6 items-center justify-center rounded-md p-0 hover:bg-blue-50',
+            'flex h-6 w-6 items-center justify-center rounded-md p-0',
             {
               'bg-blue-50 shadow-sm': layoutEngineShown,
+              'hover:bg-blue-50': props.layoutChoices.length > 0,
+              'cursor-default opacity-50': props.layoutChoices.length === 0,
             }
           )}
           id='menu-button'
@@ -193,7 +195,7 @@ function Langs(props: LangsProps) {
             })}
           />
         </button>
-        {layoutEngineShown && (
+        {props.layoutChoices.length > 0 && layoutEngineShown && (
           <div
             className='absolute left-0 z-10 mt-1 w-32 origin-top-left overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
             role='menu'
@@ -294,14 +296,15 @@ function Comparison(props: ComparisonProps) {
     }
   }, [router, props.name, layoutChoices]);
 
-  const resetLayoutChoices = () => {
+  React.useEffect(() => {
     if (!props.renderIDs) {
+      if (layoutChoices.length > 0) {
+        setLayoutChoices([]);
+        setLayout('');
+      }
       return;
     }
-    const newLayoutChoices = [];
-    for (const k of Object.keys(props.renderIDs)) {
-      newLayoutChoices.push(k);
-    }
+    const newLayoutChoices = Object.keys(props.renderIDs);
     newLayoutChoices.sort((a, b) => {
       if (LayoutOrder.indexOf(a) < LayoutOrder.indexOf(b)) {
         return -1;
@@ -317,27 +320,22 @@ function Comparison(props: ComparisonProps) {
     }
     setLayoutChoices(newLayoutChoices);
     setLayout(newLayoutChoices[0]);
-  };
-
-  React.useEffect(() => {
-    resetLayoutChoices();
-    return () => {};
-  }, [props.renderIDs, setLayout]);
+  }, [props.renderIDs, layoutChoices]);
 
   React.useEffect(() => {
     setHeight('unset');
-    return () => {};
   }, [props.lang, props.otherLang, props.text]);
 
   React.useEffect(() => {
-    if (!props.upperRef.current || !props.otherUpperRef.current) {
-      return;
-    }
-    const myHeight = props.upperRef.current.getBoundingClientRect().height;
-    const otherHeight =
-      props.otherUpperRef.current.getBoundingClientRect().height;
-    setHeight(Math.max(myHeight, otherHeight) + 'px');
-    return () => {};
+    setTimeout(() => {
+      if (!props.upperRef.current || !props.otherUpperRef.current) {
+        return;
+      }
+      const myHeight = props.upperRef.current.getBoundingClientRect().height;
+      const otherHeight =
+        props.otherUpperRef.current.getBoundingClientRect().height;
+      setHeight(Math.max(myHeight, otherHeight) + 'px');
+    });
   }, [props.upperRef, props.otherUpperRef, height]);
 
   const renderRender = () => {
