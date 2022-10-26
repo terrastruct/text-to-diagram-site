@@ -1,5 +1,7 @@
 import Tippy from '@tippyjs/react';
 import classnames from 'classnames';
+import Capitalize from 'lodash/capitalize';
+import { NextRouter, useRouter } from 'next/router';
 import React from 'react';
 
 import 'tippy.js/dist/tippy.css';
@@ -23,6 +25,38 @@ import Info from '~/svg/info.svg';
 import Link from '~/svg/link.svg';
 import Sad from '~/svg/sad.svg';
 
+const setQueryParam = (
+  router: NextRouter,
+  param: { [key: string]: string | undefined }
+) => {
+  const query = { ...router.query, ...param };
+  router.replace(
+    {
+      query,
+    },
+    undefined,
+    { shallow: true }
+  );
+};
+
+const removeQueryParam = (router: NextRouter, key: string) => {
+  if (!router.isReady) {
+    return;
+  }
+  const query = { ...router.query };
+  if (!query) {
+    return;
+  }
+  delete query[key];
+  router.replace(
+    {
+      query,
+    },
+    undefined,
+    { shallow: true }
+  );
+};
+
 type LangsProps = {
   layoutChoices: string[];
   activeLayout: string;
@@ -30,6 +64,7 @@ type LangsProps = {
   activeLang: string;
   setActiveLang: (x: string) => void;
   index: number;
+  comparisonName: string;
 };
 
 function Langs(props: LangsProps) {
@@ -88,9 +123,12 @@ function Langs(props: LangsProps) {
     name: string;
     active: boolean;
     setLayout: (layout: string) => void;
+    comparisonName: string;
   };
 
   const Layout = (props: LayoutProps) => {
+    const router = useRouter();
+
     return (
       <div
         className={classnames(
@@ -99,7 +137,9 @@ function Langs(props: LangsProps) {
             'cursor-pointer hover:bg-steel-50': !props.active,
           }
         )}
-        onClick={() => props.setLayout(props.name)}
+        onClick={() => {
+          setQueryParam(router, { [props.comparisonName]: props.name });
+        }}
       >
         <input type='radio' checked={props.active} readOnly />
         {LayoutCapitalizedNames[props.name]}
@@ -118,6 +158,7 @@ function Langs(props: LangsProps) {
               name={lo}
               setLayout={props.setActiveLayout}
               active={props.activeLayout === lo}
+              comparisonName={props.comparisonName}
             />
           );
         })}
@@ -211,7 +252,7 @@ function Example(props: ExampleProps) {
       )}
       onClick={() => !props.active && props.setExample(props.name)}
     >
-      {props.name}
+      {Capitalize(props.name)}
     </div>
   );
 }
@@ -219,6 +260,7 @@ function Example(props: ExampleProps) {
 type ComparisonProps = {
   lang: string;
   otherLang: string;
+  name: string;
   text: string | undefined;
   renderIDs: any;
   error: string | undefined;
@@ -230,9 +272,27 @@ type ComparisonProps = {
 };
 
 function Comparison(props: ComparisonProps) {
+  const router = useRouter();
+
   const [layoutChoices, setLayoutChoices] = React.useState<string[]>([]);
   const [layout, setLayout] = React.useState<string>('');
   const [height, setHeight] = React.useState<string>('unset');
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const layoutParam = searchParams.get(props.name);
+    if (!layoutParam) {
+      return;
+    }
+    const index = layoutChoices.findIndex(
+      (lo) => lo.toLowerCase() === layoutParam.toLowerCase()
+    );
+    if (index !== -1) {
+      setLayout(layoutChoices[index]);
+    } else {
+      removeQueryParam(router, props.name);
+    }
+  }, [router, props.name, layoutChoices]);
 
   const resetLayoutChoices = () => {
     if (!props.renderIDs) {
@@ -324,6 +384,7 @@ function Comparison(props: ComparisonProps) {
         layoutChoices={layoutChoices}
         activeLayout={layout}
         setActiveLayout={setLayout}
+        comparisonName={props.name}
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
@@ -376,12 +437,74 @@ type ComparisonsProps = {
 };
 
 export default function Comparisons(props: ComparisonsProps) {
+  const router = useRouter();
+
   const [langA, setLangA] = React.useState(LangNames[0]);
   const [langB, setLangB] = React.useState(LangNames[1]);
-  const [exampleName, setExampleName] = React.useState('Basic');
+  const [exampleName, setExampleName] = React.useState('basic');
 
+  const comparisonsRef = React.useRef<HTMLDivElement>(null);
   const langAUpperRef = React.useRef<HTMLDivElement>(null);
   const langBUpperRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const example = searchParams.get('example');
+    if (!example) {
+      return;
+    }
+    const ex = props.examples.find(
+      (ex) => ex.name.toLowerCase() === example.toLowerCase()
+    );
+    if (!ex) {
+      removeQueryParam(router, 'example');
+    }
+  }, [props.examples, router]);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const example = searchParams.get('example');
+    if (example) {
+      const ex = props.examples.find(
+        (ex) => ex.name.toLowerCase() === example.toLowerCase()
+      );
+      if (ex) {
+        setExampleName(ex.name);
+        if (!comparisonsRef.current) {
+          return;
+        }
+        comparisonsRef.current.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [props.examples]);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const a = searchParams.get('a');
+    if (a) {
+      const index = LangNames.findIndex(
+        (lang) => lang.toLowerCase() === a.toLowerCase()
+      );
+      if (index !== -1) {
+        setLangA(LangNames[index]);
+      } else {
+        removeQueryParam(router, 'a');
+      }
+    }
+    const b = searchParams.get('b');
+    if (b) {
+      const index = LangNames.findIndex(
+        (lang) => lang.toLowerCase() === b.toLowerCase()
+      );
+      if (index !== -1) {
+        setLangB(LangNames[index]);
+      } else {
+        removeQueryParam(router, 'b');
+      }
+    }
+  }, [router]);
 
   const example = props.examples.find((c) => c.name === exampleName);
   if (!example) {
@@ -398,7 +521,14 @@ export default function Comparisons(props: ComparisonsProps) {
   const langBError = example.error[langB];
 
   return (
-    <div>
+    <div ref={comparisonsRef}>
+      <div className='mt-4 mb-4 flex flex-col items-center'>
+        <h2 className=''>Which diagramming tool is right for you?</h2>
+        <div className='text-l mt-4 text-steel-800'>
+          Compare the syntax and renders of various languages that produce
+          diagrams from text.
+        </div>
+      </div>
       <div className='mb-8 rounded-md bg-steel-50 p-4'>
         <div id='choices' className='grid grid-cols-3 gap-2 mobile:grid-cols-4'>
           {props.examples.map((e) => (
@@ -406,12 +536,18 @@ export default function Comparisons(props: ComparisonsProps) {
               name={e.name}
               key={e.name}
               active={exampleName === e.name}
-              setExample={setExampleName}
+              setExample={(ex) => {
+                if (!router) {
+                  return;
+                }
+                setExampleName(ex);
+                setQueryParam(router, { example: ex });
+              }}
             />
           ))}
         </div>
         <p id='description' className='text-l mt-4 text-left text-steel-800'>
-          <strong>{example.name}</strong>: {example.description}
+          <strong>{Capitalize(example.name)}</strong>: {example.description}
         </p>
       </div>
       <div className='mb-16'>
@@ -425,7 +561,11 @@ export default function Comparisons(props: ComparisonsProps) {
             otherUpperRef={langBUpperRef}
             renderIDs={langARenderIDs}
             error={langAError}
-            setLang={setLangA}
+            setLang={(lang) => {
+              removeQueryParam(router, 'layout_a');
+              setQueryParam(router, { a: lang });
+            }}
+            name='layout_a'
           />
           <Comparison
             index={2}
@@ -436,7 +576,11 @@ export default function Comparisons(props: ComparisonsProps) {
             otherUpperRef={langAUpperRef}
             renderIDs={langBRenderIDs}
             error={langBError}
-            setLang={setLangB}
+            setLang={(lang) => {
+              removeQueryParam(router, 'layout_b');
+              setQueryParam(router, { b: lang });
+            }}
+            name='layout_b'
           />
         </div>
       </div>
