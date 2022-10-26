@@ -57,13 +57,6 @@ export default function HomePage(props: any) {
               />
               <div className='z-10 mt-auto h-[24px] w-full bg-hero-shadow' />
             </div>
-            <div className='mt-12 flex flex-col items-center px-4'>
-              <h2 className=''>Which diagramming tool is right for you?</h2>
-              <div className='text-l mt-4 text-steel-800'>
-                Compare the syntax and renders of various languages that produce
-                diagrams from text.
-              </div>
-            </div>
             <div className='layout pt-8'>
               <Comparisons examples={props.examples} />
             </div>
@@ -111,8 +104,7 @@ export const getStaticProps: GetStaticProps = async () => {
       path.resolve(root, exampleName, 'description.txt'),
       { encoding: 'utf8' }
     );
-    let name = exampleName.replace(/[0-9]+_/g, '');
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+    const name = exampleName.replace(/[0-9]+_/g, '');
     const example: any = {
       name,
       description,

@@ -1,5 +1,7 @@
 import Tippy from '@tippyjs/react';
 import classnames from 'classnames';
+import Capitalize from 'lodash/capitalize';
+import { NextRouter, useRouter } from 'next/router';
 import React from 'react';
 
 import 'tippy.js/dist/tippy.css';
@@ -14,14 +16,46 @@ import LanguageDropdown, {
 
 import {
   LangNames,
-  LayoutOrder,
   LayoutCapitalizedNames,
+  LayoutOrder,
 } from '@/constant/langs';
 
 import GearIcon from '~/svg/gear.svg';
 import Info from '~/svg/info.svg';
 import Link from '~/svg/link.svg';
 import Sad from '~/svg/sad.svg';
+
+const setQueryParam = (
+  router: NextRouter,
+  param: { [key: string]: string | undefined }
+) => {
+  const query = { ...router.query, ...param };
+  router.replace(
+    {
+      query,
+    },
+    undefined,
+    { shallow: true }
+  );
+};
+
+const removeQueryParam = (router: NextRouter, key: string) => {
+  if (!router.isReady) {
+    return;
+  }
+  const query = { ...router.query };
+  if (!query) {
+    return;
+  }
+  delete query[key];
+  router.replace(
+    {
+      query,
+    },
+    undefined,
+    { shallow: true }
+  );
+};
 
 type LangsProps = {
   layoutChoices: string[];
@@ -30,6 +64,7 @@ type LangsProps = {
   activeLang: string;
   setActiveLang: (x: string) => void;
   index: number;
+  comparisonName: string;
 };
 
 function Langs(props: LangsProps) {
@@ -75,7 +110,7 @@ function Langs(props: LangsProps) {
       <div className='bg-white p-4'>
         <div className='flex flex-col justify-start text-steel-900'>
           <h2 className='flex items-center justify-start gap-2 pb-2 font-primary-regular'>
-            {getLogo(props.activeLang, 'text-3xl')}{' '}
+            {getLogo(props.activeLang, true)}{' '}
             {getCanonicalName(props.activeLang)}
           </h2>
           <div className='text-steel-800'>{description}</div>
@@ -88,9 +123,12 @@ function Langs(props: LangsProps) {
     name: string;
     active: boolean;
     setLayout: (layout: string) => void;
+    comparisonName: string;
   };
 
   const Layout = (props: LayoutProps) => {
+    const router = useRouter();
+
     return (
       <div
         className={classnames(
@@ -99,7 +137,9 @@ function Langs(props: LangsProps) {
             'cursor-pointer hover:bg-steel-50': !props.active,
           }
         )}
-        onClick={() => props.setLayout(props.name)}
+        onClick={() => {
+          setQueryParam(router, { [props.comparisonName]: props.name });
+        }}
       >
         <input type='radio' checked={props.active} readOnly />
         {LayoutCapitalizedNames[props.name]}
@@ -118,6 +158,7 @@ function Langs(props: LangsProps) {
               name={lo}
               setLayout={props.setActiveLayout}
               active={props.activeLayout === lo}
+              comparisonName={props.comparisonName}
             />
           );
         })}
@@ -136,9 +177,11 @@ function Langs(props: LangsProps) {
         <button
           type='button'
           className={classnames(
-            'flex h-6 w-6 items-center justify-center rounded-md p-0 hover:bg-blue-50',
+            'flex h-6 w-6 items-center justify-center rounded-md p-0',
             {
               'bg-blue-50 shadow-sm': layoutEngineShown,
+              'hover:bg-blue-50': props.layoutChoices.length > 0,
+              'cursor-default opacity-50': props.layoutChoices.length === 0,
             }
           )}
           id='menu-button'
@@ -152,7 +195,7 @@ function Langs(props: LangsProps) {
             })}
           />
         </button>
-        {layoutEngineShown && (
+        {props.layoutChoices.length > 0 && layoutEngineShown && (
           <div
             className='absolute left-0 z-10 mt-1 w-32 origin-top-left overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
             role='menu'
@@ -202,22 +245,16 @@ function Example(props: ExampleProps) {
   return (
     <div
       className={classnames(
-        'flex h-20 flex-col items-center justify-center rounded-md font-primary-medium text-steel-900 shadow-light',
+        'flex h-12 flex-col items-center justify-center rounded-md bg-white font-primary-medium text-steel-900',
         {
-          'border border-solid border-steel-200': props.active,
-          'cursor-pointer': !props.active,
-          'opacity-50': !props.active,
-          'bg-steel-100': !props.active,
+          'border border-solid border-blue-300 drop-shadow-card-small':
+            props.active,
+          'cursor-pointer bg-steel-100 text-steel-550': !props.active,
         }
       )}
       onClick={() => !props.active && props.setExample(props.name)}
     >
-      {props.active && (
-        <div className='border border-solid border-blue-300 px-1 text-xs tracking-wider text-violet-900'>
-          SELECTED
-        </div>
-      )}
-      {props.name}
+      {Capitalize(props.name)}
     </div>
   );
 }
@@ -225,6 +262,7 @@ function Example(props: ExampleProps) {
 type ComparisonProps = {
   lang: string;
   otherLang: string;
+  name: string;
   text: string | undefined;
   renderIDs: any;
   error: string | undefined;
@@ -236,18 +274,37 @@ type ComparisonProps = {
 };
 
 function Comparison(props: ComparisonProps) {
+  const router = useRouter();
+
   const [layoutChoices, setLayoutChoices] = React.useState<string[]>([]);
   const [layout, setLayout] = React.useState<string>('');
   const [height, setHeight] = React.useState<string>('unset');
 
-  const resetLayoutChoices = () => {
-    if (!props.renderIDs) {
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const layoutParam = searchParams.get(props.name);
+    if (!layoutParam) {
       return;
     }
-    const newLayoutChoices = [];
-    for (const k of Object.keys(props.renderIDs)) {
-      newLayoutChoices.push(k);
+    const index = layoutChoices.findIndex(
+      (lo) => lo.toLowerCase() === layoutParam.toLowerCase()
+    );
+    if (index !== -1) {
+      setLayout(layoutChoices[index]);
+    } else {
+      removeQueryParam(router, props.name);
     }
+  }, [router, props.name, layoutChoices]);
+
+  React.useEffect(() => {
+    if (!props.renderIDs) {
+      if (layoutChoices.length > 0) {
+        setLayoutChoices([]);
+        setLayout('');
+      }
+      return;
+    }
+    const newLayoutChoices = Object.keys(props.renderIDs);
     newLayoutChoices.sort((a, b) => {
       if (LayoutOrder.indexOf(a) < LayoutOrder.indexOf(b)) {
         return -1;
@@ -263,27 +320,22 @@ function Comparison(props: ComparisonProps) {
     }
     setLayoutChoices(newLayoutChoices);
     setLayout(newLayoutChoices[0]);
-  };
-
-  React.useEffect(() => {
-    resetLayoutChoices();
-    return () => {};
-  }, [props.renderIDs, setLayout]);
+  }, [props.renderIDs, layoutChoices]);
 
   React.useEffect(() => {
     setHeight('unset');
-    return () => {};
   }, [props.lang, props.otherLang, props.text]);
 
   React.useEffect(() => {
-    if (!props.upperRef.current || !props.otherUpperRef.current) {
-      return;
-    }
-    const myHeight = props.upperRef.current.getBoundingClientRect().height;
-    const otherHeight =
-      props.otherUpperRef.current.getBoundingClientRect().height;
-    setHeight(Math.max(myHeight, otherHeight) + 'px');
-    return () => {};
+    setTimeout(() => {
+      if (!props.upperRef.current || !props.otherUpperRef.current) {
+        return;
+      }
+      const myHeight = props.upperRef.current.getBoundingClientRect().height;
+      const otherHeight =
+        props.otherUpperRef.current.getBoundingClientRect().height;
+      setHeight(Math.max(myHeight, otherHeight) + 'px');
+    });
   }, [props.upperRef, props.otherUpperRef, height]);
 
   const renderRender = () => {
@@ -322,7 +374,7 @@ function Comparison(props: ComparisonProps) {
   }
 
   return (
-    <div className='flex w-full flex-1 flex-col rounded-md border border-solid border-steel-200 text-left sm:w-1/2'>
+    <div className='flex flex-col rounded-md border border-solid border-steel-200 text-left'>
       <Langs
         index={props.index}
         activeLang={props.lang}
@@ -330,14 +382,15 @@ function Comparison(props: ComparisonProps) {
         layoutChoices={layoutChoices}
         activeLayout={layout}
         setActiveLayout={setLayout}
+        comparisonName={props.name}
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
-          className='border-b border-solid border-steel-200 p-4 pb-2'
+          className='border-b border-solid border-steel-200'
           ref={props.upperRef}
           style={upperStyle}
         >
-          <div className='h-full overflow-scroll'>
+          <div className='h-full overflow-scroll p-4'>
             <CodeBlock source={props.lang}>{props.text}</CodeBlock>
           </div>
         </div>
@@ -382,12 +435,74 @@ type ComparisonsProps = {
 };
 
 export default function Comparisons(props: ComparisonsProps) {
+  const router = useRouter();
+
   const [langA, setLangA] = React.useState(LangNames[0]);
   const [langB, setLangB] = React.useState(LangNames[1]);
-  const [exampleName, setExampleName] = React.useState('Basic');
+  const [exampleName, setExampleName] = React.useState('basic');
 
+  const comparisonsRef = React.useRef<HTMLDivElement>(null);
   const langAUpperRef = React.useRef<HTMLDivElement>(null);
   const langBUpperRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const example = searchParams.get('example');
+    if (!example) {
+      return;
+    }
+    const ex = props.examples.find(
+      (ex) => ex.name.toLowerCase() === example.toLowerCase()
+    );
+    if (!ex) {
+      removeQueryParam(router, 'example');
+    }
+  }, [props.examples, router]);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const example = searchParams.get('example');
+    if (example) {
+      const ex = props.examples.find(
+        (ex) => ex.name.toLowerCase() === example.toLowerCase()
+      );
+      if (ex) {
+        setExampleName(ex.name);
+        if (!comparisonsRef.current) {
+          return;
+        }
+        comparisonsRef.current.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [props.examples]);
+
+  React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const a = searchParams.get('a');
+    if (a) {
+      const index = LangNames.findIndex(
+        (lang) => lang.toLowerCase() === a.toLowerCase()
+      );
+      if (index !== -1) {
+        setLangA(LangNames[index]);
+      } else {
+        removeQueryParam(router, 'a');
+      }
+    }
+    const b = searchParams.get('b');
+    if (b) {
+      const index = LangNames.findIndex(
+        (lang) => lang.toLowerCase() === b.toLowerCase()
+      );
+      if (index !== -1) {
+        setLangB(LangNames[index]);
+      } else {
+        removeQueryParam(router, 'b');
+      }
+    }
+  }, [router]);
 
   const example = props.examples.find((c) => c.name === exampleName);
   if (!example) {
@@ -404,25 +519,37 @@ export default function Comparisons(props: ComparisonsProps) {
   const langBError = example.error[langB];
 
   return (
-    <div>
-      <div id='choices' className='grid grid-cols-3 gap-4'>
-        {props.examples.map((e) => (
-          <Example
-            name={e.name}
-            key={e.name}
-            active={exampleName === e.name}
-            setExample={setExampleName}
-          />
-        ))}
+    <div ref={comparisonsRef}>
+      <div className='mt-4 mb-4 flex flex-col items-center'>
+        <h2 className=''>Which diagramming tool is right for you?</h2>
+        <div className='text-l mt-4 text-steel-800'>
+          Compare the syntax and renders of various languages that produce
+          diagrams from text.
+        </div>
       </div>
-      <p id='description' className='text-l my-8 text-left text-steel-800'>
-        {example.description}
-      </p>
+      <div className='mb-8 rounded-md bg-steel-50 p-4'>
+        <div id='choices' className='grid grid-cols-3 gap-2 mobile:grid-cols-4'>
+          {props.examples.map((e) => (
+            <Example
+              name={e.name}
+              key={e.name}
+              active={exampleName === e.name}
+              setExample={(ex) => {
+                if (!router) {
+                  return;
+                }
+                setExampleName(ex);
+                setQueryParam(router, { example: ex });
+              }}
+            />
+          ))}
+        </div>
+        <p id='description' className='text-l mt-4 text-left text-steel-800'>
+          <strong>{Capitalize(example.name)}</strong>: {example.description}
+        </p>
+      </div>
       <div className='mb-16'>
-        <div
-          id='comparisons'
-          className='flex flex-col justify-center gap-6 sm:flex-row'
-        >
+        <div id='comparisons' className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
           <Comparison
             index={1}
             lang={langA}
@@ -432,7 +559,11 @@ export default function Comparisons(props: ComparisonsProps) {
             otherUpperRef={langBUpperRef}
             renderIDs={langARenderIDs}
             error={langAError}
-            setLang={setLangA}
+            setLang={(lang) => {
+              removeQueryParam(router, 'layout_a');
+              setQueryParam(router, { a: lang });
+            }}
+            name='layout_a'
           />
           <Comparison
             index={2}
@@ -443,7 +574,11 @@ export default function Comparisons(props: ComparisonsProps) {
             otherUpperRef={langAUpperRef}
             renderIDs={langBRenderIDs}
             error={langBError}
-            setLang={setLangB}
+            setLang={(lang) => {
+              removeQueryParam(router, 'layout_b');
+              setQueryParam(router, { b: lang });
+            }}
+            name='layout_b'
           />
         </div>
       </div>

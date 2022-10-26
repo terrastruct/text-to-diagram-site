@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useState } from 'react';
 
 import Down from '~/svg/down.svg';
@@ -58,8 +59,9 @@ const items = [
   },
 ];
 
-export default function FAQ(props: any) {
-  const [openQuestion, setOpenQuestion] = useState<number>();
+export default function FAQ() {
+  const [openQuestion, setOpenQuestion] = useState<number>(-1);
+
   return (
     <div className='px-4'>
       <div className='w-full'>
@@ -72,7 +74,11 @@ export default function FAQ(props: any) {
           </h1>
         </div>
       </div>
-      <div className='layout min-h-[30rem] w-full'>
+      <div
+        className={classNames('layout w-full pb-16', {
+          'h-[40rem]': openQuestion !== -1,
+        })}
+      >
         <div className='w-full divide-y divide-steel-200 rounded-lg border border-steel-200'>
           {items.map((item: any, i: number) => (
             <Collapsible

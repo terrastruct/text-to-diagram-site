@@ -3,10 +3,10 @@ import React from 'react';
 
 import { LangNames } from '@/constant/langs';
 
+import GraphvizLogo from '~/images/graphviz.png';
+import MermaidLogo from '~/images/mermaid.png';
+import PlantUMLLogo from '~/images/plantuml.png';
 import D2Logo from '~/svg/d2.svg';
-import GraphvizLogo from '~/svg/graphviz.svg';
-import MermaidLogo from '~/svg/mermaid.svg';
-import PlantUMLLogo from '~/svg/plantuml.svg';
 
 type LanguageDropdownProps = {
   activeLang: string;
@@ -105,16 +105,17 @@ export function getCanonicalName(name: string) {
   return 'Unknown';
 }
 
-export function getLogo(name: string, size: string) {
+export function getLogo(name: string, isLarge?: boolean) {
+  const pngClassName = isLarge ? 'h-8 w-8' : 'h-5 w-5';
   switch (name) {
     case 'd2':
-      return <D2Logo className={size} />;
+      return <D2Logo className={isLarge ? 'text-3xl' : 'text-xl'} />;
     case 'plantuml':
-      return <PlantUMLLogo className={size} />;
+      return <img src={PlantUMLLogo.src} className={pngClassName} alt={name} />;
     case 'mermaid':
-      return <MermaidLogo className={size} />;
+      return <img src={MermaidLogo.src} className={pngClassName} alt={name} />;
     case 'graphviz':
-      return <GraphvizLogo className={size} />;
+      return <img src={GraphvizLogo.src} className={pngClassName} alt={name} />;
   }
   return 'Unknown';
 }
@@ -128,7 +129,7 @@ type LangProps = {
 
 const Lang = (props: LangProps) => {
   const canonicalName = getCanonicalName(props.name);
-  const logo = getLogo(props.name, 'text-xl');
+  const logo = getLogo(props.name);
   const onClick = () => {
     props.select?.(props.name);
   };

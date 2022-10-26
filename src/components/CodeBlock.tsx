@@ -19,8 +19,14 @@ import plantumlGrammar from '@/extensions/vscode-plantuml/syntaxes/plantuml.tmLa
 // import darkTheme from "@/d2-vscode/themes/dark-color-theme.json";
 import metadataConsts from './metadata-consts';
 
+type D2CodeBlockProps = {
+  source: string;
+  children?: string;
+};
+
 // TODO: clipboard copy button
-export default function D2CodeBlock(props: any) {
+export default function D2CodeBlock(props: D2CodeBlockProps) {
+  const currentScope = React.useRef<string>();
   let source = props.source;
   if (source === 'plantuml') {
     source = 'wsd';
@@ -29,19 +35,22 @@ export default function D2CodeBlock(props: any) {
   }
   const scope = 'source.' + source;
 
-  const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
+  const [tmGrammar, setTMGrammar] = React.useState(null);
 
   React.useEffect(() => {
     (async () => {
       try {
-        const g = await initTextMateGrammar(scope);
-        setTMGrammar && setTMGrammar(g);
+        currentScope.current = scope;
+        const g = await getTextMateGrammar(scope);
+        if (g._scopeName === currentScope.current) {
+          setTMGrammar?.(g);
+        }
       } catch (e) {
         console.error(e);
       }
     })();
     return () => {};
-  }, [props.source]);
+  }, [scope]);
 
   let theme: any;
   const preStyle: any = {
@@ -67,7 +76,7 @@ export default function D2CodeBlock(props: any) {
     tm.tmRegistry.ruleStack = vscTextMate.INITIAL;
   }
 
-  const lines = props.children.split('\n');
+  const lines = props.children?.split('\n') ?? [];
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (i == lines.length - 1 && line === '') {
@@ -104,15 +113,7 @@ export default function D2CodeBlock(props: any) {
   return <pre style={preStyle}>{children}</pre>;
 }
 
-function getTextMateGrammar(scope: any) {
-  const g = tm.tmGrammars.get(scope);
-  if (g && !(g instanceof Promise)) {
-    return g;
-  }
-  return undefined;
-}
-
-async function initTextMateGrammar(scope: any) {
+async function getTextMateGrammar(scope: any) {
   let g = tm.tmGrammars.get(scope);
   if (g) {
     return await g;
