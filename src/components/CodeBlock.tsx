@@ -19,15 +19,8 @@ import plantumlGrammar from '@/extensions/vscode-plantuml/syntaxes/plantuml.tmLa
 // import darkTheme from "@/d2-vscode/themes/dark-color-theme.json";
 import metadataConsts from './metadata-consts';
 
-type D2CodeBlockProps = {
-  source: string;
-  children?: string;
-  tmGrammar: any;
-  setTMGrammar: (g: any) => void;
-};
-
 // TODO: clipboard copy button
-export default function D2CodeBlock(props: D2CodeBlockProps) {
+export default function D2CodeBlock(props: any) {
   let source = props.source;
   if (source === 'plantuml') {
     source = 'wsd';
@@ -36,21 +29,19 @@ export default function D2CodeBlock(props: D2CodeBlockProps) {
   }
   const scope = 'source.' + source;
 
-  const { setTMGrammar } = props;
+  const [tmGrammar, setTMGrammar] = React.useState(getTextMateGrammar(scope));
+
   React.useEffect(() => {
     (async () => {
       try {
-        if (scope === 'source.') {
-          return;
-        }
-        const g = await getTextMateGrammar(scope);
-        props.setTMGrammar?.(g);
+        const g = await initTextMateGrammar(scope);
+        setTMGrammar && setTMGrammar(g);
       } catch (e) {
         console.error(e);
       }
     })();
     return () => {};
-  }, [scope, setTMGrammar]);
+  }, [props.source]);
 
   let theme: any;
   const preStyle: any = {
@@ -69,15 +60,11 @@ export default function D2CodeBlock(props: D2CodeBlockProps) {
   preStyle.backgroundColor = theme.colors['editor.background'];
 
   const children = [];
-  if (props.tmGrammar) {
+  if (tmGrammar) {
     // vscode-textmate expects "tokenColors" as "settings".
     theme.settings = theme.tokenColors;
     tm.tmRegistry.setTheme(theme);
     tm.tmRegistry.ruleStack = vscTextMate.INITIAL;
-  }
-
-  if (!props.children) {
-    return null;
   }
 
   const lines = props.children.split('\n');
@@ -105,7 +92,7 @@ export default function D2CodeBlock(props: D2CodeBlockProps) {
 
     children.push(
       <span key={`line-${i}`}>
-        {props.tmGrammar ? highlightLine(props.tmGrammar, line) : line}
+        {tmGrammar ? highlightLine(tmGrammar, line) : line}
       </span>
     );
 
@@ -117,7 +104,15 @@ export default function D2CodeBlock(props: D2CodeBlockProps) {
   return <pre style={preStyle}>{children}</pre>;
 }
 
-async function getTextMateGrammar(scope: any) {
+function getTextMateGrammar(scope: any) {
+  const g = tm.tmGrammars.get(scope);
+  if (g && !(g instanceof Promise)) {
+    return g;
+  }
+  return undefined;
+}
+
+async function initTextMateGrammar(scope: any) {
   let g = tm.tmGrammars.get(scope);
   if (g) {
     return await g;

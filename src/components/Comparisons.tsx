@@ -277,7 +277,6 @@ function Comparison(props: ComparisonProps) {
   const [layoutChoices, setLayoutChoices] = React.useState<string[]>([]);
   const [layout, setLayout] = React.useState<string>('');
   const [height, setHeight] = React.useState<string>('unset');
-  const [tmGrammar, setTMGrammar] = React.useState(null);
 
   React.useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -295,7 +294,7 @@ function Comparison(props: ComparisonProps) {
     }
   }, [router, props.name, layoutChoices]);
 
-  React.useEffect(() => {
+  const resetLayoutChoices = () => {
     if (!props.renderIDs) {
       return;
     }
@@ -318,25 +317,28 @@ function Comparison(props: ComparisonProps) {
     }
     setLayoutChoices(newLayoutChoices);
     setLayout(newLayoutChoices[0]);
-  }, [props.renderIDs, layoutChoices]);
+  };
+
+  React.useEffect(() => {
+    resetLayoutChoices();
+    return () => {};
+  }, [props.renderIDs, setLayout]);
 
   React.useEffect(() => {
     setHeight('unset');
     return () => {};
-  }, [props.lang, props.otherLang, props.text, tmGrammar]);
+  }, [props.lang, props.otherLang, props.text]);
 
   React.useEffect(() => {
-    setTimeout(() => {
-      if (!props.upperRef.current || !props.otherUpperRef.current) {
-        return;
-      }
-      const myHeight = props.upperRef.current.getBoundingClientRect().height;
-      const otherHeight =
-        props.otherUpperRef.current.getBoundingClientRect().height;
-      setHeight(Math.max(myHeight, otherHeight) + 'px');
-    });
+    if (!props.upperRef.current || !props.otherUpperRef.current) {
+      return;
+    }
+    const myHeight = props.upperRef.current.getBoundingClientRect().height;
+    const otherHeight =
+      props.otherUpperRef.current.getBoundingClientRect().height;
+    setHeight(Math.max(myHeight, otherHeight) + 'px');
     return () => {};
-  }, [props.upperRef, props.otherUpperRef, props.text, tmGrammar]);
+  }, [props.upperRef, props.otherUpperRef, height]);
 
   const renderRender = () => {
     if (!props.renderIDs) {
@@ -386,18 +388,12 @@ function Comparison(props: ComparisonProps) {
       />
       <div className='flex grow flex-col border-solid border-steel-200 shadow-light'>
         <div
-          className='border-b border-solid border-steel-200'
+          className='border-b border-solid border-steel-200 p-4 pb-2'
           ref={props.upperRef}
           style={upperStyle}
         >
-          <div className='h-full overflow-scroll p-4'>
-            <CodeBlock
-              source={props.lang}
-              tmGrammar={tmGrammar}
-              setTMGrammar={setTMGrammar}
-            >
-              {props.text}
-            </CodeBlock>
+          <div className='h-full overflow-scroll'>
+            <CodeBlock source={props.lang}>{props.text}</CodeBlock>
           </div>
         </div>
         <div
@@ -443,8 +439,8 @@ type ComparisonsProps = {
 export default function Comparisons(props: ComparisonsProps) {
   const router = useRouter();
 
-  const [langA, setLangA] = React.useState('');
-  const [langB, setLangB] = React.useState('');
+  const [langA, setLangA] = React.useState(LangNames[0]);
+  const [langB, setLangB] = React.useState(LangNames[1]);
   const [exampleName, setExampleName] = React.useState('basic');
 
   const comparisonsRef = React.useRef<HTMLDivElement>(null);
@@ -495,10 +491,7 @@ export default function Comparisons(props: ComparisonsProps) {
         setLangA(LangNames[index]);
       } else {
         removeQueryParam(router, 'a');
-        setLangA(LangNames[0]);
       }
-    } else {
-      setLangA(LangNames[0]);
     }
     const b = searchParams.get('b');
     if (b) {
@@ -509,10 +502,7 @@ export default function Comparisons(props: ComparisonsProps) {
         setLangB(LangNames[index]);
       } else {
         removeQueryParam(router, 'b');
-        setLangB(LangNames[1]);
       }
-    } else {
-      setLangB(LangNames[1]);
     }
   }, [router]);
 
