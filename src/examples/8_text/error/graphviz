@@ -1,0 +1,1 @@
+Graphviz is supposed to support HTML in labels, but many common tags do not work, such as <h1>.

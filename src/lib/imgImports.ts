@@ -50,6 +50,10 @@ import plantuml_tables_dot from '@/examples/6_tables/render/plantuml_dot.svg';
 import mermaid_sequence_dagre from '@/examples/7_sequence/render/mermaid_dagre.svg';
 import plantuml_sequence_dot from '@/examples/7_sequence/render/plantuml_dot.svg';
 
+import d2_text_tala from '@/examples/8_text/render/d2_tala.svg';
+import d2_text_dagre from '@/examples/8_text/render/d2_dagre.svg';
+import mermaid_text_dagre from '@/examples/8_text/render/mermaid_dagre.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case 'd2-basic-tala':
@@ -141,5 +145,12 @@ export function getImage(id: string) {
       return mermaid_sequence_dagre;
     case 'plantuml-sequence-dot':
       return plantuml_sequence_dot;
+
+    case 'd2-text-tala':
+      return d2_text_tala;
+    case 'd2-text-dagre':
+      return d2_text_dagre;
+    case 'mermaid-text-dagre':
+      return mermaid_text_dagre;
   }
 }
