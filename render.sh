@@ -1,6 +1,7 @@
 if [ -z "$1" ]
 then
-      echo "Usage: render.sh [example]. E.g. render.sh 0_basic"
+  echo "Usage: render.sh [example]. E.g. render.sh 0_basic"
+  exit 1
 fi
 
 D2_LAYOUT=tala d2 src/examples/$1/syntax/d2 src/examples/$1/render/d2_tala.svg

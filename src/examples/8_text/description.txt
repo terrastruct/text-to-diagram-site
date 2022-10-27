@@ -1,0 +1,1 @@
+Supporting rich text is essential to professional diagrams. D2 allows using Markdown, while Graphviz and Mermaid have some support for HTML. However, Graphviz's HTML support is limited to a small subset of tags. Mermaid does not alow splitting HTML into multiple lines.
