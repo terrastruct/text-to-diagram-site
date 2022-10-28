@@ -1,0 +1,1 @@
+Code snippets make diagrams concrete, especially when you're diagramming a lower level of abstraction, like how services talk to each other. Currently, D2 is the only language that support syntax-highlighted code snippets.

@@ -54,6 +54,9 @@ import d2_text_tala from '@/examples/8_text/render/d2_tala.svg';
 import d2_text_dagre from '@/examples/8_text/render/d2_dagre.svg';
 import mermaid_text_dagre from '@/examples/8_text/render/mermaid_dagre.svg';
 
+import d2_code_tala from '@/examples/9_code/render/d2_tala.svg';
+import d2_code_dagre from '@/examples/9_code/render/d2_dagre.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case 'd2-basic-tala':
@@ -152,5 +155,10 @@ export function getImage(id: string) {
       return d2_text_dagre;
     case 'mermaid-text-dagre':
       return mermaid_text_dagre;
+
+    case 'd2-code-tala':
+      return d2_code_tala;
+    case 'd2-code-dagre':
+      return d2_code_dagre;
   }
 }
