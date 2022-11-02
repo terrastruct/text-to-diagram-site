@@ -358,7 +358,7 @@ function Comparison(props: ComparisonProps) {
 
     return (
       <div className='relative flex w-full items-center justify-center'>
-        <img width='100%' src={src} className='' alt={props.name} />
+        <object width='100%' data={src} className='' />
       </div>
     );
   };
