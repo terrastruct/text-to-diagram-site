@@ -358,12 +358,7 @@ function Comparison(props: ComparisonProps) {
 
     return (
       <div className='relative flex w-full items-center justify-center'>
-        <embed
-          width='100%'
-          src={src}
-          className=''
-          // alt={`Example of ${props.lang}`}
-        />
+        <object width='100%' data={src} />
       </div>
     );
   };
