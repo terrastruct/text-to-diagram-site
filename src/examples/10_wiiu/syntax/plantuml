@@ -1,0 +1,52 @@
+@startuml
+
+node "IBM "Espresso" CPU" as ibm {
+  [IBM PowerPC "Broadway" Core 0] as core0
+  [IBM PowerPC "Broadway" Core 1] as core1
+  [IBM PowerPC "Broadway" Core 2] as core2
+
+  [16 KB ROM] as rom
+
+  core0 -- core2
+
+  rom -> core2
+}
+
+node "AMD "Latte" GPU" as amd {
+  [Memory & I/O Bridge] as mem
+  [DRAM Controller] as dram
+  [32 MB EDRAM "MEM1"] as edram
+  [512 B SEEPROM] as rom
+
+  [SATA IF] as sata
+  [EXI] as exi
+
+  node "GX" as gx {
+    [3 MB 1T-SRAM]
+  }
+
+  [AMD Radeon R7xx "GX2"] as radeon
+
+  mem -- gx
+  mem -- radeon
+
+  rom -- mem
+
+  mem -- sata
+  mem -- exi
+
+  dram -- sata
+  dram -- exi
+}
+
+[2 GB DDR3 RAM "MEM2"] as ddr3
+
+mem -- ddr3
+dram -- ddr3
+edram -- ddr3
+
+core1 -- mem
+
+exi -- RTC
+
+@enduml
