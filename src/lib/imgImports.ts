@@ -57,6 +57,12 @@ import mermaid_text_dagre from '@/examples/8_text/render/mermaid_dagre.svg';
 import d2_code_tala from '@/examples/9_code/render/d2_tala.svg';
 import d2_code_dagre from '@/examples/9_code/render/d2_dagre.svg';
 
+import d2_wiiu_tala from '@/examples/10_wiiu/render/d2_tala.svg';
+import d2_wiiu_dagre from '@/examples/10_wiiu/render/d2_dagre.svg';
+import graphviz_wiiu_dot from '@/examples/10_wiiu/render/graphviz_dot.svg';
+import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
+import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case 'd2-basic-tala':
@@ -160,5 +166,16 @@ export function getImage(id: string) {
       return d2_code_tala;
     case 'd2-code-dagre':
       return d2_code_dagre;
+
+    case 'd2-wiiu-tala':
+      return d2_wiiu_tala;
+    case 'd2-wiiu-dagre':
+      return d2_wiiu_dagre;
+    case 'plantuml-wiiu-dot':
+      return plantuml_wiiu_dot;
+    case 'graphviz-wiiu-dot':
+      return graphviz_wiiu_dot;
+    case 'graphviz-wiiu-neato':
+      return graphviz_wiiu_neato;
   }
 }

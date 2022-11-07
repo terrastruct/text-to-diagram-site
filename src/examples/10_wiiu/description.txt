@@ -1,0 +1,1 @@
+Software architecture (partial) of Wii U. Source: https://www.copetti.org/writings/consoles/wiiu

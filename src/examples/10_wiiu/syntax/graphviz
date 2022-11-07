@@ -1,0 +1,56 @@
+digraph G {
+  subgraph cluster_ibm {
+    label="IBM \"Espresso\" CPU"
+
+    core0 [label="IBM PowerPC Broadway Core 0"]
+    core1 [label="IBM PowerPC Broadway Core 1"]
+    core2 [label="IBM PowerPC Broadway Core 2"]
+
+    rom [label="16 KB ROM"]
+
+    core0 -> core2 [dir=none]
+
+    rom -> core2
+  }
+
+  subgraph cluster_amd {
+    label="AMD \"Latte\" GPU"
+
+    mem [label="Memory & I/O Bridge"]
+    dram [label="DRAM Controller"]
+    edram [label="32 MB EDRAM MEM1"]
+    rom [label="512 B SEEPROM"]
+
+    sata [label="SATA IF"]
+    exi [label="EXI"]
+
+    subgraph cluster_gx {
+      label="GX"
+
+      sram [label="3 MB 1T-SRAM"]
+    }
+
+    radeon [label="AMD Radeon R7xx GX2"]
+
+    mem -> gx [dir=none]
+    mem -> radeon [dir=none]
+
+    rom -> mem [dir=none]
+
+    mem -> sata [dir=none]
+    mem -> exi [dir=none]
+
+    dram -> sata [dir=none]
+    dram -> exi [dir=none]
+  }
+
+  ddr3 [label="2 GB DDR3 RAM MEM2"]
+
+  mem -> ddr3 [dir=none]
+  dram -> ddr3 [dir=none]
+  edram -> ddr3 [dir=none]
+
+  core1 -> mem [dir=none]
+
+  exi -> rtc [dir=none]
+}
