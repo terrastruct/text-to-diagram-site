@@ -37,3 +37,7 @@ yarn-error.log*
 robots.txt
 sitemap.xml
 sitemap-*.xml
+
+.make-log
+.changed-files
+.make-log.txt
