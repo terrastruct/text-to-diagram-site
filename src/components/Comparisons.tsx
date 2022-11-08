@@ -74,7 +74,7 @@ function Langs(props: LangsProps) {
   let link: string;
   switch (props.activeLang) {
     case 'd2':
-      link = 'https://d2-lang.com';
+      link = 'https://d2lang.com';
       break;
     case 'plantuml':
       link = 'https://plantuml.com';
