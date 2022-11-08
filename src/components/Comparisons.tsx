@@ -14,11 +14,7 @@ import LanguageDropdown, {
   getLogo,
 } from '@/components/LanguageDropdown';
 
-import {
-  LangNames,
-  LayoutCapitalizedNames,
-  LayoutOrder,
-} from '@/constant/langs';
+import { LangNames, LayoutCapitalizedNames, LayoutOrder } from '@/constant/langs';
 
 import GearIcon from '~/svg/gear.svg';
 import Info from '~/svg/info.svg';
@@ -68,8 +64,7 @@ type LangsProps = {
 };
 
 function Langs(props: LangsProps) {
-  const [layoutEngineShown, setLayoutEngineShown] =
-    React.useState<boolean>(false);
+  const [layoutEngineShown, setLayoutEngineShown] = React.useState<boolean>(false);
 
   let link: string;
   switch (props.activeLang) {
@@ -110,8 +105,7 @@ function Langs(props: LangsProps) {
       <div className='bg-white p-4'>
         <div className='flex flex-col justify-start text-steel-900'>
           <h2 className='flex items-center justify-start gap-2 pb-2 font-primary-regular'>
-            {getLogo(props.activeLang, true)}{' '}
-            {getCanonicalName(props.activeLang)}
+            {getLogo(props.activeLang, true)} {getCanonicalName(props.activeLang)}
           </h2>
           <div className='text-steel-800'>{description}</div>
         </div>
@@ -247,8 +241,7 @@ function Example(props: ExampleProps) {
       className={classnames(
         'flex h-12 flex-col items-center justify-center rounded-md bg-white font-primary-medium text-steel-900',
         {
-          'border border-solid border-blue-300 drop-shadow-card-small':
-            props.active,
+          'border border-solid border-blue-300 drop-shadow-card-small': props.active,
           'cursor-pointer bg-steel-100 text-steel-550': !props.active,
         }
       )}
@@ -332,8 +325,7 @@ function Comparison(props: ComparisonProps) {
         return;
       }
       const myHeight = props.upperRef.current.getBoundingClientRect().height;
-      const otherHeight =
-        props.otherUpperRef.current.getBoundingClientRect().height;
+      const otherHeight = props.otherUpperRef.current.getBoundingClientRect().height;
       setHeight(Math.max(myHeight, otherHeight) + 'px');
     });
   }, [props.upperRef, props.otherUpperRef, height]);
@@ -477,9 +469,7 @@ export default function Comparisons(props: ComparisonsProps) {
     const searchParams = new URLSearchParams(window.location.search);
     const a = searchParams.get('a');
     if (a) {
-      const index = LangNames.findIndex(
-        (lang) => lang.toLowerCase() === a.toLowerCase()
-      );
+      const index = LangNames.findIndex((lang) => lang.toLowerCase() === a.toLowerCase());
       if (index !== -1) {
         setLangA(LangNames[index]);
       } else {
@@ -488,9 +478,7 @@ export default function Comparisons(props: ComparisonsProps) {
     }
     const b = searchParams.get('b');
     if (b) {
-      const index = LangNames.findIndex(
-        (lang) => lang.toLowerCase() === b.toLowerCase()
-      );
+      const index = LangNames.findIndex((lang) => lang.toLowerCase() === b.toLowerCase());
       if (index !== -1) {
         setLangB(LangNames[index]);
       } else {
@@ -518,8 +506,8 @@ export default function Comparisons(props: ComparisonsProps) {
       <div className='mt-4 mb-4 flex flex-col items-center'>
         <h2 className=''>Which diagramming tool is right for you?</h2>
         <div className='text-l mt-4 text-steel-800'>
-          Compare the syntax and renders of various languages that produce
-          diagrams from text.
+          Compare the syntax and renders of various languages that produce diagrams from
+          text.
         </div>
       </div>
       <div className='mb-8 rounded-md bg-steel-50 p-4'>

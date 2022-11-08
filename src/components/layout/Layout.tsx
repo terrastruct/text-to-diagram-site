@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Button from '@/components/Button';
 
-import Github from '~/svg/Github.svg';
+import Github from '~/svg/github.svg';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const contributeButtonLabel = () => {
@@ -18,10 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className='layout flex h-16 w-full items-center justify-between'>
         <Button
           onClick={() =>
-            window.open(
-              'https://github.com/terrastruct/text-to-diagram.com',
-              '_blank'
-            )
+            window.open('https://github.com/terrastruct/text-to-diagram.com', '_blank')
           }
           className='ml-auto mr-8 h-8'
           isPrimaryOutline

@@ -14,7 +14,7 @@ import Hero from '~/images/hero.webp';
 import Hero1024 from '~/images/hero_1024.webp';
 import Hero1280 from '~/images/hero_1280.webp';
 import GithubDark from '~/svg/github_dark.svg';
-import Switch from '~/svg/Switch.svg';
+import Switch from '~/svg/switch.svg';
 
 // <img src={Hero.src} className='w-auto lg:h-[400px] md:h-[350px] sm:h-[250px] h-[150px] lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
 export default function HomePage(props: any) {
@@ -112,13 +112,10 @@ export const getStaticProps: GetStaticProps = async () => {
       render: {},
       error: {},
     };
-    for (const lang of fs.readdirSync(
-      path.resolve(root, exampleName, 'syntax')
-    )) {
-      const text = fs.readFileSync(
-        path.resolve(root, exampleName, 'syntax', lang),
-        { encoding: 'utf8' }
-      );
+    for (const lang of fs.readdirSync(path.resolve(root, exampleName, 'syntax'))) {
+      const text = fs.readFileSync(path.resolve(root, exampleName, 'syntax', lang), {
+        encoding: 'utf8',
+      });
       example.syntax[lang] = text;
     }
     for (const f of fs.readdirSync(path.resolve(root, exampleName, 'render'))) {
@@ -130,13 +127,10 @@ export const getStaticProps: GetStaticProps = async () => {
       example.render[lang][layout] = `${lang}-${name}-${layout}`;
     }
     if (fs.existsSync(path.resolve(root, exampleName, 'error'))) {
-      for (const lang of fs.readdirSync(
-        path.resolve(root, exampleName, 'error')
-      )) {
-        const text = fs.readFileSync(
-          path.resolve(root, exampleName, 'error', lang),
-          { encoding: 'utf8' }
-        );
+      for (const lang of fs.readdirSync(path.resolve(root, exampleName, 'error'))) {
+        const text = fs.readFileSync(path.resolve(root, exampleName, 'error', lang), {
+          encoding: 'utf8',
+        });
         example.error[lang] = text;
       }
     }
