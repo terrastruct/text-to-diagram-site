@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - run: ./make.sh assert-linear
+      - run: TERM=xterm-256color ./make.sh assert-linear
         env:
           GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
   fmt:
@@ -26,7 +26,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - run: ./make.sh fmt
+      - run: TERM=xterm-256color ./make.sh fmt
         env:
           GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
   build:
@@ -42,7 +42,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install
-        run: yarn
-      - run: ./make.sh build
+        run: TERM=xterm-256color yarn
+      - run: TERM=xterm-256color ./make.sh build
         env:
           GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
