@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Button from '@/components/Button';
 
-import Github from '~/svg/Github.svg';
+import Github from '~/svg/github.svg';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const contributeButtonLabel = () => {

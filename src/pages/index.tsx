@@ -14,7 +14,7 @@ import Hero from '~/images/hero.webp';
 import Hero1024 from '~/images/hero_1024.webp';
 import Hero1280 from '~/images/hero_1280.webp';
 import GithubDark from '~/svg/github_dark.svg';
-import Switch from '~/svg/Switch.svg';
+import Switch from '~/svg/switch.svg';
 
 // <img src={Hero.src} className='w-auto lg:h-[400px] md:h-[350px] sm:h-[250px] h-[150px] lg:-mb-6 z-10 md:-mb-6 sm:-mb-6 -mb-6'/>
 export default function HomePage(props: any) {
