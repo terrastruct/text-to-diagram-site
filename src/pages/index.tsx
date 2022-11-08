@@ -112,13 +112,10 @@ export const getStaticProps: GetStaticProps = async () => {
       render: {},
       error: {},
     };
-    for (const lang of fs.readdirSync(
-      path.resolve(root, exampleName, 'syntax')
-    )) {
-      const text = fs.readFileSync(
-        path.resolve(root, exampleName, 'syntax', lang),
-        { encoding: 'utf8' }
-      );
+    for (const lang of fs.readdirSync(path.resolve(root, exampleName, 'syntax'))) {
+      const text = fs.readFileSync(path.resolve(root, exampleName, 'syntax', lang), {
+        encoding: 'utf8',
+      });
       example.syntax[lang] = text;
     }
     for (const f of fs.readdirSync(path.resolve(root, exampleName, 'render'))) {
@@ -130,13 +127,10 @@ export const getStaticProps: GetStaticProps = async () => {
       example.render[lang][layout] = `${lang}-${name}-${layout}`;
     }
     if (fs.existsSync(path.resolve(root, exampleName, 'error'))) {
-      for (const lang of fs.readdirSync(
-        path.resolve(root, exampleName, 'error')
-      )) {
-        const text = fs.readFileSync(
-          path.resolve(root, exampleName, 'error', lang),
-          { encoding: 'utf8' }
-        );
+      for (const lang of fs.readdirSync(path.resolve(root, exampleName, 'error'))) {
+        const text = fs.readFileSync(path.resolve(root, exampleName, 'error', lang), {
+          encoding: 'utf8',
+        });
         example.error[lang] = text;
       }
     }
