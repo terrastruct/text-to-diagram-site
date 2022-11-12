@@ -57,6 +57,17 @@ const features: Feature[] = [
     },
   },
   {
+    title: 'Server-side execution',
+    description:
+      'Can the language render diagrams without a browser.',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: true,
+      [PLANTUML_LANG]: true,
+    },
+  },
+  {
     title: 'Container edges',
     description:
       'Edges going from or to containers is very popular in software architecture diagrams.',
