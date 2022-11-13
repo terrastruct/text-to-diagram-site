@@ -3,6 +3,7 @@
 
 import d2_basic_tala from '@/examples/0_basic/render/d2_tala.svg';
 import d2_basic_dagre from '@/examples/0_basic/render/d2_dagre.svg';
+import d2_basic_elk from '@/examples/0_basic/render/d2_elk.svg';
 import graphviz_basic_dot from '@/examples/0_basic/render/graphviz_dot.svg';
 import graphviz_basic_neato from '@/examples/0_basic/render/graphviz_neato.svg';
 import mermaid_basic_dagre from '@/examples/0_basic/render/mermaid_dagre.svg';
@@ -10,6 +11,7 @@ import plantuml_basic_dot from '@/examples/0_basic/render/plantuml_dot.svg';
 
 import d2_containers_tala from '@/examples/1_containers/render/d2_tala.svg';
 import d2_containers_dagre from '@/examples/1_containers/render/d2_dagre.svg';
+import d2_containers_elk from '@/examples/1_containers/render/d2_elk.svg';
 import graphviz_containers_dot from '@/examples/1_containers/render/graphviz_dot.svg';
 import graphviz_containers_neato from '@/examples/1_containers/render/graphviz_neato.svg';
 import mermaid_containers_dagre from '@/examples/1_containers/render/mermaid_dagre.svg';
@@ -17,6 +19,7 @@ import plantuml_containers_dot from '@/examples/1_containers/render/plantuml_dot
 
 import d2_shapes_tala from '@/examples/2_shapes/render/d2_tala.svg';
 import d2_shapes_dagre from '@/examples/2_shapes/render/d2_dagre.svg';
+import d2_shapes_elk from '@/examples/2_shapes/render/d2_elk.svg';
 import graphviz_shapes_dot from '@/examples/2_shapes/render/graphviz_dot.svg';
 import graphviz_shapes_neato from '@/examples/2_shapes/render/graphviz_neato.svg';
 import mermaid_shapes_dagre from '@/examples/2_shapes/render/mermaid_dagre.svg';
@@ -24,6 +27,7 @@ import plantuml_shapes_dot from '@/examples/2_shapes/render/plantuml_dot.svg';
 
 import d2_trees_tala from '@/examples/3_trees/render/d2_tala.svg';
 import d2_trees_dagre from '@/examples/3_trees/render/d2_dagre.svg';
+import d2_trees_elk from '@/examples/3_trees/render/d2_elk.svg';
 import graphviz_trees_dot from '@/examples/3_trees/render/graphviz_dot.svg';
 import graphviz_trees_neato from '@/examples/3_trees/render/graphviz_neato.svg';
 import mermaid_trees_dagre from '@/examples/3_trees/render/mermaid_dagre.svg';
@@ -31,17 +35,20 @@ import plantuml_trees_dot from '@/examples/3_trees/render/plantuml_dot.svg';
 
 import d2_chess_tala from '@/examples/4_chess/render/d2_tala.svg';
 import d2_chess_dagre from '@/examples/4_chess/render/d2_dagre.svg';
+import d2_chess_elk from '@/examples/4_chess/render/d2_elk.svg';
 import graphviz_chess_dot from '@/examples/4_chess/render/graphviz_dot.svg';
 import graphviz_chess_neato from '@/examples/4_chess/render/graphviz_neato.svg';
 import plantuml_chess_dot from '@/examples/4_chess/render/plantuml_dot.svg';
 
 import d2_icons_tala from '@/examples/5_icons/render/d2_tala.svg';
 import d2_icons_dagre from '@/examples/5_icons/render/d2_dagre.svg';
+import d2_icons_elk from '@/examples/5_icons/render/d2_elk.svg';
 import mermaid_icons_dagre from '@/examples/5_icons/render/mermaid_dagre.svg';
 import plantuml_icons_dot from '@/examples/5_icons/render/plantuml_dot.svg';
 
 import d2_tables_tala from '@/examples/6_tables/render/d2_tala.svg';
 import d2_tables_dagre from '@/examples/6_tables/render/d2_dagre.svg';
+import d2_tables_elk from '@/examples/6_tables/render/d2_elk.svg';
 import graphviz_tables_dot from '@/examples/6_tables/render/graphviz_dot.svg';
 import graphviz_tables_neato from '@/examples/6_tables/render/graphviz_neato.svg';
 import mermaid_tables_dagre from '@/examples/6_tables/render/mermaid_dagre.svg';
@@ -52,13 +59,16 @@ import plantuml_sequence_dot from '@/examples/7_sequence/render/plantuml_dot.svg
 
 import d2_text_tala from '@/examples/8_text/render/d2_tala.svg';
 import d2_text_dagre from '@/examples/8_text/render/d2_dagre.svg';
+import d2_text_elk from '@/examples/8_text/render/d2_elk.svg';
 import mermaid_text_dagre from '@/examples/8_text/render/mermaid_dagre.svg';
 
 import d2_code_tala from '@/examples/9_code/render/d2_tala.svg';
 import d2_code_dagre from '@/examples/9_code/render/d2_dagre.svg';
+import d2_code_elk from '@/examples/9_code/render/d2_elk.svg';
 
 import d2_wiiu_tala from '@/examples/10_wiiu/render/d2_tala.svg';
 import d2_wiiu_dagre from '@/examples/10_wiiu/render/d2_dagre.svg';
+import d2_wiiu_elk from '@/examples/10_wiiu/render/d2_elk.svg';
 import graphviz_wiiu_dot from '@/examples/10_wiiu/render/graphviz_dot.svg';
 import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
 import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
@@ -69,6 +79,8 @@ export function getImage(id: string) {
       return d2_basic_tala;
     case 'd2-basic-dagre':
       return d2_basic_dagre;
+    case 'd2-basic-elk':
+      return d2_basic_elk;
     case 'plantuml-basic-dot':
       return plantuml_basic_dot;
     case 'mermaid-basic-dagre':
@@ -82,6 +94,8 @@ export function getImage(id: string) {
       return d2_containers_tala;
     case 'd2-containers-dagre':
       return d2_containers_dagre;
+    case 'd2-containers-elk':
+      return d2_containers_elk;
     case 'plantuml-containers-dot':
       return plantuml_containers_dot;
     case 'mermaid-containers-dagre':
@@ -95,6 +109,8 @@ export function getImage(id: string) {
       return d2_shapes_tala;
     case 'd2-shapes-dagre':
       return d2_shapes_dagre;
+    case 'd2-shapes-elk':
+      return d2_shapes_elk;
     case 'plantuml-shapes-dot':
       return plantuml_shapes_dot;
     case 'mermaid-shapes-dagre':
@@ -108,6 +124,8 @@ export function getImage(id: string) {
       return d2_trees_tala;
     case 'd2-trees-dagre':
       return d2_trees_dagre;
+    case 'd2-trees-elk':
+      return d2_trees_elk;
     case 'plantuml-trees-dot':
       return plantuml_trees_dot;
     case 'mermaid-trees-dagre':
@@ -121,6 +139,8 @@ export function getImage(id: string) {
       return d2_chess_tala;
     case 'd2-chess-dagre':
       return d2_chess_dagre;
+    case 'd2-chess-elk':
+      return d2_chess_elk;
     case 'plantuml-chess-dot':
       return plantuml_chess_dot;
     case 'graphviz-chess-dot':
@@ -132,6 +152,8 @@ export function getImage(id: string) {
       return d2_icons_tala;
     case 'd2-icons-dagre':
       return d2_icons_dagre;
+    case 'd2-icons-elk':
+      return d2_icons_elk;
     case 'plantuml-icons-dot':
       return plantuml_icons_dot;
     case 'mermaid-icons-dagre':
@@ -141,6 +163,8 @@ export function getImage(id: string) {
       return d2_tables_tala;
     case 'd2-tables-dagre':
       return d2_tables_dagre;
+    case 'd2-tables-elk':
+      return d2_tables_elk;
     case 'plantuml-tables-dot':
       return plantuml_tables_dot;
     case 'mermaid-tables-dagre':
@@ -159,6 +183,8 @@ export function getImage(id: string) {
       return d2_text_tala;
     case 'd2-text-dagre':
       return d2_text_dagre;
+    case 'd2-text-elk':
+      return d2_text_elk;
     case 'mermaid-text-dagre':
       return mermaid_text_dagre;
 
@@ -166,11 +192,15 @@ export function getImage(id: string) {
       return d2_code_tala;
     case 'd2-code-dagre':
       return d2_code_dagre;
+    case 'd2-code-elk':
+      return d2_code_elk;
 
     case 'd2-wiiu-tala':
       return d2_wiiu_tala;
     case 'd2-wiiu-dagre':
       return d2_wiiu_dagre;
+    case 'd2-wiiu-elk':
+      return d2_wiiu_elk;
     case 'plantuml-wiiu-dot':
       return plantuml_wiiu_dot;
     case 'graphviz-wiiu-dot':

@@ -58,8 +58,7 @@ const features: Feature[] = [
   },
   {
     title: 'Server-side execution',
-    description:
-      'Can the language render diagrams without a browser.',
+    description: 'Can the language render diagrams without a browser.',
     value: {
       [D2_LANG]: true,
       [MERMAID_LANG]: false,
@@ -140,8 +139,7 @@ const features: Feature[] = [
   },
   {
     title: 'Images & Icons',
-    description:
-      'What are the available options for including images and icons',
+    description: 'What are the available options for including images and icons',
     value: {
       [D2_LANG]: 'Any URL',
       [MERMAID_LANG]: 'FontAwesome. Hacky <img> tags',
@@ -215,11 +213,7 @@ const features: Feature[] = [
 const FeatureValue = (props: { value: any; className?: string }) => {
   let el;
   if (typeof props.value === 'boolean') {
-    el = props.value ? (
-      <CheckIcon className='h-8 w-8' />
-    ) : (
-      <XIcon className='h-8 w-8' />
-    );
+    el = props.value ? <CheckIcon className='h-8 w-8' /> : <XIcon className='h-8 w-8' />;
   } else {
     el = <div className=''>{props.value}</div>;
   }
