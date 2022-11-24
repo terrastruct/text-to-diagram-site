@@ -38,6 +38,7 @@ import d2_chess_dagre from '@/examples/4_chess/render/d2_dagre.svg';
 import d2_chess_elk from '@/examples/4_chess/render/d2_elk.svg';
 import graphviz_chess_dot from '@/examples/4_chess/render/graphviz_dot.svg';
 import graphviz_chess_neato from '@/examples/4_chess/render/graphviz_neato.svg';
+import mermaid_chess_dagre from '@/examples/4_chess/render/mermaid_dagre.svg';
 import plantuml_chess_dot from '@/examples/4_chess/render/plantuml_dot.svg';
 
 import d2_icons_tala from '@/examples/5_icons/render/d2_tala.svg';
@@ -71,6 +72,7 @@ import d2_wiiu_dagre from '@/examples/10_wiiu/render/d2_dagre.svg';
 import d2_wiiu_elk from '@/examples/10_wiiu/render/d2_elk.svg';
 import graphviz_wiiu_dot from '@/examples/10_wiiu/render/graphviz_dot.svg';
 import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
+import mermaid_wiiu_dagre from '@/examples/10_wiiu/render/mermaid_dagre.svg';
 import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
 
 export function getImage(id: string) {
@@ -143,6 +145,8 @@ export function getImage(id: string) {
       return d2_chess_elk;
     case 'plantuml-chess-dot':
       return plantuml_chess_dot;
+    case 'mermaid-chess-dagre':
+      return mermaid_chess_dagre;
     case 'graphviz-chess-dot':
       return graphviz_chess_dot;
     case 'graphviz-chess-neato':
@@ -203,6 +207,8 @@ export function getImage(id: string) {
       return d2_wiiu_elk;
     case 'plantuml-wiiu-dot':
       return plantuml_wiiu_dot;
+    case 'mermaid-wiiu-dagre':
+      return mermaid_wiiu_dagre;
     case 'graphviz-wiiu-dot':
       return graphviz_wiiu_dot;
     case 'graphviz-wiiu-neato':
