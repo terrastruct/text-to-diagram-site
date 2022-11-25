@@ -88,7 +88,7 @@ const features: Feature[] = [
     },
   },
   {
-    title: 'Maintanence',
+    title: 'Maintenance',
     description: 'Is the language actively maintained',
     value: {
       [D2_LANG]: true,
