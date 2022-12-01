@@ -94,7 +94,7 @@ function Langs(props: LangsProps) {
         case 'plantuml':
           return "PlantUML is a Java-based language released in 2009 primarily for creating UML diagrams. It's specification, at 416 pages, is rigorous, closely aligning with the specification of UML. It has since grown to support non-UML diagrams as well, such as network diagrams, Gantt charts, and mind maps.";
         case 'mermaid':
-          return 'Mermaid, or MermaidJS, is a Javascript-based diagramming tool released in 2014 by Knut Sveidqvist. It renders Markdown-inspired text definitions to create and modify diagrams dynamically. One of its goals is to allow even non-programmers to easily create detailed diagrams. Mermaid has distinct syntax for a variety of diagrams, and leverages open-source layout engines for client-side rendering. Recently, Github has adopted native support for Mermaid diagrams in Markdown.';
+          return 'Mermaid, or MermaidJS, is a Javascript-based diagramming tool released in 2014 by Knut Sveidqvist. It renders Markdown-inspired text definitions to create and modify diagrams dynamically. One of its goals is to allow even non-programmers to easily create detailed diagrams. Mermaid has distinct syntax for a variety of diagrams, and leverages open-source layout engines for client-side rendering. Recently, GitHub has adopted native support for Mermaid diagrams in Markdown.';
         case 'graphviz':
           return 'Graphviz is a C-based graph visualization software born at AT&T Bell Labs in 1991. It uses a variety of layout algorithms to cover a wide breadth of domains such as UML diagrams, code dependency graphs, network maps, mind maps, and more.';
       }
