@@ -1,4 +1,4 @@
-graph TD
+flowchart TD
   %% I could not figure out how to use double quotes in labels in Mermaid
   subgraph ibm[IBM Espresso CPU]
     core0[IBM PowerPC Broadway Core 0]
