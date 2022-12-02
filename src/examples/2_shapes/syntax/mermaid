@@ -1,11 +1,21 @@
-graph TD
-    parse[/parse/]
-    compile[/compile/]
-    export[/export/]
-    parse --> compile --> export
+flowchart TD
+    Square
+    Rounded(Rounded)
+    Stadium([Stadium])
+    Square --- Rounded --- Stadium
 
-    db[(Database)]
-    A[/Christmas\]
-    B[\Go shopping/]
-    A --> B
-    id1(((This is the text in the circle)))
+    Circle((Circle))
+    DCircle(((Double<br/>circle)))
+    Rhombus{Rhomnbus}
+    Circle --- DCircle ---Rhombus
+    
+    Database[(Database)]
+    Asymetric>Asymetric]
+    Hexagon{{Hexagon}}
+    Database --- Asymetric --- Hexagon
+
+    Parallelogram[/Parallelogram/]
+    AltParallelogram[/"Parallelogram (alt)"/]
+    Parallelogram --- AltParallelogram
+
+    Trapezoid[/Trapezoid\] --- AltTrapezoid[\"Trapezoid (alt)"/]
