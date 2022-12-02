@@ -39,7 +39,7 @@ const items = [
   },
   {
     question: 'Where does the syntax-highlighting come from?',
-    answer: `This site is using the best VSCode syntax highlighter that can be found online for each of the languages. Any odd-ness or differences should be reported upstream (you can find their repositories in this Github).`,
+    answer: `This site is using the best VSCode syntax highlighter that can be found online for each of the languages. Any odd-ness or differences should be reported upstream (you can find their repositories in this GitHub).`,
   },
   {
     question: 'Who made this?',
@@ -55,7 +55,7 @@ const items = [
   },
   {
     question: `I'd like to make a correction/addition.`,
-    answer: `Contributions are welcome -- the Github repository for this is public.`,
+    answer: `Contributions are welcome -- the GitHub repository for this is public.`,
   },
 ];
 
