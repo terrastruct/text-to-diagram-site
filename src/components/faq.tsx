@@ -16,18 +16,12 @@ const Collapsible = (props: {
         className='flex cursor-pointer items-center justify-start pl-4'
         onClick={() => props.onClick()}
       >
-        {props.isOpen ? (
-          <Up className='text-3xl' />
-        ) : (
-          <Down className='text-3xl' />
-        )}
+        {props.isOpen ? <Up className='text-3xl' /> : <Down className='text-3xl' />}
         <span className='px-4 py-4 font-primary-medium sm:px-8 sm:py-6'>
           {props.question}
         </span>
       </div>
-      {props.isOpen && (
-        <div className='bg-steel-50 p-4 sm:p-8'>{props.answer}</div>
-      )}
+      {props.isOpen && <div className='bg-steel-50 p-4 sm:p-8'>{props.answer}</div>}
     </div>
   );
 };
@@ -66,10 +60,7 @@ export default function FAQ() {
     <div className='px-4'>
       <div className='w-full'>
         <div className='my-8 flex w-full flex-col items-center sm:my-12'>
-          <h1
-            className='font-primary-bold text-2xl text-white sm:text-4xl'
-            id='faq'
-          >
+          <h1 className='font-primary-bold text-2xl text-white sm:text-4xl' id='faq'>
             Frequently asked questions
           </h1>
         </div>

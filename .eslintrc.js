@@ -21,10 +21,7 @@ module.exports = {
     '@next/next/no-img-element': 'off',
 
     'react/display-name': 'off',
-    'react/jsx-curly-brace-presence': [
-      'warn',
-      { props: 'never', children: 'never' },
-    ],
+    'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
 
     //#region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',

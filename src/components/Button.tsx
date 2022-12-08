@@ -22,8 +22,7 @@ const Button = (props: ButtonProps) => {
       className={classNames(
         'flex cursor-pointer items-center justify-center rounded text-center text-white',
         {
-          'border border-button-border bg-blue-500 hover:bg-blue-400':
-            props.isPrimary,
+          'border border-button-border bg-blue-500 hover:bg-blue-400': props.isPrimary,
           'border border-blue-600 bg-white text-blue-600 hover:bg-steel-100':
             props.isPrimaryOutline,
           'bg-steel-800 hover:bg-steel-700': props.isSecondary,

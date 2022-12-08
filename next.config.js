@@ -20,9 +20,7 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
-      include: [
-        path.resolve(__dirname, "public")
-      ],
+      include: [path.resolve(__dirname, 'public')],
       issuer: /\.[jt]sx?$/,
       use: [
         {
@@ -36,9 +34,7 @@ module.exports = {
     });
     config.module.rules.push({
       test: /\.svg$/i,
-      include: [
-        path.resolve(__dirname, "src")
-      ],
+      include: [path.resolve(__dirname, 'src')],
       type: 'asset',
     });
     config.module.rules.push({

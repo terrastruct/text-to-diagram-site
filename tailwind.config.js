@@ -99,8 +99,7 @@ module.exports = {
       backgroundImage: {
         'header-gradient':
           'linear-gradient(89.97deg, #FDD4BA 0.02%, #F5B7C5 15.12%, #ADA9EF 33.86%, #73B6FC 51.04%, #66B1FC 63.01%, #4F74F4 82.27%, #2E30EE 99.98%)',
-        'hero-gradient':
-          'linear-gradient(89.27deg, #1339CA 0.15%, #8F5AFF 100.34%)',
+        'hero-gradient': 'linear-gradient(89.27deg, #1339CA 0.15%, #8F5AFF 100.34%)',
         'hero-shadow':
           'linear-gradient(180deg, rgba(10, 15, 37, 0) 0%, rgba(10, 15, 37, 0.05) 100%, rgba(10, 15, 37, 0.05) 100%)',
       },

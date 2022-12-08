@@ -1,7 +1,10 @@
-name: ci
-on: [push, pull_request]
+name: daily
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '42 0 * * *' # daily at 00:42
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
@@ -15,10 +18,4 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - run: COLOR=1 ./make.sh
-  nofixups:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: git submodule update --init
-      - run: COLOR=1 ./ci/sub/nofixups.sh
+      - run: COLOR=1 CI_FORCE=1 ./make.sh

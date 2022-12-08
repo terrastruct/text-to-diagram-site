@@ -100,9 +100,7 @@ export default function D2CodeBlock(props: D2CodeBlockProps) {
     );
 
     children.push(
-      <span key={`line-${i}`}>
-        {tmGrammar ? highlightLine(tmGrammar, line) : line}
-      </span>
+      <span key={`line-${i}`}>{tmGrammar ? highlightLine(tmGrammar, line) : line}</span>
     );
 
     if (i < lines.length - 1) {
@@ -166,9 +164,7 @@ async function parseRawGrammar(path: any) {
 async function fetch(path: any) {
   const resp = await window.fetch(path);
   if (!resp.ok) {
-    throw new Error(
-      `fetching ${path} failed: ${resp.status} ${resp.statusText}`
-    );
+    throw new Error(`fetching ${path} failed: ${resp.status} ${resp.statusText}`);
   }
   return resp;
 }
@@ -199,14 +195,11 @@ function highlightLine(tmGrammar: any, line: any) {
 
     const token = line.substring(tokenStart, tokenEnd);
     const fontStyleIndex =
-      (tokenMeta & metadataConsts.FONT_STYLE_MASK) >>>
-      metadataConsts.FONT_STYLE_OFFSET;
+      (tokenMeta & metadataConsts.FONT_STYLE_MASK) >>> metadataConsts.FONT_STYLE_OFFSET;
     const foregroundIndex =
-      (tokenMeta & metadataConsts.FOREGROUND_MASK) >>>
-      metadataConsts.FOREGROUND_OFFSET;
+      (tokenMeta & metadataConsts.FOREGROUND_MASK) >>> metadataConsts.FOREGROUND_OFFSET;
     const backgroundIndex =
-      (tokenMeta & metadataConsts.BACKGROUND_MASK) >>>
-      metadataConsts.BACKGROUND_OFFSET;
+      (tokenMeta & metadataConsts.BACKGROUND_MASK) >>> metadataConsts.BACKGROUND_OFFSET;
 
     style.color = colorMap[foregroundIndex];
     style.backgroundColor = colorMap[backgroundIndex];
