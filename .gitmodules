@@ -3,4 +3,4 @@
 	url = https://github.com/terrastruct/d2-vscode
 [submodule "ci/sub"]
 	path = ci/sub
-	url = git@github.com:terrastruct/ci.git
+	url = https://github.com/terrastruct/ci
