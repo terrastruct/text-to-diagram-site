@@ -13,6 +13,10 @@
   <img align="center" width="754" alt="Screen Shot 2022-10-22 at 3 57 45 PM" src="https://user-images.githubusercontent.com/3120367/197365340-9d4ab821-acd9-4a64-9c9b-035da7f7a6bb.png">
 </p>
 
+[![ci](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/ci.yml/badge.svg)](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/ci.yml)
+[![daily](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/daily.yml/badge.svg)](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/daily.yml)
+[![license](https://img.shields.io/github/license/terrastruct/text-to-diagram-site?color=9cf)](./LICENSE)
+
 *Full disclosure: This is created and maintained by Terrastruct. We created D2, and it's
 in our interest to provide anyone evaluating us with an objective comparison against
 alternatives. The only favor granted to D2 is that it shows up as the first
