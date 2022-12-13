@@ -8,7 +8,7 @@ flowchart TD
     DCircle(((Double<br/>circle)))
     Rhombus{Rhomnbus}
     Circle --- DCircle ---Rhombus
-    
+
     Database[(Database)]
     Asymetric>Asymetric]
     Hexagon{{Hexagon}}
