@@ -1,7 +1,10 @@
 .POSIX:
 
 .PHONY: all
-all: fmt gen build
+all: fmt build
+ifndef CI
+all: gen
+endif
 
 .PHONY: fmt
 fmt: node_modules
@@ -12,6 +15,9 @@ gen:
 .PHONY: build
 build: node_modules
 	prefix "$@" yarn build
+ifndef CI
+build: gen
+endif
 .PHONY: node_modules
 node_modules:
 	prefix "$@" yarn $${CI:+--immutable} $${CI:+--immutable-cache}
