@@ -71,6 +71,7 @@ import d2_wiiu_dagre from '@/examples/10_wiiu/render/d2_dagre.svg';
 import d2_wiiu_elk from '@/examples/10_wiiu/render/d2_elk.svg';
 import graphviz_wiiu_dot from '@/examples/10_wiiu/render/graphviz_dot.svg';
 import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
+import mermaid_wiiu_dagre from '@/examples/10_wiiu/render/mermaid_dagre.svg';
 import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
 
 export function getImage(id: string) {
@@ -203,6 +204,8 @@ export function getImage(id: string) {
       return d2_wiiu_elk;
     case 'plantuml-wiiu-dot':
       return plantuml_wiiu_dot;
+    case 'mermaid-wiiu-dagre':
+      return mermaid_wiiu_dagre;
     case 'graphviz-wiiu-dot':
       return graphviz_wiiu_dot;
     case 'graphviz-wiiu-neato':
