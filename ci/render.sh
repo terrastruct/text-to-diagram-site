@@ -41,7 +41,7 @@ main() {
       runjob _d2 &
     fi
     if [ -f ./src/examples/"$ex"/syntax/mermaid ]; then
-      [ "$ex" != 4_chess ] && eval 'runjob _mmdc &'
+      runjob _mmdc &
     fi
     if [ -f ./src/examples/"$ex"/syntax/graphviz ]; then
       [ "$ex" != 8_text ] && runjob _dot &
