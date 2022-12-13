@@ -9,6 +9,10 @@ _d2() {
   sh_c D2_LAYOUT=elk hide d2 ./src/examples/"$ex"/syntax/d2 ./src/examples/"$ex"/render/d2_elk.svg
 }
 
+mmdc() {
+  npx --package @mermaid-js/mermaid-cli@9.2.2 -- mmdc "$@"
+}
+
 _mmdc() {
   sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid -o ./src/examples/"$ex"/render/mermaid_dagre.svg
 }
