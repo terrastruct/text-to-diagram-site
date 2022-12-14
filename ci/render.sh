@@ -4,9 +4,9 @@ set -eu
 cd -- "$(dirname "$0")/.."
 
 _d2() {
-  sh_c D2_LAYOUT=tala hide d2 ./src/examples/"$ex"/syntax/d2 ./src/examples/"$ex"/render/d2_tala.svg
-  sh_c D2_LAYOUT=dagre hide d2 ./src/examples/"$ex"/syntax/d2 ./src/examples/"$ex"/render/d2_dagre.svg
-  sh_c D2_LAYOUT=elk hide d2 ./src/examples/"$ex"/syntax/d2 ./src/examples/"$ex"/render/d2_elk.svg
+  sh_c D2_LAYOUT=tala hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_tala.svg
+  sh_c D2_LAYOUT=dagre hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_dagre.svg
+  sh_c D2_LAYOUT=elk hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_elk.svg
 }
 
 mmdc() {
@@ -16,16 +16,16 @@ mmdc() {
 }
 
 _mmdc() {
-  sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid -o ./src/examples/"$ex"/render/mermaid_dagre.svg
+  sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid.mmd -o ./src/examples/"$ex"/render/mermaid_dagre.svg
 }
 
 _dot() {
-  sh_c dot -Tsvg ./src/examples/"$ex"/syntax/graphviz >src/examples/"$ex"/render/graphviz_dot.svg
-  sh_c dot -Kneato -Tsvg ./src/examples/"$ex"/syntax/graphviz >src/examples/"$ex"/render/graphviz_neato.svg
+  sh_c dot -Tsvg ./src/examples/"$ex"/syntax/graphviz.dot >src/examples/"$ex"/render/graphviz_dot.svg
+  sh_c dot -Kneato -Tsvg ./src/examples/"$ex"/syntax/graphviz.dot >src/examples/"$ex"/render/graphviz_neato.svg
 }
 
 _plantuml() {
-  sh_c plantuml -Tsvg ./src/examples/"$ex"/syntax/plantuml -o ../render
+  sh_c plantuml -Tsvg ./src/examples/"$ex"/syntax/plantuml.puml -o ../render
   mv ./src/examples/"$ex"/render/plantuml.svg ./src/examples/"$ex"/render/plantuml_dot.svg
 }
 
@@ -39,16 +39,16 @@ main() {
     fi
 
     FGCOLOR=5 bigheader "$ex"
-    if [ -f ./src/examples/"$ex"/syntax/d2 ]; then
+    if [ -f ./src/examples/"$ex"/syntax/d2.d2 ]; then
       runjob _d2 &
     fi
-    if [ -f ./src/examples/"$ex"/syntax/mermaid ]; then
+    if [ -f ./src/examples/"$ex"/syntax/mermaid.mmd ]; then
       runjob _mmdc &
     fi
-    if [ -f ./src/examples/"$ex"/syntax/graphviz ]; then
+    if [ -f ./src/examples/"$ex"/syntax/graphviz.dot ]; then
       [ "$ex" != 8_text ] && runjob _dot &
     fi
-    if [ -f ./src/examples/"$ex"/syntax/plantuml ]; then
+    if [ -f ./src/examples/"$ex"/syntax/plantuml.puml ]; then
       runjob _plantuml &
     fi
     waitjobs
