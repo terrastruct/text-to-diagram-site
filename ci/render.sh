@@ -38,7 +38,7 @@ main() {
       continue
     fi
 
-    FGCOLOR=5 bigheader "$ex"
+    bigheader "$ex"
     if [ -f ./src/examples/"$ex"/syntax/d2.d2 ]; then
       runjob _d2 &
     fi
