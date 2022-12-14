@@ -10,7 +10,9 @@ _d2() {
 }
 
 mmdc() {
-  npx --package @mermaid-js/mermaid-cli@9.2.2 -- mmdc "$@"
+  config=$(mktempd)/mmdc-config
+  echo '{"deterministicIds": true}' >$config
+  npx --package @mermaid-js/mermaid-cli@9.2.2 -- mmdc -c"$config" "$@"
 }
 
 _mmdc() {
