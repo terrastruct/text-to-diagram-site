@@ -34,7 +34,7 @@ main() {
   for ex in $(find ./src/examples -mindepth 1 -maxdepth 1 | sort -V); do
     ex=${ex#./src/examples/}
     export JOBNAME=$ex
-    if ! runjob_filter; then
+    if ! _runjob_filter; then
       continue
     fi
 
