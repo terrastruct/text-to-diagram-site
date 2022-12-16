@@ -112,10 +112,11 @@ export const getStaticProps: GetStaticProps = async () => {
       render: {},
       error: {},
     };
-    for (const lang of fs.readdirSync(path.resolve(root, exampleName, 'syntax'))) {
-      const text = fs.readFileSync(path.resolve(root, exampleName, 'syntax', lang), {
+    for (const langPath of fs.readdirSync(path.resolve(root, exampleName, 'syntax'))) {
+      const text = fs.readFileSync(path.resolve(root, exampleName, 'syntax', langPath), {
         encoding: 'utf8',
       });
+      const lang = langPath.substring(0, langPath.lastIndexOf('.'));
       example.syntax[lang] = text;
     }
     for (const f of fs.readdirSync(path.resolve(root, exampleName, 'render'))) {
