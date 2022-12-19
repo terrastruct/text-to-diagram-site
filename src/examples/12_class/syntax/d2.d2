@@ -1,0 +1,26 @@
+Duck: {
+  shape: class
+  beakColor: String
+  swim(): void
+  quack(): void
+}
+Fish: {
+  shape: class
+  -sizeInFeet: int
+  -canEat(): boolean
+}
+Zebra: {
+  shape: class
+  is_wild: bool
+  run(): void
+}
+Animal: {
+  shape: class
+  age: int
+  gender: String
+  isMammal(): bool
+  mate(): void
+}
+Duck -> Animal
+Fish -> Animal
+Zebra -> Animal

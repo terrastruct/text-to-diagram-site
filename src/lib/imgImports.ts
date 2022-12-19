@@ -82,6 +82,14 @@ import d2_latex_tala from '@/examples/11_latex/render/d2_tala.svg';
 import d2_latex_dagre from '@/examples/11_latex/render/d2_dagre.svg';
 import d2_latex_elk from '@/examples/11_latex/render/d2_elk.svg';
 
+import d2_class_tala from '@/examples/12_class/render/d2_tala.svg';
+import d2_class_dagre from '@/examples/12_class/render/d2_dagre.svg';
+import d2_class_elk from '@/examples/12_class/render/d2_elk.svg';
+import graphviz_class_dot from '@/examples/12_class/render/graphviz_dot.svg';
+import graphviz_class_neato from '@/examples/12_class/render/graphviz_neato.svg';
+import mermaid_class_dagre from '@/examples/12_class/render/mermaid_dagre.svg';
+import plantuml_class_dot from '@/examples/12_class/render/plantuml_dot.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case 'd2-basic-tala':
@@ -233,5 +241,20 @@ export function getImage(id: string) {
       return d2_latex_dagre;
     case 'd2-latex-elk':
       return d2_latex_elk;
+
+    case 'd2-class-tala':
+      return d2_class_tala;
+    case 'd2-class-dagre':
+      return d2_class_dagre;
+    case 'd2-class-elk':
+      return d2_class_elk;
+    case 'plantuml-class-dot':
+      return plantuml_class_dot;
+    case 'mermaid-class-dagre':
+      return mermaid_class_dagre;
+    case 'graphviz-class-dot':
+      return graphviz_class_dot;
+    case 'graphviz-class-neato':
+      return graphviz_class_neato;
   }
 }

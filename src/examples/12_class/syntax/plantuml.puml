@@ -1,0 +1,30 @@
+@startuml
+
+class Duck {
+  +beakColor : String
+  +swim()
+  +quack()
+}
+
+class Fish {
+  -sizeInFeet : int
+  +canEat() : boolean
+}
+
+class Zebra {
+  +is_wild : bool
+  +run() : void
+}
+
+class Animal {
+  +age : int
+  +gender : String
+  +isMammal() : bool
+  +mate() : void
+}
+
+Duck --> Animal
+Fish --> Animal
+Zebra --> Animal
+
+@enduml

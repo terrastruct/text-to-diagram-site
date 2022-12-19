@@ -1,0 +1,34 @@
+digraph UML_Class_diagram {
+	node [
+		shape=record
+	]
+	Client -> Interface1 [label=dependency]
+	Client -> Interface2
+
+	edge [dir=back arrowtail=empty style=""]
+	Interface1 -> Class1 [xlabel=inheritance]
+	Interface2 -> Class1 [dir=none]
+	Interface2 [label="" xlabel="Simple\ninterface" shape=circle]
+
+	Interface1[label = <{<b>«interface» I/O</b> | + property<br align="left"/>...<br align="left"/>|+ method<br align="left"/>...<br align="left"/>}>]
+	Class1[label = <{<b>I/O class</b> | + property<br align="left"/>...<br align="left"/>|+ method<br align="left"/>...<br align="left"/>}>]
+	Class1 -> System_1 [label=implementation]
+	System_1 [
+		shape=plain
+		label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+			<tr> <td> <b>System</b> </td> </tr>
+			<tr> <td>
+				<table border="0" cellborder="0" cellspacing="0" >
+					<tr> <td align="left" >+ property</td> </tr>
+					<tr> <td port="ss1" align="left" >- Subsystem 1</td> </tr>
+					<tr> <td port="ss2" align="left" >- Subsystem 2</td> </tr>
+					<tr> <td port="ss3" align="left" >- Subsystem 3</td> </tr>
+					<tr> <td align="left">...</td> </tr>
+				</table>
+			</td> </tr>
+			<tr> <td align="left">+ method<br/>...<br align="left"/></td> </tr>
+		</table>>
+	]
+
+	System_1:ss1 -> Subsystem_1 [xlabel="composition"]
+}
