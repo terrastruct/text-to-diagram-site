@@ -188,6 +188,16 @@ const features: Feature[] = [
     },
   },
   {
+    title: 'LaTeX',
+    description: 'Render math equations suitable for academic usage',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
+  {
     title: 'Accessibility',
     description:
       'Support for accessibility options like description tags for screen readers',

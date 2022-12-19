@@ -78,6 +78,10 @@ import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
 import mermaid_wiiu_dagre from '@/examples/10_wiiu/render/mermaid_dagre.svg';
 import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
 
+import d2_latex_tala from '@/examples/11_latex/render/d2_tala.svg';
+import d2_latex_dagre from '@/examples/11_latex/render/d2_dagre.svg';
+import d2_latex_elk from '@/examples/11_latex/render/d2_elk.svg';
+
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
     case 'd2-basic-tala':
@@ -222,5 +226,12 @@ export function getImage(id: string) {
       return graphviz_wiiu_dot;
     case 'graphviz-wiiu-neato':
       return graphviz_wiiu_neato;
+
+    case 'd2-latex-tala':
+      return d2_latex_tala;
+    case 'd2-latex-dagre':
+      return d2_latex_dagre;
+    case 'd2-latex-elk':
+      return d2_latex_elk;
   }
 }

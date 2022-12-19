@@ -1,0 +1,1 @@
+Support for LaTeX equations make the tool suitable for academic and scientific use cases.
