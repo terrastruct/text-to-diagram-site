@@ -1,0 +1,1 @@
+Class diagrams show structure (attributes and methods) and relationships of classes. These are common in demonstrating and OOP (object oriented programming) design.

@@ -62,6 +62,8 @@ Please follow the examples in `src/examples`.
 or others can fill.
 1. Run `./render.sh` (with the respective tools installed)
 
+<img alt="CLI render" src="/docs/assets/render.png" />
+
 ### Adding features
 
 If you think there's a significant feature that people want to compare against, feel free

@@ -55,6 +55,9 @@ import graphviz_tables_neato from '@/examples/6_tables/render/graphviz_neato.svg
 import mermaid_tables_dagre from '@/examples/6_tables/render/mermaid_dagre.svg';
 import plantuml_tables_dot from '@/examples/6_tables/render/plantuml_dot.svg';
 
+import d2_sequence_tala from '@/examples/7_sequence/render/d2_tala.svg';
+import d2_sequence_dagre from '@/examples/7_sequence/render/d2_dagre.svg';
+import d2_sequence_elk from '@/examples/7_sequence/render/d2_elk.svg';
 import mermaid_sequence_dagre from '@/examples/7_sequence/render/mermaid_dagre.svg';
 import plantuml_sequence_dot from '@/examples/7_sequence/render/plantuml_dot.svg';
 
@@ -74,6 +77,18 @@ import graphviz_wiiu_dot from '@/examples/10_wiiu/render/graphviz_dot.svg';
 import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
 import mermaid_wiiu_dagre from '@/examples/10_wiiu/render/mermaid_dagre.svg';
 import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
+
+import d2_latex_tala from '@/examples/11_latex/render/d2_tala.svg';
+import d2_latex_dagre from '@/examples/11_latex/render/d2_dagre.svg';
+import d2_latex_elk from '@/examples/11_latex/render/d2_elk.svg';
+
+import d2_class_tala from '@/examples/12_class/render/d2_tala.svg';
+import d2_class_dagre from '@/examples/12_class/render/d2_dagre.svg';
+import d2_class_elk from '@/examples/12_class/render/d2_elk.svg';
+import graphviz_class_dot from '@/examples/12_class/render/graphviz_dot.svg';
+import graphviz_class_neato from '@/examples/12_class/render/graphviz_neato.svg';
+import mermaid_class_dagre from '@/examples/12_class/render/mermaid_dagre.svg';
+import plantuml_class_dot from '@/examples/12_class/render/plantuml_dot.svg';
 
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
@@ -178,6 +193,12 @@ export function getImage(id: string) {
     case 'graphviz-tables-neato':
       return graphviz_tables_neato;
 
+    case 'd2-sequence-tala':
+      return d2_sequence_tala;
+    case 'd2-sequence-dagre':
+      return d2_sequence_dagre;
+    case 'd2-sequence-elk':
+      return d2_sequence_elk;
     case 'mermaid-sequence-dagre':
       return mermaid_sequence_dagre;
     case 'plantuml-sequence-dot':
@@ -213,5 +234,27 @@ export function getImage(id: string) {
       return graphviz_wiiu_dot;
     case 'graphviz-wiiu-neato':
       return graphviz_wiiu_neato;
+
+    case 'd2-latex-tala':
+      return d2_latex_tala;
+    case 'd2-latex-dagre':
+      return d2_latex_dagre;
+    case 'd2-latex-elk':
+      return d2_latex_elk;
+
+    case 'd2-class-tala':
+      return d2_class_tala;
+    case 'd2-class-dagre':
+      return d2_class_dagre;
+    case 'd2-class-elk':
+      return d2_class_elk;
+    case 'plantuml-class-dot':
+      return plantuml_class_dot;
+    case 'mermaid-class-dagre':
+      return mermaid_class_dagre;
+    case 'graphviz-class-dot':
+      return graphviz_class_dot;
+    case 'graphviz-class-neato':
+      return graphviz_class_neato;
   }
 }
