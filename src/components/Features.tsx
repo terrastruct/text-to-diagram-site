@@ -151,7 +151,7 @@ const features: Feature[] = [
     title: 'Sequence diagrams',
     description: 'The best part of UML',
     value: {
-      [D2_LANG]: false,
+      [D2_LANG]: true,
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: true,
