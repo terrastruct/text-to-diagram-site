@@ -218,6 +218,26 @@ const features: Feature[] = [
       [PLANTUML_LANG]: false,
     },
   },
+  {
+    title: 'Native Github rendering',
+    description: 'Does it render natively on Github',
+    value: {
+      [D2_LANG]: false,
+      [MERMAID_LANG]: true,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
+  {
+    title: 'Slack app',
+    description: 'Does the language have a Slack app',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: false,
+      [PLANTUML_LANG]: false,
+    },
+  },
 ];
 
 const FeatureValue = (props: { value: any; className?: string }) => {
