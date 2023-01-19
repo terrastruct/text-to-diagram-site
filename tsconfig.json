@@ -21,6 +21,6 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "./src/extensions/d2-vscode"],
   "moduleResolution": ["node_modules", ".next", "node"]
 }

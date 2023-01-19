@@ -36,3 +36,5 @@ yarn-error.log*
 
 # changelog
 CHANGELOG.md
+
+src/extensions/d2-vscode
