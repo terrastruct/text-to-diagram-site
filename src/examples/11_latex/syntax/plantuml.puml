@@ -1,0 +1,13 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam defaultTextAlignment center
+skinparam defaultFontSize 14
+skinparam defaultFontName Arial
+skinparam component {
+  borderColor DarkBlue
+  backgroundColor MOTIVATION
+}
+
+
+[plankton] -r-> [formula \n\n\n <latex>\lim_{h \rightarrow 0 } \frac{f(x+h)-f(x)}{h}</latex> \n]
+@enduml
