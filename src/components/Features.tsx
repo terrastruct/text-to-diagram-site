@@ -230,7 +230,8 @@ const features: Feature[] = [
   },
   {
     title: 'Responsive dark mode',
-    description: 'Can the diagram render with both light and dark mode, switching depending on user preference',
+    description:
+      'Can the diagram render with both light and dark mode, switching depending on user preference',
     value: {
       [D2_LANG]: true,
       [MERMAID_LANG]: false,
