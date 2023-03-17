@@ -229,8 +229,8 @@ const features: Feature[] = [
     },
   },
   {
-    title: 'Slack app',
-    description: 'Does the language have a Slack app',
+    title: 'Responsive dark mode',
+    description: 'Can the diagram render with both light and dark mode, switching depending on user preference',
     value: {
       [D2_LANG]: true,
       [MERMAID_LANG]: false,
