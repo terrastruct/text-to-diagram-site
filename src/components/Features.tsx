@@ -241,8 +241,7 @@ const features: Feature[] = [
   },
   {
     title: 'PDF exports',
-    description:
-      'Can the CLI export PDF output',
+    description: 'Can the CLI export PDF output',
     value: {
       [D2_LANG]: true,
       [MERMAID_LANG]: false,
