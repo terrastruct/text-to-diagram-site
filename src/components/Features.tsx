@@ -239,6 +239,16 @@ const features: Feature[] = [
       [PLANTUML_LANG]: false,
     },
   },
+  {
+    title: 'PDF exports',
+    description: 'Can the CLI export PDF output',
+    value: {
+      [D2_LANG]: true,
+      [MERMAID_LANG]: false,
+      [GRAPHVIZ_LANG]: true,
+      [PLANTUML_LANG]: false,
+    },
+  },
 ];
 
 const FeatureValue = (props: { value: any; className?: string }) => {
