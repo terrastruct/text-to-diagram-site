@@ -7,6 +7,7 @@ import GraphvizLogo from '~/images/graphviz.png';
 import MermaidLogo from '~/images/mermaid.png';
 import PlantUMLLogo from '~/images/plantuml.png';
 import D2Logo from '~/svg/d2.svg';
+import FlowchartFunLogo from '~/svg/flowchartfun.svg';
 
 type LanguageDropdownProps = {
   activeLang: string;
@@ -101,6 +102,8 @@ export function getCanonicalName(name: string) {
       return 'MermaidJS';
     case 'graphviz':
       return 'GraphViz';
+    case 'flowchartfun':
+      return 'Flowchart.Fun';
   }
   return 'Unknown';
 }
@@ -116,6 +119,8 @@ export function getLogo(name: string, isLarge?: boolean) {
       return <img src={MermaidLogo.src} className={pngClassName} alt={name} />;
     case 'graphviz':
       return <img src={GraphvizLogo.src} className={pngClassName} alt={name} />;
+    case 'flowchartfun':
+      return <FlowchartFunLogo className={isLarge ? 'text-3xl' : 'text-xl'} />;
   }
   return 'Unknown';
 }
