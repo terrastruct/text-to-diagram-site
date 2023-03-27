@@ -10,6 +10,7 @@ import {
   MERMAID_LANG,
   GRAPHVIZ_LANG,
   PLANTUML_LANG,
+  FLOWCHARTFUN_LANG,
 } from '@/constant/langs';
 
 import CheckIcon from '~/svg/checkcircle.svg';
@@ -33,6 +34,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: true,
     },
   },
   {
@@ -43,6 +45,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: 'MIT',
       [GRAPHVIZ_LANG]: 'CPL 1.0',
       [PLANTUML_LANG]: 'GPL 3.0',
+      [FLOWCHARTFUN_LANG]: 'MIT',
     },
   },
   {
@@ -54,6 +57,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -64,6 +68,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -75,6 +80,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: 'Hacky',
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: true,
     },
   },
   {
@@ -85,6 +91,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: 2014,
       [GRAPHVIZ_LANG]: 1991,
       [PLANTUML_LANG]: 2009,
+      [FLOWCHARTFUN_LANG]: 2021,
     },
   },
   {
@@ -95,6 +102,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: `"This project has only 3 of its founders remaining as volunteer maintainers, and support is limited and may end soon." - Graphviz's README`,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: true,
     },
   },
   {
@@ -105,6 +113,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: `Javascript/Typescript`,
       [GRAPHVIZ_LANG]: `C`,
       [PLANTUML_LANG]: `Java`,
+      [FLOWCHARTFUN_LANG]: `Javascript/Typescript`,
     },
   },
   {
@@ -115,6 +124,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: `Community-made extensions for VSCode and Atom`,
       [GRAPHVIZ_LANG]: `Community-made extensions for VSCode, Vim, most IDEs`,
       [PLANTUML_LANG]: `Community-made extensions for VSCode, Vim, Atom`,
+      [FLOWCHARTFUN_LANG]: `No editor support currently`,
     },
   },
   {
@@ -125,6 +135,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: true,
     },
   },
   {
@@ -135,6 +146,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: true,
     },
   },
   {
@@ -145,6 +157,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: 'FontAwesome. Hacky <img> tags',
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: 'Any URL',
     },
   },
   {
@@ -155,6 +168,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -165,6 +179,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: 'Experimental',
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: true,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -175,6 +190,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -185,6 +201,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -195,6 +212,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -206,6 +224,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -216,6 +235,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -226,6 +246,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -237,6 +258,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
   {
@@ -247,6 +269,7 @@ const features: Feature[] = [
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: false,
+      [FLOWCHARTFUN_LANG]: false,
     },
   },
 ];

@@ -80,6 +80,8 @@ function Langs(props: LangsProps) {
     case 'graphviz':
       link = 'https://graphviz.org/';
       break;
+    case 'flowchartfun':
+      link = 'https://flowchart.fun';
   }
 
   const renderLink = () => {
@@ -97,6 +99,8 @@ function Langs(props: LangsProps) {
           return 'Mermaid, or MermaidJS, is a Javascript-based diagramming tool released in 2014 by Knut Sveidqvist. It renders Markdown-inspired text definitions to create and modify diagrams dynamically. One of its goals is to allow even non-programmers to easily create detailed diagrams. Mermaid has distinct syntax for a variety of diagrams, and leverages open-source layout engines for client-side rendering. Recently, GitHub has adopted native support for Mermaid diagrams in Markdown.';
         case 'graphviz':
           return 'Graphviz is a C-based graph visualization software born at AT&T Bell Labs in 1991. It uses a variety of layout algorithms to cover a wide breadth of domains such as UML diagrams, code dependency graphs, network maps, mind maps, and more.';
+        case 'flowchartfun':
+          return 'Flowchart Fun is an open-source web application designed for quickly generating flowcharts from text. It is built with React and Cytoscape.js, providing a user-friendly and intuitive workflow. Use it for free at https://flowchart.fun.';
       }
     };
 
@@ -506,7 +510,7 @@ export default function Comparisons(props: ComparisonsProps) {
       <div className='mt-4 mb-4 flex flex-col items-center'>
         <h2 className=''>Which diagramming tool is right for you?</h2>
         <div className='text-l mt-4 text-steel-800'>
-          Compare the syntax and renders of various languages that produce diagrams from
+          Compare the syntax and renders of various languages that produce diagrams from 
           text.
         </div>
       </div>
