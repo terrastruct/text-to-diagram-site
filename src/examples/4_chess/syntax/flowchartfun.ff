@@ -1,0 +1,23 @@
+// Actors
+Hans Niemann
+defendants {
+  Magnus Carlsen
+    owns majority: (Play Magnus Group)
+  Play Magnus Group
+    .source-arrow Merger Talks: (Chess.com)
+  Chess.com
+    Sponsoring: (Hikaru Nakamura)
+  Hikaru Nakamura
+}
+
+// Accusations
+(Hans Niemann)
+  sueing for $100M: (defendants)
+
+// Offense
+(Hikaru Nakamura)
+  Accused of cheating on his stream: (Hans Niemann)
+(Magnus Carlsen)
+  Lost then withdrew with accusations: (Hans Niemann)
+(Chess.com)
+  72 page report of cheating: (Hans Niemann)

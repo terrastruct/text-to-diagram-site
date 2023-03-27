@@ -1,0 +1,40 @@
+IBM "Espresso" CPU {
+  IBM PowerPC Broadway Core 0 #core0
+    (#core2)
+  IBM PowerPC Broadway Core 1 #core1
+    (#mem)
+  IBM PowerPC Broadway Core 2 #core2
+
+  16 KB ROM #rom
+    (#core2)
+}
+
+AMD "Latte" GPU {
+  Memory & I/O Bridge #mem
+    (#gx)
+    (#radeon)
+    (#sata)
+    (#exi)
+    (#ddr3)
+  DRAM Controller #dram
+    (#sata)
+    (#exi)
+    (#ddr3)
+  32 MB EDRAM MEM1 #edram
+    (#ddr3)
+  512 B SEEPROM #rom2
+    (#mem)
+
+  SATA IF #sata
+  EXI #exi
+    (#rtc)
+
+  GX #gx {
+    3 MB 1T-SRAM #sram
+  }
+
+  AMD Radeon R7xx GX2 #radeon
+}
+
+2 GB DDR3 RAM MEM2 #ddr3
+RTC #rtc

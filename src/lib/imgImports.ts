@@ -8,6 +8,8 @@ import graphviz_basic_dot from '@/examples/0_basic/render/graphviz_dot.svg';
 import graphviz_basic_neato from '@/examples/0_basic/render/graphviz_neato.svg';
 import mermaid_basic_dagre from '@/examples/0_basic/render/mermaid_dagre.svg';
 import plantuml_basic_dot from '@/examples/0_basic/render/plantuml_dot.svg';
+import flowchartfun_basic_dagre from '@/examples/0_basic/render/flowchartfun_dagre.svg';
+import flowchartfun_basic_elk from '@/examples/0_basic/render/flowchartfun_elk.svg';
 
 import d2_containers_tala from '@/examples/1_containers/render/d2_tala.svg';
 import d2_containers_dagre from '@/examples/1_containers/render/d2_dagre.svg';
@@ -16,6 +18,8 @@ import graphviz_containers_dot from '@/examples/1_containers/render/graphviz_dot
 import graphviz_containers_neato from '@/examples/1_containers/render/graphviz_neato.svg';
 import mermaid_containers_dagre from '@/examples/1_containers/render/mermaid_dagre.svg';
 import plantuml_containers_dot from '@/examples/1_containers/render/plantuml_dot.svg';
+import flowchartfun_containers_dagre from '@/examples/1_containers/render/flowchartfun_dagre.svg';
+import flowchartfun_containers_elk from '@/examples/1_containers/render/flowchartfun_elk.svg';
 
 import d2_shapes_tala from '@/examples/2_shapes/render/d2_tala.svg';
 import d2_shapes_dagre from '@/examples/2_shapes/render/d2_dagre.svg';
@@ -24,6 +28,7 @@ import graphviz_shapes_dot from '@/examples/2_shapes/render/graphviz_dot.svg';
 import graphviz_shapes_neato from '@/examples/2_shapes/render/graphviz_neato.svg';
 import mermaid_shapes_dagre from '@/examples/2_shapes/render/mermaid_dagre.svg';
 import plantuml_shapes_dot from '@/examples/2_shapes/render/plantuml_dot.svg';
+import flowchartfun_shapes_dagre from '@/examples/2_shapes/render/flowchartfun_dagre.svg';
 
 import d2_trees_tala from '@/examples/3_trees/render/d2_tala.svg';
 import d2_trees_dagre from '@/examples/3_trees/render/d2_dagre.svg';
@@ -32,6 +37,8 @@ import graphviz_trees_dot from '@/examples/3_trees/render/graphviz_dot.svg';
 import graphviz_trees_neato from '@/examples/3_trees/render/graphviz_neato.svg';
 import mermaid_trees_dagre from '@/examples/3_trees/render/mermaid_dagre.svg';
 import plantuml_trees_dot from '@/examples/3_trees/render/plantuml_dot.svg';
+import flowchartfun_trees_dagre from '@/examples/3_trees/render/flowchartfun_dagre.svg';
+import flowchartfun_trees_elk from '@/examples/3_trees/render/flowchartfun_elk.svg';
 
 import d2_chess_tala from '@/examples/4_chess/render/d2_tala.svg';
 import d2_chess_dagre from '@/examples/4_chess/render/d2_dagre.svg';
@@ -40,12 +47,14 @@ import graphviz_chess_dot from '@/examples/4_chess/render/graphviz_dot.svg';
 import graphviz_chess_neato from '@/examples/4_chess/render/graphviz_neato.svg';
 import mermaid_chess_dagre from '@/examples/4_chess/render/mermaid_dagre.svg';
 import plantuml_chess_dot from '@/examples/4_chess/render/plantuml_dot.svg';
+import flowchartfun_chess_dagre from '@/examples/4_chess/render/flowchartfun_dagre.svg';
 
 import d2_icons_tala from '@/examples/5_icons/render/d2_tala.svg';
 import d2_icons_dagre from '@/examples/5_icons/render/d2_dagre.svg';
 import d2_icons_elk from '@/examples/5_icons/render/d2_elk.svg';
 import mermaid_icons_dagre from '@/examples/5_icons/render/mermaid_dagre.svg';
 import plantuml_icons_dot from '@/examples/5_icons/render/plantuml_dot.svg';
+import flowchartfun_icons_dagre from '@/examples/5_icons/render/flowchartfun_dagre.svg';
 
 import d2_tables_tala from '@/examples/6_tables/render/d2_tala.svg';
 import d2_tables_dagre from '@/examples/6_tables/render/d2_dagre.svg';
@@ -77,6 +86,8 @@ import graphviz_wiiu_dot from '@/examples/10_wiiu/render/graphviz_dot.svg';
 import graphviz_wiiu_neato from '@/examples/10_wiiu/render/graphviz_neato.svg';
 import mermaid_wiiu_dagre from '@/examples/10_wiiu/render/mermaid_dagre.svg';
 import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
+import flowchartfun_wiiu_dagre from '@/examples/10_wiiu/render/flowchartfun_dagre.svg';
+import flowchartfun_wiiu_elk from '@/examples/10_wiiu/render/flowchartfun_elk.svg';
 
 import d2_latex_tala from '@/examples/11_latex/render/d2_tala.svg';
 import d2_latex_dagre from '@/examples/11_latex/render/d2_dagre.svg';
@@ -106,6 +117,10 @@ export function getImage(id: string) {
       return graphviz_basic_dot;
     case 'graphviz-basic-neato':
       return graphviz_basic_neato;
+    case 'flowchartfun-basic-dagre':
+      return flowchartfun_basic_dagre;
+    case 'flowchartfun-basic-elk':
+      return flowchartfun_basic_elk;
 
     case 'd2-containers-tala':
       return d2_containers_tala;
@@ -121,6 +136,10 @@ export function getImage(id: string) {
       return graphviz_containers_dot;
     case 'graphviz-containers-neato':
       return graphviz_containers_neato;
+    case 'flowchartfun-containers-dagre':
+      return flowchartfun_containers_dagre;
+    case 'flowchartfun-containers-elk':
+      return flowchartfun_containers_elk;
 
     case 'd2-shapes-tala':
       return d2_shapes_tala;
@@ -136,6 +155,8 @@ export function getImage(id: string) {
       return graphviz_shapes_dot;
     case 'graphviz-shapes-neato':
       return graphviz_shapes_neato;
+    case 'flowchartfun-shapes-dagre':
+      return flowchartfun_shapes_dagre;
 
     case 'd2-trees-tala':
       return d2_trees_tala;
@@ -151,6 +172,10 @@ export function getImage(id: string) {
       return graphviz_trees_dot;
     case 'graphviz-trees-neato':
       return graphviz_trees_neato;
+    case 'flowchartfun-trees-dagre':
+      return flowchartfun_trees_dagre;
+    case 'flowchartfun-trees-elk':
+      return flowchartfun_trees_elk;
 
     case 'd2-chess-tala':
       return d2_chess_tala;
@@ -166,6 +191,8 @@ export function getImage(id: string) {
       return graphviz_chess_dot;
     case 'graphviz-chess-neato':
       return graphviz_chess_neato;
+    case 'flowchartfun-chess-dagre':
+      return flowchartfun_chess_dagre;
 
     case 'd2-icons-tala':
       return d2_icons_tala;
@@ -177,6 +204,8 @@ export function getImage(id: string) {
       return plantuml_icons_dot;
     case 'mermaid-icons-dagre':
       return mermaid_icons_dagre;
+    case 'flowchartfun-icons-dagre':
+      return flowchartfun_icons_dagre;
 
     case 'd2-tables-tala':
       return d2_tables_tala;
@@ -234,6 +263,10 @@ export function getImage(id: string) {
       return graphviz_wiiu_dot;
     case 'graphviz-wiiu-neato':
       return graphviz_wiiu_neato;
+    case 'flowchartfun-wiiu-dagre':
+      return flowchartfun_wiiu_dagre;
+    case 'flowchartfun-wiiu-elk':
+      return flowchartfun_wiiu_elk;
 
     case 'd2-latex-tala':
       return d2_latex_tala;
