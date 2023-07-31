@@ -37,7 +37,7 @@ const items = [
   },
   {
     question: 'How up-to-date is this?',
-    answer: `Very up to date. Every so often, we upgrade to latest version of all tools and regenerate all. Latest: March 18, 2023.`,
+    answer: `Very up to date. Every so often, we upgrade to latest version of all tools and regenerate all. Latest: July 31, 2023.`,
   },
   {
     question: 'Who made this?',
