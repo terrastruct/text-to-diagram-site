@@ -5,9 +5,11 @@
   height="150px"
   />
 </div>
-  [![ci](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/ci.yml/badge.svg)](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/ci.yml)
-  [![daily](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/daily.yml/badge.svg)](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/daily.yml)
-  [![license](https://img.shields.io/github/license/terrastruct/text-to-diagram-site?color=9cf)](./LICENSE)
+
+[![ci](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/ci.yml/badge.svg)](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/ci.yml)
+[![daily](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/daily.yml/badge.svg)](https://github.com/terrastruct/text-to-diagram-site/actions/workflows/daily.yml)
+[![license](https://img.shields.io/github/license/terrastruct/text-to-diagram-site?color=9cf)](./LICENSE)
+
 <div align="center">
   <h1>Text to diagram comparisons</h1>
   <a href="http://text-to-diagram.com">Go to comparisons site</a>
