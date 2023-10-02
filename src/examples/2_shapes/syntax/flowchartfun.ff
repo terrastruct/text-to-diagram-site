@@ -1,0 +1,21 @@
+rectangle
+  ellipse .ellipse
+    triangle .triangle
+      pentagon .pentagon
+        hexagon .hexagon
+          heptagon .heptagon
+            octagon .octagon
+              polygon .polygon
+
+round-rectangle .round-rectangle
+  bottom-round-rectangle .bottom-round-rectangle
+
+star .star
+  barrel .barrel
+    diamond .diamond
+      vee .vee
+        rhomboid .rhomboid
+          cut-rectangle .cut-rectangle
+
+concave-hexagon .concave-hexagon
+  tag .tag

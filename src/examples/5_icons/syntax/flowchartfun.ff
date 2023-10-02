@@ -1,0 +1,17 @@
+aws {
+  db #db1[src="https://icons.terrastruct.com/azure/Databases%20Service%20Color/Azure%20Database%20for%20PostgreSQL%20servers.svg"][w=38][h=56]
+    (#db2)
+  cache [src="https://icons.terrastruct.com/azure/_Companies/Azure%20Cache%20Redis%20Product%20icon.svg"][w=60][h=60]
+  ec2 [src="https://icons.terrastruct.com/aws/_Group%20Icons/EC2-instance-container_light-bg.svg"][w=50][h=50]
+    get persisted data: (#db1)
+    get temporal cache: (cache)
+}
+
+dev [src="https://icons.terrastruct.com/essentials/005-programmer.svg"][w=80][h=80]
+  ssh: (ec2)
+  Version Control: (github)
+github [src="https://icons.terrastruct.com/dev/github.svg"][w=50][h=53]
+
+gcloud {
+  db #db2[src="https://icons.terrastruct.com/azure/Databases%20Service%20Color/Azure%20Database%20for%20PostgreSQL%20servers.svg"][w=38][h=56]
+}

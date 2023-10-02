@@ -1,0 +1,10 @@
+parent {
+  childB {
+    grandchild
+  }
+  childA
+    (grandchild)
+}
+
+foo
+  (childA)
