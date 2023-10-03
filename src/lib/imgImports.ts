@@ -81,6 +81,7 @@ import plantuml_wiiu_dot from '@/examples/10_wiiu/render/plantuml_dot.svg';
 import d2_latex_tala from '@/examples/11_latex/render/d2_tala.svg';
 import d2_latex_dagre from '@/examples/11_latex/render/d2_dagre.svg';
 import d2_latex_elk from '@/examples/11_latex/render/d2_elk.svg';
+import plantuml_latex_dot from '@/examples/11_latex/render/plantuml_dot.svg';
 
 import d2_class_tala from '@/examples/12_class/render/d2_tala.svg';
 import d2_class_dagre from '@/examples/12_class/render/d2_dagre.svg';
@@ -241,6 +242,8 @@ export function getImage(id: string) {
       return d2_latex_dagre;
     case 'd2-latex-elk':
       return d2_latex_elk;
+    case 'plantuml-latex-dot':
+      return plantuml_latex_dot;
 
     case 'd2-class-tala':
       return d2_class_tala;
