@@ -1,0 +1,15 @@
+digraph state_diagram {
+    Start [shape=point];
+    End [shape=point];
+    Still [shape=ellipse];
+    Moving [shape=ellipse];
+    Crash [shape=ellipse];
+
+    Start -> Still;
+    Still -> End;
+
+    Still -> Moving;
+    Moving -> Still;
+    Moving -> Crash;
+    Crash -> End;
+}

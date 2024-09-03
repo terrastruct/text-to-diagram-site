@@ -1,0 +1,16 @@
+Start: "" {
+  shape: circle
+  width: 10
+}
+End: "" {
+  shape: circle
+  width: 10
+}
+
+Start -> Still
+Still -> End
+
+Still -> Moving
+Moving -> Still
+Moving -> Crash
+Crash -> End
