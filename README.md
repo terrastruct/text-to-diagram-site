@@ -46,7 +46,13 @@ catalog we've found is
 
 ### Run locally
 
-`yarn && yarn dev`
+```sh
+# Only needed first run
+git submodule update --init --recursive
+yarn
+
+yarn dev
+```
 
 ### Adding examples
 
