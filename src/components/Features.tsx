@@ -246,7 +246,7 @@ const features: Feature[] = [
       [D2_LANG]: true,
       [MERMAID_LANG]: false,
       [GRAPHVIZ_LANG]: true,
-      [PLANTUML_LANG]: "With additional installs",
+      [PLANTUML_LANG]: 'With additional installs',
     },
   },
 ];
