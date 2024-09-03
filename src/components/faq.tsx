@@ -37,7 +37,7 @@ const items = [
   },
   {
     question: 'How up-to-date is this?',
-    answer: `Very up to date. Every so often, we upgrade to latest version of all tools and regenerate all. Latest: July 31, 2023.`,
+    answer: `Very up to date. Every so often, we upgrade to latest version of all tools and regenerate all. Latest: September 03, 2024.`,
   },
   {
     question: 'Who made this?',
@@ -45,7 +45,7 @@ const items = [
   },
   {
     question: "Why isn't [my favorite underground language] here?",
-    answer: `The cross-table of examples and languages is big, and nobody's gotten around to it yet. We're seeding and adding languages in order of perceived popularity. If you'd like to help support your favorite one, feel free to submit a PR -- we'll merge.`,
+    answer: `The cross-table of examples and languages is big, and nobody's gotten around to it yet. We're seeding and adding languages in order of perceived popularity. If you'd like to help support your favorite one, feel free to submit a PR -- we'll merge. Note that if the language is niche, like only does network diagrams, it's useless comparing to other languages so will be out of scope for this site.`,
   },
   {
     question: 'Future plans?',

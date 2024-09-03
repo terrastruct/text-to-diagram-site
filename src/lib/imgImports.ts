@@ -65,6 +65,7 @@ import d2_text_tala from '@/examples/8_text/render/d2_tala.svg';
 import d2_text_dagre from '@/examples/8_text/render/d2_dagre.svg';
 import d2_text_elk from '@/examples/8_text/render/d2_elk.svg';
 import mermaid_text_dagre from '@/examples/8_text/render/mermaid_dagre.svg';
+import plantuml_text_dot from '@/examples/8_text/render/plantuml_dot.svg';
 
 import d2_code_tala from '@/examples/9_code/render/d2_tala.svg';
 import d2_code_dagre from '@/examples/9_code/render/d2_dagre.svg';
@@ -89,6 +90,14 @@ import graphviz_class_dot from '@/examples/12_class/render/graphviz_dot.svg';
 import graphviz_class_neato from '@/examples/12_class/render/graphviz_neato.svg';
 import mermaid_class_dagre from '@/examples/12_class/render/mermaid_dagre.svg';
 import plantuml_class_dot from '@/examples/12_class/render/plantuml_dot.svg';
+
+import d2_state_tala from '@/examples/13_state/render/d2_tala.svg';
+import d2_state_dagre from '@/examples/13_state/render/d2_dagre.svg';
+import d2_state_elk from '@/examples/13_state/render/d2_elk.svg';
+import graphviz_state_dot from '@/examples/13_state/render/graphviz_dot.svg';
+import graphviz_state_neato from '@/examples/13_state/render/graphviz_neato.svg';
+import mermaid_state_dagre from '@/examples/13_state/render/mermaid_dagre.svg';
+import plantuml_state_dot from '@/examples/13_state/render/plantuml_dot.svg';
 
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
@@ -212,6 +221,8 @@ export function getImage(id: string) {
       return d2_text_elk;
     case 'mermaid-text-dagre':
       return mermaid_text_dagre;
+    case 'plantuml-text-dot':
+      return plantuml_text_dot;
 
     case 'd2-code-tala':
       return d2_code_tala;
@@ -256,5 +267,20 @@ export function getImage(id: string) {
       return graphviz_class_dot;
     case 'graphviz-class-neato':
       return graphviz_class_neato;
+
+    case 'd2-state-tala':
+      return d2_state_tala;
+    case 'd2-state-dagre':
+      return d2_state_dagre;
+    case 'd2-state-elk':
+      return d2_state_elk;
+    case 'plantuml-state-dot':
+      return plantuml_state_dot;
+    case 'mermaid-state-dagre':
+      return mermaid_state_dagre;
+    case 'graphviz-state-dot':
+      return graphviz_state_dot;
+    case 'graphviz-state-neato':
+      return graphviz_state_neato;
   }
 }

@@ -1,0 +1,1 @@
+State diagrams describe the behavior of a system through state changes.

@@ -46,7 +46,13 @@ catalog we've found is
 
 ### Run locally
 
-`yarn && yarn dev`
+```sh
+# Only needed first run
+git submodule update --init --recursive
+yarn
+
+yarn dev
+```
 
 ### Adding examples
 
@@ -61,6 +67,11 @@ Please follow the examples in `src/examples`.
 1. Create the text for as many languages as you can. It's okay if not totally complete. We
 or others can fill.
 1. Run `./render.sh` (with the respective tools installed)
+  - Pre-requisite tools:
+    - `mmdc`
+    - `plantuml`
+    - `graphviz`
+    - `d2`
 
 <img alt="CLI render" src="/docs/assets/render.png" />
 
