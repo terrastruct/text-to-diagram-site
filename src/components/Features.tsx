@@ -144,7 +144,7 @@ const features: Feature[] = [
       [D2_LANG]: 'Any URL',
       [MERMAID_LANG]: 'FontAwesome. Hacky <img> tags',
       [GRAPHVIZ_LANG]: false,
-      [PLANTUML_LANG]: false,
+      [PLANTUML_LANG]: 'Any URL',
     },
   },
   {
