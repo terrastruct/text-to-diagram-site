@@ -9,12 +9,6 @@ _d2() {
   sh_c D2_LAYOUT=elk hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_elk.svg
 }
 
-mmdc() {
-  config=$(mktempd)/mmdc-config
-  echo '{"deterministicIds": true}' >$config
-  mmdc -c"$config" "$@"
-}
-
 _mmdc() {
   sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid.mmd -o ./src/examples/"$ex"/render/mermaid_dagre.svg
 }
@@ -39,18 +33,18 @@ main() {
     fi
 
     bigheader "$ex"
-    if [ -f ./src/examples/"$ex"/syntax/d2.d2 ]; then
-      runjob _d2 &
-    fi
+    # if [ -f ./src/examples/"$ex"/syntax/d2.d2 ]; then
+    #   runjob _d2 &
+    # fi
     if [ -f ./src/examples/"$ex"/syntax/mermaid.mmd ]; then
       runjob _mmdc &
     fi
-    if [ -f ./src/examples/"$ex"/syntax/graphviz.dot ]; then
-      [ "$ex" != 8_text ] && runjob _dot &
-    fi
-    if [ -f ./src/examples/"$ex"/syntax/plantuml.puml ]; then
-      runjob _plantuml &
-    fi
+    # if [ -f ./src/examples/"$ex"/syntax/graphviz.dot ]; then
+    #   [ "$ex" != 8_text ] && runjob _dot &
+    # fi
+    # if [ -f ./src/examples/"$ex"/syntax/plantuml.puml ]; then
+    #   runjob _plantuml &
+    # fi
     waitjobs
   done
 }
