@@ -9,12 +9,6 @@ _d2() {
   sh_c D2_LAYOUT=elk hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_elk.svg
 }
 
-mmdc() {
-  config=$(mktempd)/mmdc-config
-  echo '{"deterministicIds": true}' >$config
-  npx --package @mermaid-js/mermaid-cli@10.0.2 -- mmdc -c"$config" "$@"
-}
-
 _mmdc() {
   sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid.mmd -o ./src/examples/"$ex"/render/mermaid_dagre.svg
 }
