@@ -33,18 +33,18 @@ main() {
     fi
 
     bigheader "$ex"
-    # if [ -f ./src/examples/"$ex"/syntax/d2.d2 ]; then
-    #   runjob _d2 &
-    # fi
+    if [ -f ./src/examples/"$ex"/syntax/d2.d2 ]; then
+      runjob _d2 &
+    fi
     if [ -f ./src/examples/"$ex"/syntax/mermaid.mmd ]; then
       runjob _mmdc &
     fi
-    # if [ -f ./src/examples/"$ex"/syntax/graphviz.dot ]; then
-    #   [ "$ex" != 8_text ] && runjob _dot &
-    # fi
-    # if [ -f ./src/examples/"$ex"/syntax/plantuml.puml ]; then
-    #   runjob _plantuml &
-    # fi
+    if [ -f ./src/examples/"$ex"/syntax/graphviz.dot ]; then
+      [ "$ex" != 8_text ] && runjob _dot &
+    fi
+    if [ -f ./src/examples/"$ex"/syntax/plantuml.puml ]; then
+      runjob _plantuml &
+    fi
     waitjobs
   done
 }
