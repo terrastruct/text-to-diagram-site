@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 const defaultMeta = {
   title: 'Text to Diagram Tools Comparison 2025 | D2 vs Mermaid vs PlantUML vs Graphviz',
   siteName: 'Text to Diagram',
-  description: 'Compare top text-to-diagram tools: D2, Mermaid, PlantUML & Graphviz. Side-by-side syntax examples, features & renders. Find the best diagramming tool for developers.',
+  description:
+    'Compare top text-to-diagram tools: D2, Mermaid, PlantUML & Graphviz. Side-by-side syntax examples, features & renders. Find the best diagramming tool for developers.',
   url: 'https://text-to-diagram.com',
   type: 'website',
   robots: 'follow, index',
@@ -52,10 +53,13 @@ export default function Seo(props: SeoProps) {
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
-      
+
       {/* Additional SEO Meta Tags */}
       <meta name='author' content='Terrastruct' />
-      <meta name='keywords' content='text to diagram, D2, Mermaid, PlantUML, Graphviz, diagram as code, infrastructure as code, developer tools, diagramming tools comparison' />
+      <meta
+        name='keywords'
+        content='text to diagram, D2, Mermaid, PlantUML, Graphviz, diagram as code, infrastructure as code, developer tools, diagramming tools comparison'
+      />
       <meta name='language' content='EN' />
       <meta name='revisit-after' content='7 days' />
       <meta name='distribution' content='global' />
@@ -77,61 +81,60 @@ export default function Seo(props: SeoProps) {
       <meta name='msapplication-TileImage' content='/favicon/ms-icon-144x144.png' />
       <meta name='theme-color' content='#ffffff' />
       <script defer data-domain='text-to-diagram.com' src='/js/script.js'></script>
-      
+
       {/* Schema Markup */}
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
+            '@context': 'https://schema.org',
+            '@graph': [
               {
-                "@type": "WebSite",
-                "@id": "https://text-to-diagram.com/#website",
-                "url": "https://text-to-diagram.com/",
-                "name": "Text to Diagram",
-                "description": "Compare top text-to-diagram tools: D2, Mermaid, PlantUML & Graphviz. Side-by-side syntax examples, features & renders.",
-                "potentialAction": {
-                  "@type": "SearchAction",
-                  "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": "https://text-to-diagram.com/?q={search_term_string}"
+                '@type': 'WebSite',
+                '@id': 'https://text-to-diagram.com/#website',
+                url: 'https://text-to-diagram.com/',
+                name: 'Text to Diagram',
+                description:
+                  'Compare top text-to-diagram tools: D2, Mermaid, PlantUML & Graphviz. Side-by-side syntax examples, features & renders.',
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: {
+                    '@type': 'EntryPoint',
+                    urlTemplate: 'https://text-to-diagram.com/?q={search_term_string}',
                   },
-                  "query-input": "required name=search_term_string"
+                  'query-input': 'required name=search_term_string',
                 },
-                "inLanguage": "en-US"
+                inLanguage: 'en-US',
               },
               {
-                "@type": "Organization",
-                "@id": "https://text-to-diagram.com/#organization",
-                "name": "Terrastruct",
-                "url": "https://terrastruct.com",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://text-to-diagram.com/svg/terrastruct.svg"
+                '@type': 'Organization',
+                '@id': 'https://text-to-diagram.com/#organization',
+                name: 'Terrastruct',
+                url: 'https://terrastruct.com',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://text-to-diagram.com/svg/terrastruct.svg',
                 },
-                "sameAs": [
-                  "https://github.com/terrastruct"
-                ]
+                sameAs: ['https://github.com/terrastruct'],
               },
               {
-                "@type": "WebPage",
-                "@id": `https://text-to-diagram.com${router.asPath}#webpage`,
-                "url": `https://text-to-diagram.com${router.asPath}`,
-                "name": meta.title,
-                "description": meta.description,
-                "isPartOf": {
-                  "@id": "https://text-to-diagram.com/#website"
+                '@type': 'WebPage',
+                '@id': `https://text-to-diagram.com${router.asPath}#webpage`,
+                url: `https://text-to-diagram.com${router.asPath}`,
+                name: meta.title,
+                description: meta.description,
+                isPartOf: {
+                  '@id': 'https://text-to-diagram.com/#website',
                 },
-                "about": {
-                  "@id": "https://text-to-diagram.com/#organization"
+                about: {
+                  '@id': 'https://text-to-diagram.com/#organization',
                 },
-                "datePublished": "2024-01-01",
-                "dateModified": "2025-02-11",
-                "inLanguage": "en-US"
-              }
-            ]
-          })
+                datePublished: '2024-01-01',
+                dateModified: '2025-02-11',
+                inLanguage: 'en-US',
+              },
+            ],
+          }),
         }}
       />
     </Head>

@@ -37,7 +37,7 @@ const items = [
   },
   {
     question: 'How up-to-date is this?',
-    answer: `Very up to date. Every so often, we upgrade to latest version of all tools and regenerate all. Latest: February 11, 2025.`,
+    answer: `Very up to date. Every so often, we upgrade to latest version of all tools and regenerate all. Latest: August 12, 2025.`,
   },
   {
     question: 'Who made this?',
@@ -61,16 +61,16 @@ export default function FAQ() {
   const [openQuestion, setOpenQuestion] = useState<number>(-1);
 
   const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": items.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
   };
 
   return (
@@ -105,9 +105,9 @@ export default function FAQ() {
           ))}
         </div>
       </div>
-      
+
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </div>
