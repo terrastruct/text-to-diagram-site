@@ -1,5 +1,24 @@
 const path = require('path');
 
+const securityHeaders = [
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on',
+  },
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload',
+  },
+  {
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN',
+  },
+  {
+    key: 'Referrer-Policy',
+    value: 'origin-when-cross-origin',
+  },
+];
+
 /** @type {import('next').NextConfig} */
 module.exports = {
   eslint: {
@@ -9,6 +28,16 @@ module.exports = {
     unoptimized: true,
   },
   reactStrictMode: true,
+  compress: true,
+  poweredByHeader: false,
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ];
+  },
 
   // Uncoment to add domain whitelist
   // images: {

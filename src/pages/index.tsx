@@ -9,6 +9,7 @@ import Features from '@/components/Features';
 import Layout from '@/components/layout/Layout';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import Seo from '@/components/Seo';
+import SoftwareSchema from '@/components/SoftwareSchema';
 
 import Hero from '~/images/hero.webp';
 import Hero1024 from '~/images/hero_1024.webp';
@@ -21,6 +22,7 @@ export default function HomePage(props: any) {
   return (
     <Layout>
       <Seo />
+      <SoftwareSchema />
 
       <main>
         <section className='bg-white'>
@@ -30,30 +32,30 @@ export default function HomePage(props: any) {
               <div className='z-10 mt-auto flex flex-col items-center justify-center'>
                 <Switch className='text-9xl' />
                 <h1 className='flex flex-col items-center text-2xl font-extrabold sm:text-4xl lg:text-5xl'>
-                  <span>Community list of comparisons</span>
+                  <span>Text to Diagram Tools Comparison</span>
                   <span className='p-2'>
-                    between{' '}
+                    Compare{' '}
                     <span className='purple-gradient bg-clip-text text-transparent'>
-                      Text to Diagram
+                      D2, Mermaid, PlantUML & Graphviz
                     </span>{' '}
-                    tools
+                    side-by-side
                   </span>
                 </h1>
               </div>
               <img
                 src={Hero.src}
                 className='z-10 -mb-6 mt-4 w-10/12 max-w-[1280px] sm:-mb-6 md:-mb-6 lg:-mb-6 lg:hidden'
-                alt='hero'
+                alt='Diagram comparison showing D2, Mermaid, PlantUML and Graphviz syntax examples side by side'
               />
               <img
                 src={Hero1280.src}
                 className='z-10 -mb-6 mt-4 hidden w-10/12 max-w-[1280px] sm:-mb-6 md:-mb-6 lg:-mb-6 xl:block'
-                alt='hero'
+                alt='Diagram comparison showing D2, Mermaid, PlantUML and Graphviz syntax examples side by side'
               />
               <img
                 src={Hero1024.src}
                 className='z-10 -mb-6 mt-4 hidden w-10/12 max-w-[1280px] sm:-mb-6 md:-mb-6 lg:-mb-6 lg:block xl:hidden'
-                alt='hero'
+                alt='Diagram comparison showing D2, Mermaid, PlantUML and Graphviz syntax examples side by side'
               />
               <div className='z-10 mt-auto h-[24px] w-full bg-hero-shadow' />
             </div>
