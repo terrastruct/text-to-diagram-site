@@ -7,6 +7,7 @@
   src: url('/fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
   src: url('/fonts/SourceSansPro/SourceSansPro-Italic.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -21,6 +23,7 @@
   src: url('/fonts/SourceSansPro/SourceSansPro-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -28,6 +31,7 @@
   src: url('/fonts/SourceSansPro/SourceSansPro-SemiBold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -35,6 +39,7 @@
   src: url('/fonts/SourceSansPro/SourceSansPro-Light.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -42,6 +47,7 @@
   src: url('/fonts/SourceSansPro/SourceSansPro-Black.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -49,6 +55,7 @@
   src: url('/fonts/SourceCodePro/SourceCodePro-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -56,6 +63,7 @@
   src: url('/fonts/SourceCodePro/SourceCodePro-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 
 @layer base {

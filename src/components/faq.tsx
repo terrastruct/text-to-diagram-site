@@ -60,6 +60,19 @@ const items = [
 export default function FAQ() {
   const [openQuestion, setOpenQuestion] = useState<number>(-1);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": items.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <div className='px-4'>
       <div className='w-full'>
@@ -92,6 +105,11 @@ export default function FAQ() {
           ))}
         </div>
       </div>
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </div>
   );
 }
