@@ -4,9 +4,9 @@ set -eu
 cd -- "$(dirname "$0")/.."
 
 _d2() {
-  sh_c D2_LAYOUT=tala hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_tala.svg
-  sh_c D2_LAYOUT=dagre hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_dagre.svg
-  sh_c D2_LAYOUT=elk hide d2 ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_elk.svg
+  sh_c D2_LAYOUT=tala hide d2 --omit-version ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_tala.svg
+  sh_c D2_LAYOUT=dagre hide d2 --omit-version ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_dagre.svg
+  sh_c D2_LAYOUT=elk hide d2 --omit-version ./src/examples/"$ex"/syntax/d2.d2 ./src/examples/"$ex"/render/d2_elk.svg
 }
 
 _mmdc() {
