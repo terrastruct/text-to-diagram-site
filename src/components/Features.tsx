@@ -192,7 +192,7 @@ const features: Feature[] = [
     description: 'Render math equations suitable for academic usage',
     value: {
       [D2_LANG]: true,
-      [MERMAID_LANG]: false,
+      [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: true,
     },
