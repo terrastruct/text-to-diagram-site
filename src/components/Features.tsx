@@ -162,7 +162,7 @@ const features: Feature[] = [
     description: 'Support for Entity-Relational-Diagrams (ERD)',
     value: {
       [D2_LANG]: true,
-      [MERMAID_LANG]: 'Experimental',
+      [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: true,
     },
@@ -172,7 +172,7 @@ const features: Feature[] = [
     description: 'Use Markdown for text objects in the diagram',
     value: {
       [D2_LANG]: true,
-      [MERMAID_LANG]: false,
+      [MERMAID_LANG]: 'Partial support',
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
     },
