@@ -1,12 +1,12 @@
-flowchart-elk TD
+flowchart TD
   subgraph ibm[IBM &quot;Espresso&quot; CPU]
     core0[IBM PowerPC Broadway Core 0]
     core1[IBM PowerPC Broadway Core 1]
     core2[IBM PowerPC Broadway Core 2]
 
-    rom[16 KB ROM]
+    rom16[16 KB ROM]
 
-    rom --> core2
+    rom16 --> core2
     core0 --- core2
   end
 
