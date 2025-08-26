@@ -30,7 +30,7 @@ main() {
   job_parseflags "$@"
   for ex in $(find ./src/examples -mindepth 1 -maxdepth 1 | sort -V); do
     ex=${ex#./src/examples/}
-    export JOBNAME=$ex
+    export JOBNAME="$ex"
     if ! _runjob_filter; then
       continue
     fi
@@ -50,6 +50,10 @@ main() {
     fi
     waitjobs
   done
+  
+  # Generate image imports after all renders are complete
+  bigheader "Generating image imports"
+  sh_c tsx ./scripts/generate-img-imports.ts
 }
 
 main "$@"
