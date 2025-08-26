@@ -10,7 +10,10 @@ _d2() {
 }
 
 _mmdc() {
+  echo '{ "layout": "elk" }' > ./mermaid-elk.config.json
   sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid.mmd -o ./src/examples/"$ex"/render/mermaid_dagre.svg
+  sh_c mmdc -i ./src/examples/"$ex"/syntax/mermaid.mmd -c ./mermaid-elk.config.json -o ./src/examples/"$ex"/render/mermaid_elk.svg
+  rm ./mermaid-elk.config.json
 }
 
 _dot() {
