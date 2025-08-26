@@ -244,7 +244,7 @@ const features: Feature[] = [
     description: 'Can the CLI export PDF output',
     value: {
       [D2_LANG]: true,
-      [MERMAID_LANG]: false,
+      [MERMAID_LANG]: true,
       [GRAPHVIZ_LANG]: true,
       [PLANTUML_LANG]: 'With additional installs',
     },
