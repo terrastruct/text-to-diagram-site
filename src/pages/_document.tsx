@@ -9,7 +9,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
-        <Head></Head>
+        <Head>
+          {/* Real User Monitoring (RUM) for Performance Tracking */}
+          <script src='/assets/rum-monitoring.js' async />
+        </Head>
         <body>
           <Main />
           <NextScript />
