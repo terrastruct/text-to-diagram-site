@@ -172,7 +172,7 @@ const features: Feature[] = [
     description: 'Use Markdown for text objects in the diagram',
     value: {
       [D2_LANG]: true,
-      [MERMAID_LANG]: 'Partial support',
+      [MERMAID_LANG]: 'Bold & Italic',
       [GRAPHVIZ_LANG]: false,
       [PLANTUML_LANG]: false,
     },
