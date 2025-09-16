@@ -1,5 +1,5 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-08-26T08:47:44.336Z
+// Generated on: 2025-09-16T13:04:56.595Z
 // This file contains all image imports from the examples render directories
 
 import d2_basic_dagre from '@/examples/0_basic/render/d2_dagre.svg';
@@ -117,7 +117,6 @@ import graphviz_state_neato from '@/examples/13_state/render/graphviz_neato.svg'
 import mermaid_state_dagre from '@/examples/13_state/render/mermaid_dagre.svg';
 import mermaid_state_elk from '@/examples/13_state/render/mermaid_elk.svg';
 import plantuml_state_dot from '@/examples/13_state/render/plantuml_dot.svg';
-
 
 export function getImage(id: string) {
   switch (id.toLowerCase()) {
@@ -338,6 +337,5 @@ export function getImage(id: string) {
       return mermaid_state_elk;
     case 'plantuml-state-dot':
       return plantuml_state_dot;
-
   }
 }

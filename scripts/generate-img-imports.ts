@@ -81,6 +81,9 @@ function generateImgImports(): void {
     content.switchCases.push('');
   });
 
+  content.imports.pop(); // Remove last empty line
+  content.switchCases.pop(); // Remove last empty line
+
   // Generate the complete file content
   const fileContent = `// Auto-generated file - do not edit manually
 // Generated on: ${new Date().toISOString()}
@@ -98,13 +101,9 @@ ${content.switchCases.join('\n')}
   // Write the file
   fs.writeFileSync(OUTPUT_FILE, fileContent);
   console.log(`✅ Generated ${OUTPUT_FILE}`);
+  console.log(`📊 Total imports: ${content.imports.filter((imp) => imp.trim()).length}`);
   console.log(
-    `📊 Total imports: ${content.imports.filter((imp) => imp.trim()).length}`
-  );
-  console.log(
-    `📊 Total switch cases: ${
-      content.switchCases.filter((case_) => case_.trim()).length
-    }`
+    `📊 Total switch cases: ${content.switchCases.filter((case_) => case_.trim()).length}`
   );
 }
 
